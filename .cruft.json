@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/FAIRmat-NFDI/cookiecutter-nomad-plugin",
+  "commit": "e759475d3f8905df4354ca83d8ce6cd632ffce99",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "Kai Koebnick",
+      "email": "kai.koebnick@gamil.com",
+      "github_username": "fau",
+      "plugin_name": "custom-search-filters",
+      "module_name": "custom_search_filters",
+      "short_description": "Nomad example template",
+      "version": "0.1.0",
+      "license": "BSD-3",
+      "include_schema_package": false,
+      "include_normalizer": false,
+      "include_parser": false,
+      "include_app": true,
+      "include_example_uploads": false,
+      "_copy_without_render": [
+        "*.html"
+      ],
+      "_template": "https://github.com/FAIRmat-NFDI/cookiecutter-nomad-plugin"
+    }
+  },
+  "directory": null
+}
