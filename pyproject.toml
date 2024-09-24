@@ -31,7 +31,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/fau/custom-search-filters"
+Repository = "https://github.com/kaikoebnick/custom-search-filters"
 
 [project.optional-dependencies]
 dev = ["ruff", "pytest", "structlog"]
