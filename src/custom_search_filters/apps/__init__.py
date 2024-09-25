@@ -2,12 +2,13 @@ from nomad.config.models.plugins import AppEntryPoint
 from nomad.config.models.ui import App, Column, Columns, FilterMenu, FilterMenus
 
 app_entry_point = AppEntryPoint(
-    name='Unterkategorie',
+    name='custom_app',
     description='Was abgespacetes.',
     app=App(
-        label='neuesLabel',
+        label='Lehrstuhl fuer Laserphysik',
         path='app',
-        category='wasAnderes',
+        category='Elektronisches Laborbuch',
+        description='Kurze Beschreibung',
         columns=Columns(
             selected=['entry_id'],
             options={
@@ -16,7 +17,8 @@ app_entry_point = AppEntryPoint(
         ),
         filter_menus=FilterMenus(
             options={
-                'material': FilterMenu(label='Material'),
+                'schoener_peak': FilterMenu(label='Schoener Peak'),
+                'gute_messung': FilterMenu(label='Gute Messung'),
             }
         ),
     ),
