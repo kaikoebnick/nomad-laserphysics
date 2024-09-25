@@ -3,7 +3,7 @@ from nomad.config.models.ui import App, Column, Columns, FilterMenu, FilterMenus
 
 app_entry_point = AppEntryPoint(
     name='Unterkategorie',
-    description='New app entry point configuration.',
+    description='Was abgespacetes.',
     app=App(
         label='NewApp',
         path='app',
