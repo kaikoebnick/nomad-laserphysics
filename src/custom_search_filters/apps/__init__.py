@@ -6,18 +6,18 @@ app_entry_point = AppEntryPoint(
     description='Was abgespacetes.',
     app=App(
         label='Lehrstuhl fuer Laserphysik',
-        path='app',
+        path='lfl',
         category='Elektronisches Laborbuch',
-        description='Kurze Beschreibung',
+        description='Elektronisches Laborbuch des Lehrstuhls für Laserphysik',
         columns=Columns(
-            selected=['entry_id'],
+            selected=['entry_name'],
             options={
-                'entry_id': Column(),
+                'entry_name': Column(),
             },
         ),
         filter_menus=FilterMenus(
             options={
-                'schoener_peak': FilterMenu(label='Schoener Peak'),
+                'schoener_peak': FilterMenu(label='Schoener Peak', actions=FilterMenuActions(options={"Kategorie1":FilterMenuActionCheckbox(label="irgendwas",quantity="entry_id")})),
                 'gute_messung': FilterMenu(label='Gute Messung'),
             }
         ),
