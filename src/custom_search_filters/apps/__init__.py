@@ -11,16 +11,17 @@ from nomad.config.models.ui import (
 
 app_entry_point = AppEntryPoint(
     name='custom_app',
-    description='Was abgespacetes.',
+    description='App zum Testen',
     app=App(
-        label='Lehrstuhl fuer Laserphysik',
+        label='Elektronisches Laborbuch',
         path='lfl',
-        category='Elektronisches Laborbuch',
+        category='Lehrstuhl fuer Laserphysik',
         description='Elektronisches Laborbuch des Lehrstuhls für Laserphysik',
         columns=Columns(
-            selected=['entry_name'],
+            selected=['entry_name','upload_create_time'],
             options={
                 'entry_name': Column(),
+                'upload_create_time': Column(),
             },
         ),
         filter_menus=FilterMenus(
