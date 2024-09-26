@@ -1,6 +1,13 @@
 from nomad.config.models.plugins import AppEntryPoint
-from nomad.config.models.ui import App, Column, Columns, FilterMenus
-from nomad.config.models.ui import FilterMenu, FilterMenuActions, FilterMenuActionCheckbox
+from nomad.config.models.ui import (
+    App,
+    Column,
+    Columns,
+    FilterMenu,
+    FilterMenuActionCheckbox,
+    FilterMenuActions,
+    FilterMenus,
+)
 
 app_entry_point = AppEntryPoint(
     name='custom_app',
