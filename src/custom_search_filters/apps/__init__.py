@@ -17,7 +17,7 @@ app_entry_point = AppEntryPoint(
         ),
         filter_menus=FilterMenus(
             options={
-                'schoener_peak': FilterMenu(label='Schoener Peak', actions=FilterMenuActions(options={"Kategorie1":FilterMenuActionCheckbox(label="irgendwas",quantity="entry_id")})),
+                'schoener_peak': FilterMenu(label='Schoener Peak', actions=FilterMenuActions(options={"Kategorie1":FilterMenuActionCheckbox(type="checkbox",label="irgendwas",quantity="entry_id")})),
                 'gute_messung': FilterMenu(label='Gute Messung'),
             }
         ),
