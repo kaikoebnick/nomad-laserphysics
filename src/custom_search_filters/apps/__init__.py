@@ -4,8 +4,8 @@ from nomad.config.models.ui import (
     Column,
     Columns,
     FilterMenu,
-    FilterMenuActionCheckbox,
-    FilterMenuActions,
+    #FilterMenuActionCheckbox,
+    #FilterMenuActions,
     FilterMenus,
 )
 
