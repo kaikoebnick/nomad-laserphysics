@@ -1,5 +1,5 @@
 from nomad.config.models.plugins import AppEntryPoint
-from nomad.config.models.ui import App, Column, Columns, FilterMenus, FilterMenu, FilterMenuActions, FilterMenuActionCheckbox
+from nomad.config.models.ui import App, Column, Columns, FilterMenus, FilterMenu, FilterMenuActions, FilterMenuActionCheckbox,
 
 app_entry_point = AppEntryPoint(
     name='custom_app',
