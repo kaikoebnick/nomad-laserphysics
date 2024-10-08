@@ -13,10 +13,10 @@ app_entry_point = AppEntryPoint(
     name='custom_app',
     description='App zum Testen',
     app=App(
-        label='Elektronisches Laborbuch',
+        label='Electronic laboratory notebook',
         path='enl_laserphysics',
-        category='Lehrstuhl fuer Laserphysik',
-        description='Elektronisches Laborbuch des Lehrstuhls für Laserphysik',
+        category='Chair for Laserphysics',
+        description='ELN of the Chair for Laser Physics"',
         columns=Columns(
             selected=['entry_name','upload_create_time'],
             options={
@@ -26,15 +26,15 @@ app_entry_point = AppEntryPoint(
         ),
         filter_menus=FilterMenus(
             options={
-                'schoener_peak': FilterMenu(
+                'calibration': FilterMenu(
                     label='entry_name', actions=FilterMenuActions(
                         options={"Kategorie1":FilterMenuActionCheckbox(
-                            type="checkbox",label="irgendwas",quantity="entry_id"
+                            type="checkbox",label="some_quantity",quantity="entry_id"
                             )
                         }
                     )
                 ),
-                'entry_id': FilterMenu(label='Gute Messung'),
+                'entry_id': FilterMenu(label='real_measurement'),
             }
         ),
     ),
