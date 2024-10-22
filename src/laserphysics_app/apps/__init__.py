@@ -125,48 +125,48 @@ app_entry_point = AppEntryPoint(
                 'metadata': FilterMenu(label='Visibility / IDs'),
             }
         ),
-        """dashboard=Dashboard(
-            widgets=[
-                WidgetTerms(
-                    type='terms',
-                    quantity='data.category#nomad_aitoolkit.schema.AIToolkitNotebook',
-                    scale=ScaleEnum.POW1,
-                    layout={
-                        BreakpointEnum.XXL: Layout(h=6, w=6, x=0, y=0),
-                        BreakpointEnum.XL: Layout(h=6, w=6, x=0, y=0),
-                        BreakpointEnum.LG: Layout(h=6, w=6, x=0, y=0),
-                        BreakpointEnum.MD: Layout(h=6, w=6, x=0, y=0),
-                        BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
-                    },
-                ),
-                WidgetTerms(
-                    type='terms',
-                    quantity='data.methods.name#nomad_aitoolkit.schema.AIToolkitNotebook',
-                    title='Methods',
-                    scale=ScaleEnum.POW1,
-                    layout={
-                        BreakpointEnum.XXL: Layout(h=6, w=6, x=6, y=0),
-                        BreakpointEnum.XL: Layout(h=6, w=6, x=6, y=0),
-                        BreakpointEnum.LG: Layout(h=6, w=6, x=6, y=0),
-                        BreakpointEnum.MD: Layout(h=6, w=6, x=6, y=0),
-                        BreakpointEnum.SM: Layout(h=6, w=6, x=6, y=0),
-                    },
-                ),
-                WidgetTerms(
-                    type='terms',
-                    quantity='data.systems.name#nomad_aitoolkit.schema.AIToolkitNotebook',
-                    title='Systems',
-                    scale=ScaleEnum.POW1,
-                    layout={
-                        BreakpointEnum.XXL: Layout(h=6, w=6, x=12, y=0),
-                        BreakpointEnum.XL: Layout(h=6, w=6, x=12, y=0),
-                        BreakpointEnum.LG: Layout(h=6, w=6, x=12, y=0),
-                        BreakpointEnum.MD: Layout(h=6, w=6, x=12, y=0),
-                        BreakpointEnum.SM: Layout(h=6, w=6, x=12, y=0),
-                    },
-                ),
-            ]
-        )""",
+        #dashboard=Dashboard(
+        #    widgets=[
+        #        WidgetTerms(
+        #            type='terms',
+        #            quantity='data.category#nomad_aitoolkit.schema.AIToolkitNotebook',
+        #            scale=ScaleEnum.POW1,
+        #            layout={
+        #                BreakpointEnum.XXL: Layout(h=6, w=6, x=0, y=0),
+        #                BreakpointEnum.XL: Layout(h=6, w=6, x=0, y=0),
+        #                BreakpointEnum.LG: Layout(h=6, w=6, x=0, y=0),
+        #                BreakpointEnum.MD: Layout(h=6, w=6, x=0, y=0),
+        #                BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
+        #            },
+        #        ),
+        #        WidgetTerms(
+        #            type='terms',
+        #            quantity='data.methods.name#nomad_aitoolkit.schema.AIToolkitNotebook',
+        #            title='Methods',
+        #            scale=ScaleEnum.POW1,
+        #            layout={
+        #                BreakpointEnum.XXL: Layout(h=6, w=6, x=6, y=0),
+        #                BreakpointEnum.XL: Layout(h=6, w=6, x=6, y=0),
+        #                BreakpointEnum.LG: Layout(h=6, w=6, x=6, y=0),
+        #                BreakpointEnum.MD: Layout(h=6, w=6, x=6, y=0),
+        #                BreakpointEnum.SM: Layout(h=6, w=6, x=6, y=0),
+        #            },
+        #        ),
+        #        WidgetTerms(
+        #            type='terms',
+        #            quantity='data.systems.name#nomad_aitoolkit.schema.AIToolkitNotebook',
+        #            title='Systems',
+        #            scale=ScaleEnum.POW1,
+        #            layout={
+        #                BreakpointEnum.XXL: Layout(h=6, w=6, x=12, y=0),
+        #                BreakpointEnum.XL: Layout(h=6, w=6, x=12, y=0),
+        #                BreakpointEnum.LG: Layout(h=6, w=6, x=12, y=0),
+        #                BreakpointEnum.MD: Layout(h=6, w=6, x=12, y=0),
+        #                BreakpointEnum.SM: Layout(h=6, w=6, x=12, y=0),
+        #            },
+        #        ),
+        #    ]
+        #),
         rows=Rows(
             actions=RowActions(
                 enabled=True,
