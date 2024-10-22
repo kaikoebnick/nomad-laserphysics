@@ -100,20 +100,20 @@ app_entry_point = AppEntryPoint(
                 'entry_id': Column(),
                 'entry_type': Column(label='Entry type', align=AlignEnum.LEFT),
                 'authors': Column(label='Authors', align=AlignEnum.LEFT),
-                """'data.name#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
-                    label='Name', align=AlignEnum.LEFT
-                ),
-                'data.category#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
-                    label='Category'
-                ),
-                'data.platform#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
-                    label='Platform', align=AlignEnum.LEFT
-                ),
-                'data.date#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
-                    label='Last update',
-                    align=AlignEnum.LEFT,
-                    format=Format(mode=ModeEnum.DATE),
-                ),"""
+                #'data.name#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
+                #    label='Name', align=AlignEnum.LEFT
+                #),
+                #'data.category#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
+                #    label='Category'
+                #),
+                #'data.platform#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
+                #    label='Platform', align=AlignEnum.LEFT
+                #),
+                #'data.date#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
+                #    label='Last update',
+                #    align=AlignEnum.LEFT,
+                #    format=Format(mode=ModeEnum.DATE),
+                #),
             },
         ),
         filter_menus=FilterMenus(
