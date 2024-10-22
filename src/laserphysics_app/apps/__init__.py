@@ -74,11 +74,12 @@ app_entry_point = AppEntryPoint(
         description='Search Laserphysics notebooks',
         path='laserphysics',
         category='Chair for Laserphysics',
-        """filters=Filters(
-            include=['*#nomad_aitoolkit.schema.AIToolkitNotebook'],
-            # exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
-        ),
-        filters_locked=filters_locked,"""
+        #filters=Filters(
+        #    include=['*#nomad_aitoolkit.schema.AIToolkitNotebook'],
+        #    exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
+        #),
+        #filters_locked=filters_locked,
+        
         columns=Columns(
             include=[
                 'entry_id',
@@ -124,8 +125,8 @@ app_entry_point = AppEntryPoint(
                 'metadata': FilterMenu(label='Visibility / IDs'),
             }
         ),
-        dashboard=Dashboard(
-            """widgets=[
+        dashboard=Dashboard("""
+            widgets=[
                 WidgetTerms(
                     type='terms',
                     quantity='data.category#nomad_aitoolkit.schema.AIToolkitNotebook',
@@ -164,8 +165,8 @@ app_entry_point = AppEntryPoint(
                         BreakpointEnum.SM: Layout(h=6, w=6, x=12, y=0),
                     },
                 ),
-            ]
-        ),"""
+            ]"""
+        ),
         rows=Rows(
             actions=RowActions(
                 enabled=True,
