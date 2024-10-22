@@ -1,8 +1,8 @@
-site_name: custom-search-filters
+site_name: laserphysics-app
 site_description: Nomad example template
 site_author: Kai Koebnick
 
-repo_url: https://github.com/fau/custom-search-filters
+repo_url: https://github.com/fau/laserphysics-app
 edit_uri: ""
 
 nav:
