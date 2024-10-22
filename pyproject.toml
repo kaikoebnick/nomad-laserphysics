@@ -19,10 +19,10 @@ version = "0.1.0"
 readme = "README.md"
 requires-python = ">=3.9"
 authors = [
-    { name = "Kai Koebnick", email = "kai.koebnick@gamil.com" },
+    { name = "Kai Koebnick", email = "kai.koebnick@fau.de" },
 ]
 maintainers = [
-    { name = "Kai Koebnick", email = "kai.koebnick@gamil.com" },
+    { name = "Kai Koebnick", email = "kai.koebnick@fau.de" },
 ]
 license = { file = "LICENSE" }
 dependencies = [
@@ -31,7 +31,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/kaikoebnick/custom-search-filters"
+Repository = "https://github.com/kaikoebnick/laserphysics-app"
 
 [project.optional-dependencies]
 dev = ["ruff", "pytest", "structlog"]
@@ -114,7 +114,7 @@ where = ["src"]
 
 
 
-app_entry_point = "custom_search_filters.apps:app_entry_point"
+app_entry_point = "laserphysics_app.apps:app_entry_point"
 
 [tool.cruft]
 # Avoid updating workflow files, this leads to permissions issues
