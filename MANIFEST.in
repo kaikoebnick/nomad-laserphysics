@@ -1,2 +1,2 @@
 recursive-include * nomad_plugin.yaml
-graft src/custom_search_filters/example_uploads
+graft src/laserphysics_app/example_uploads
