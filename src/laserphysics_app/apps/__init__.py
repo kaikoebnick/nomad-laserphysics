@@ -41,29 +41,29 @@ app_entry_point = AppEntryPoint(
 )"""
 
 # ruff: noqa: E501
-from nomad.config import _plugins
+#from nomad.config import _plugins
 from nomad.config.models.plugins import AppEntryPoint
 from nomad.config.models.ui import (
     AlignEnum,
     App,
-    BreakpointEnum,
+    #BreakpointEnum,
     Column,
     Columns,
     Dashboard,
     FilterMenu,
     FilterMenus,
     FilterMenuSizeEnum,
-    Filters,
-    Format,
-    Layout,
-    ModeEnum,
+    #Filters,
+    #Format,
+    #Layout,
+    #ModeEnum,
     RowActions,
     RowActionURL,
     RowDetails,
     Rows,
     RowSelection,
-    ScaleEnum,
-    WidgetTerms,
+    #ScaleEnum,
+    #WidgetTerms,
 )
 
 app_entry_point = AppEntryPoint(
