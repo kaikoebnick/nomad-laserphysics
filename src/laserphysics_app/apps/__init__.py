@@ -49,7 +49,7 @@ from nomad.config.models.ui import (
     #BreakpointEnum,
     Column,
     Columns,
-    Dashboard,
+    #Dashboard,
     FilterMenu,
     FilterMenus,
     FilterMenuSizeEnum,
