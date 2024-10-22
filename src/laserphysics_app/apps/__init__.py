@@ -92,7 +92,7 @@ app_entry_point = AppEntryPoint(
             ],
             selected=[
                 #'data.name#nomad_aitoolkit.schema.AIToolkitNotebook',
-                #'authors',
+                'authors',
                 #'data.category#nomad_aitoolkit.schema.AIToolkitNotebook',
                 #'data.date#nomad_aitoolkit.schema.AIToolkitNotebook',
             ],
@@ -125,7 +125,7 @@ app_entry_point = AppEntryPoint(
                 'metadata': FilterMenu(label='Visibility / IDs'),
             }
         ),
-        dashboard=Dashboard("""
+        """dashboard=Dashboard(
             widgets=[
                 WidgetTerms(
                     type='terms',
@@ -165,8 +165,8 @@ app_entry_point = AppEntryPoint(
                         BreakpointEnum.SM: Layout(h=6, w=6, x=12, y=0),
                     },
                 ),
-            ]"""
-        ),
+            ]
+        )""",
         rows=Rows(
             actions=RowActions(
                 enabled=True,
