@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: BSD License",
 ]
-name = "laserphysics-app"
+name = "nomad-laserphysics"
 description = "Nomad example template"
 version = "0.1.0"
 readme = "README.md"
