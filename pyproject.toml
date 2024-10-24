@@ -111,8 +111,8 @@ package-dir = { "" = "src" }
 where = ["src"]
 
 [project.entry-points.'nomad.plugin']
-app_entry_point = "nomad_laserphysics.apps:app_entry_point"
-schema_package_entry_point = "nomad_laserphysics.schema_packages:schema_package_entry_point"
+app_entry_point = "nomad_laserphysics.apps:app_entry_point" #app
+schema_package_entry_point = "nomad_laserphysics.schema_packages:schema_package_entry_point" #schema
 
 [tool.cruft]
 # Avoid updating workflow files, this leads to permissions issues
