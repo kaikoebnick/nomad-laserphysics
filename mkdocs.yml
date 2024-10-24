@@ -1,8 +1,8 @@
-site_name: laserphysics-app
+site_name: nomad-laserphysics
 site_description: Nomad example template
 site_author: Kai Koebnick
 
-repo_url: https://github.com/fau/laserphysics-app
+repo_url: https://github.com/fau/nomad-laserphysics
 edit_uri: ""
 
 nav:
