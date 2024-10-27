@@ -1,69 +1,27 @@
-"""from nomad.config.models.plugins import AppEntryPoint
-from nomad.config.models.ui import (
-    App,
-    Column,
-    Columns,
-    FilterMenu,
-    FilterMenuActionCheckbox,
-    FilterMenuActions,
-    FilterMenus,
-)
-
-app_entry_point = AppEntryPoint(
-    name='custom_app',
-    description='App zum Testen',
-    app=App(
-        label='Electronic laboratory notebook',
-        path='enl_laserphysics',
-        category='Chair for Laserphysics',
-        description='ELN of the Chair for Laser Physics"',
-        columns=Columns(
-            selected=['entry_name','upload_create_time'],
-            options={
-                'entry_name': Column(),
-                'upload_create_time': Column(),
-            },
-        ),
-        filter_menus=FilterMenus(
-            options={
-                'calibration': FilterMenu(
-                    label='entry_name', actions=FilterMenuActions(
-                        options={"Kategorie1":FilterMenuActionCheckbox(
-                            type="checkbox",label="some_quantity",quantity="entry_id"
-                            )
-                        }
-                    )
-                ),
-                'entry_id': FilterMenu(label='real_measurement'),
-            }
-        ),
-    ),
-)"""
-
 # ruff: noqa: E501
 #from nomad.config import _plugins
 from nomad.config.models.plugins import AppEntryPoint
 from nomad.config.models.ui import (
     AlignEnum,
     App,
-    #BreakpointEnum,
+    BreakpointEnum,
     Column,
     Columns,
-    #Dashboard,
+    Dashboard,
     FilterMenu,
     FilterMenus,
     FilterMenuSizeEnum,
-    #Filters,
-    #Format,
-    #Layout,
-    #ModeEnum,
+    Filters,
+    Format,
+    Layout,
+    ModeEnum,
     RowActions,
     RowActionURL,
     RowDetails,
     Rows,
     RowSelection,
-    #ScaleEnum,
-    #WidgetTerms,
+    ScaleEnum,
+    WidgetTerms,
 )
 
 app_entry_point = AppEntryPoint(
