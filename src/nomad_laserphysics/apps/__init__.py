@@ -55,7 +55,7 @@ app_entry_point = AppEntryPoint(
         path='laserphysics',
         category='Chair for Laserphysics',
         filters=Filters(
-            include=['*#nomad_laserphysics.schema_packages.laserphysicsELN'],
+            include=['*#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'],
             exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
         ),
         filters_locked=filters_locked,
