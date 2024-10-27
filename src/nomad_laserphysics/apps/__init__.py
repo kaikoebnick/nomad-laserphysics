@@ -74,46 +74,46 @@ app_entry_point = AppEntryPoint(
         description='Search Laserphysics notebooks',
         path='laserphysics',
         category='Chair for Laserphysics',
-        #filters=Filters(
-        #    include=['*#nomad_aitoolkit.schema.AIToolkitNotebook'],
-        #    exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
-        #),
-        #filters_locked=filters_locked,
+        filters=Filters(
+            include=['*#nomad_laserphysics.schema_packages.laserphysicsELN'],
+            exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
+        ),
+        filters_locked=filters_locked,
         
         columns=Columns(
             include=[
                 'entry_id',
                 'entry_type',
                 'authors',
-                #'data.name#nomad_aitoolkit.schema.AIToolkitNotebook',
-                #'data.category#nomad_aitoolkit.schema.AIToolkitNotebook',
-                #'data.platform#nomad_aitoolkit.schema.AIToolkitNotebook',
-                #'data.date#nomad_aitoolkit.schema.AIToolkitNotebook',
+                'data.name#nomad_laserphysics.schema_packages.laserphysicsELN',
+                'data.category#nomad_laserphysics.schema_packages.laserphysicsELN',
+                #'data.platform#nomad_laserphysics.schema_packages.laserphysicsELN',
+                'data.date#nomad_laserphysics.schema_packages.laserphysicsELN',
             ],
             selected=[
-                #'data.name#nomad_aitoolkit.schema.AIToolkitNotebook',
+                'data.name#nomad_laserphysics.schema_packages.laserphysicsELN',
                 'authors',
-                #'data.category#nomad_aitoolkit.schema.AIToolkitNotebook',
-                #'data.date#nomad_aitoolkit.schema.AIToolkitNotebook',
+                'data.category#nomad_laserphysics.schema_packages.laserphysicsELN',
+                'data.date#nomad_laserphysics.schema_packages.laserphysicsELN',
             ],
             options={
                 'entry_id': Column(),
                 'entry_type': Column(label='Entry type', align=AlignEnum.LEFT),
                 'authors': Column(label='Authors', align=AlignEnum.LEFT),
-                #'data.name#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
-                #    label='Name', align=AlignEnum.LEFT
-                #),
-                #'data.category#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
-                #    label='Category'
-                #),
-                #'data.platform#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
+                'data.name#nomad_laserphysics.schema_packages.laserphysicsELN': Column(
+                    label='Name', align=AlignEnum.LEFT
+                ),
+                'data.category#nomad_laserphysics.schema_packages.laserphysicsELN': Column(
+                    label='Category'
+                ),
+                #'data.platform#nomad_laserphysics.schema_packages.laserphysicsELN': Column(
                 #    label='Platform', align=AlignEnum.LEFT
                 #),
-                #'data.date#nomad_aitoolkit.schema.AIToolkitNotebook': Column(
-                #    label='Last update',
-                #    align=AlignEnum.LEFT,
-                #    format=Format(mode=ModeEnum.DATE),
-                #),
+                'data.date#nomad_laserphysics.schema_packages.laserphysicsELN': Column(
+                    label='Last update',
+                    align=AlignEnum.LEFT,
+                    format=Format(mode=ModeEnum.DATE),
+                ),
             },
         ),
         filter_menus=FilterMenus(
@@ -125,48 +125,48 @@ app_entry_point = AppEntryPoint(
                 'metadata': FilterMenu(label='Visibility / IDs'),
             }
         ),
-        #dashboard=Dashboard(
-        #    widgets=[
-        #        WidgetTerms(
-        #            type='terms',
-        #            quantity='data.category#nomad_aitoolkit.schema.AIToolkitNotebook',
-        #            scale=ScaleEnum.POW1,
-        #            layout={
-        #                BreakpointEnum.XXL: Layout(h=6, w=6, x=0, y=0),
-        #                BreakpointEnum.XL: Layout(h=6, w=6, x=0, y=0),
-        #                BreakpointEnum.LG: Layout(h=6, w=6, x=0, y=0),
-        #                BreakpointEnum.MD: Layout(h=6, w=6, x=0, y=0),
-        #                BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
-        #            },
-        #        ),
-        #        WidgetTerms(
-        #            type='terms',
-        #            quantity='data.methods.name#nomad_aitoolkit.schema.AIToolkitNotebook',
-        #            title='Methods',
-        #            scale=ScaleEnum.POW1,
-        #            layout={
-        #                BreakpointEnum.XXL: Layout(h=6, w=6, x=6, y=0),
-        #                BreakpointEnum.XL: Layout(h=6, w=6, x=6, y=0),
-        #                BreakpointEnum.LG: Layout(h=6, w=6, x=6, y=0),
-        #                BreakpointEnum.MD: Layout(h=6, w=6, x=6, y=0),
-        #                BreakpointEnum.SM: Layout(h=6, w=6, x=6, y=0),
-        #            },
-        #        ),
-        #        WidgetTerms(
-        #            type='terms',
-        #            quantity='data.systems.name#nomad_aitoolkit.schema.AIToolkitNotebook',
-        #            title='Systems',
-        #            scale=ScaleEnum.POW1,
-        #            layout={
-        #                BreakpointEnum.XXL: Layout(h=6, w=6, x=12, y=0),
-        #                BreakpointEnum.XL: Layout(h=6, w=6, x=12, y=0),
-        #                BreakpointEnum.LG: Layout(h=6, w=6, x=12, y=0),
-        #                BreakpointEnum.MD: Layout(h=6, w=6, x=12, y=0),
-        #                BreakpointEnum.SM: Layout(h=6, w=6, x=12, y=0),
-        #            },
-        #        ),
-        #    ]
-        #),
+        dashboard=Dashboard(
+            widgets=[
+                WidgetTerms(
+                    type='terms',
+                    quantity='data.category#nomad_laserphysics.schema_packages.laserphysicsELN',
+                    scale=ScaleEnum.POW1,
+                    layout={
+                        BreakpointEnum.XXL: Layout(h=6, w=6, x=0, y=0),
+                        BreakpointEnum.XL: Layout(h=6, w=6, x=0, y=0),
+                        BreakpointEnum.LG: Layout(h=6, w=6, x=0, y=0),
+                        BreakpointEnum.MD: Layout(h=6, w=6, x=0, y=0),
+                        BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
+                    },
+                ),
+                #WidgetTerms(
+                #    type='terms',
+                #    quantity='data.methods.name#nomad_laserphysics.schema_packages.laserphysicsELN',
+                #    title='Methods',
+                #    scale=ScaleEnum.POW1,
+                #    layout={
+                #        BreakpointEnum.XXL: Layout(h=6, w=6, x=6, y=0),
+                #        BreakpointEnum.XL: Layout(h=6, w=6, x=6, y=0),
+                #        BreakpointEnum.LG: Layout(h=6, w=6, x=6, y=0),
+                #        BreakpointEnum.MD: Layout(h=6, w=6, x=6, y=0),
+                #        BreakpointEnum.SM: Layout(h=6, w=6, x=6, y=0),
+                #    },
+                #),
+                #WidgetTerms(
+                #    type='terms',
+                #    quantity='data.systems.name#nomad_aitoolkit.schema.AIToolkitNotebook',
+                #    title='Systems',
+                #    scale=ScaleEnum.POW1,
+                #    layout={
+                #        BreakpointEnum.XXL: Layout(h=6, w=6, x=12, y=0),
+                #        BreakpointEnum.XL: Layout(h=6, w=6, x=12, y=0),
+                #        BreakpointEnum.LG: Layout(h=6, w=6, x=12, y=0),
+                #        BreakpointEnum.MD: Layout(h=6, w=6, x=12, y=0),
+                #        BreakpointEnum.SM: Layout(h=6, w=6, x=12, y=0),
+                #    },
+                #),
+            ]
+        ),
         rows=Rows(
             actions=RowActions(
                 enabled=True,
