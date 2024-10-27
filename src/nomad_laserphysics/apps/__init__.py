@@ -1,5 +1,5 @@
 # ruff: noqa: E501
-#from nomad.config import _plugins
+from nomad.config import _plugins
 from nomad.config.models.plugins import AppEntryPoint
 from nomad.config.models.ui import (
     AlignEnum,
@@ -23,6 +23,28 @@ from nomad.config.models.ui import (
     ScaleEnum,
     WidgetTerms,
 )
+
+# Workaround: read the upload_ids from plugin's raw config.
+try:
+    upload_ids = _plugins['entry_points']['options']['nomad_laserphysics.apps:app_entry_point'][
+        'upload_ids'
+    ]
+except KeyError:
+    upload_ids = None
+
+if upload_ids:
+    filters_locked = {
+        'upload_id': upload_ids,
+        'section_defs.definition_qualified_name': [
+            'nomad_laserphysics.schema_packages.laserphysicsELN'
+        ],
+    }
+else:
+    filters_locked = {
+        'section_defs.definition_qualified_name': [
+            'nomad_laserphysics.schema_packages.laserphysicsELN'
+        ]
+    }
 
 app_entry_point = AppEntryPoint(
     name='Laserphysics',
