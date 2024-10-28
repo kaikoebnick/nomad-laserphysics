@@ -40,11 +40,11 @@ from nomad.config.models.ui import (
 #        ],
 #    }
 #else:
-    filters_locked = {
-        'section_defs.definition_qualified_name': [
-           'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
-        ]
-    }
+filters_locked = {
+    'section_defs.definition_qualified_name': [
+       'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+    ]
+}
 
 app_entry_point = AppEntryPoint(
     name='Laserphysics',
