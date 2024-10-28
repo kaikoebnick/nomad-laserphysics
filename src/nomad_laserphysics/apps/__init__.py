@@ -59,11 +59,11 @@ app_entry_point = AppEntryPoint(
             #exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
         ),
         #filters_locked=filters_locked,
-        filters_locked = {
-            'section_defs.definition_qualified_name': [
-               'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
-            ]
-        },
+        #filters_locked = {
+        #    'section_defs.definition_qualified_name': [
+        #       'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+        #    ]
+        #},
         
         columns=Columns(
             include=[
