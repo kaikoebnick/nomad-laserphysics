@@ -63,7 +63,7 @@ app_entry_point = AppEntryPoint(
             'section_defs.definition_qualified_name:all': [
                'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
             ]
-        }
+        },
         
         columns=Columns(
             include=[
