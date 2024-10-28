@@ -1,5 +1,5 @@
 # ruff: noqa: E501
-from nomad.config import _plugins
+#from nomad.config import _plugins
 from nomad.config.models.plugins import AppEntryPoint
 from nomad.config.models.ui import (
     AlignEnum,
