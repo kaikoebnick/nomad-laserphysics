@@ -15,11 +15,11 @@ from nomad.config.models.ui import (
     Format,
     Layout,
     ModeEnum,
-    #RowActions,
-    #RowActionURL,
-    #RowDetails,
-    #Rows,
-    #RowSelection,
+    RowActions,
+    RowActionURL,
+    RowDetails,
+    Rows,
+    RowSelection,
     ScaleEnum,
     WidgetTerms,
 )
@@ -60,7 +60,7 @@ app_entry_point = AppEntryPoint(
         ),
         #filters_locked=filters_locked,
         filters_locked = {
-            'section_defs.definition_qualified_name:all': [
+            'section_defs.definition_qualified_name': [
                'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
             ]
         },
@@ -152,19 +152,19 @@ app_entry_point = AppEntryPoint(
                 #),
             ]
         ),
-        #rows=Rows(
-        #    actions=RowActions(
-        #        enabled=True,
-        #        options={
-        #            'launch': RowActionURL(
-        #                type='url',
-        #                path="data.references[?kind=='hub'].uri",
-        #                description='Launch Jupyter notebook',
-        #            )
-        #        },
-        #    ),
-        #    details=RowDetails(enabled=True),
-        #    selection=RowSelection(enabled=True),
-        #),
+        rows=Rows(
+            actions=RowActions(
+                enabled=True,
+                options={
+                    'launch': RowActionURL(
+                        type='url',
+                        path="data.references[?kind=='hub'].uri",
+                        description='Launch Jupyter notebook',
+                    )
+                },
+            ),
+            details=RowDetails(enabled=True),
+            selection=RowSelection(enabled=True),
+        ),
     ),
 )
