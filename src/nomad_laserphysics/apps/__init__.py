@@ -35,13 +35,13 @@ except KeyError:
 if upload_ids:
     filters_locked = {
         'upload_id': upload_ids,
-        'section_defs.definition_qualified_name': [
+        'section_defs.definition_qualified_name:all': [
             'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
         ],
     }
 else:
     filters_locked = {
-        'section_defs.definition_qualified_name': [
+        'section_defs.definition_qualified_name:all': [
            'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
         ]
     }
@@ -147,19 +147,19 @@ app_entry_point = AppEntryPoint(
                 #),
             ]
         ),
-        rows=Rows(
-            actions=RowActions(
-                enabled=True,
-                options={
-                    'launch': RowActionURL(
-                        type='url',
-                        path="data.references[?kind=='hub'].uri",
-                        description='Launch Jupyter notebook',
-                    )
-                },
-            ),
-            details=RowDetails(enabled=True),
-            selection=RowSelection(enabled=True),
-        ),
+        #rows=Rows(
+        #    actions=RowActions(
+        #        enabled=True,
+        #        options={
+        #            'launch': RowActionURL(
+        #                type='url',
+        #                path="data.references[?kind=='hub'].uri",
+        #                description='Launch Jupyter notebook',
+        #            )
+        #        },
+        #    ),
+        #    details=RowDetails(enabled=True),
+        #    selection=RowSelection(enabled=True),
+        #),
     ),
 )
