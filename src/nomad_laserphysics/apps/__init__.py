@@ -41,7 +41,7 @@ from nomad.config.models.ui import (
 #    }
 #else:
 filters_locked = {
-    'section_defs.definition_qualified_name': [
+    'section_defs.definition_qualified_name:all': [
        'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
     ]
 }
