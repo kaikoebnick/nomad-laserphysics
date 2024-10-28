@@ -36,13 +36,13 @@ if upload_ids:
     filters_locked = {
         'upload_id': upload_ids,
         'section_defs.definition_qualified_name': [
-            'nomad_laserphysics.schema_packages.laserphysicsELN'
+            'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
         ],
     }
 else:
     filters_locked = {
         'section_defs.definition_qualified_name': [
-            'nomad_laserphysics.schema_packages.laserphysicsELN'
+            'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
         ]
     }
 
