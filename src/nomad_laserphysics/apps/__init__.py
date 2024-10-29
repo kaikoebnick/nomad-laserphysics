@@ -124,7 +124,7 @@ app_entry_point = AppEntryPoint(
                     type='periodictable',
                     quantity='data.material#nomad_laserphysics.schema_packages.schema_package.Measurement',
                     title='Material',
-                    scale=linear, #ScaleEnum.POW1,
+                    scale=ScaleEnum.linear, #ScaleEnum.POW1,
                     layout={
                         BreakpointEnum.XXL: Layout(h=6, w=6, x=6, y=0),
                         BreakpointEnum.XL: Layout(h=6, w=6, x=6, y=0),
