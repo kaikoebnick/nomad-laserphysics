@@ -176,7 +176,7 @@ class laserphysicsELN(Schema):
 
     authors = SubSection(section=Author, repeats=True)
 
-    material = SubSection(section=Material, repeats=True)
+    measurement = SubSection(section=Measurement, repeats=True)
 
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
