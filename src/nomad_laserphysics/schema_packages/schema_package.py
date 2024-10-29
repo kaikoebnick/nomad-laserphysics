@@ -13,7 +13,8 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-from nomad.datamodel.results import System
+#from nomad.datamodel.results import System
+from ase.data import chemical_symbols
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -102,12 +103,12 @@ class Reference(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    material = System.elements
-    """Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        description='Name of the material.',
-    )"""
+    material = Quantity( #System.elements
+        type=MEnum(chemical_symbols),
+        shape=['0..*'],
+        a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
+        description='Chemical formula of the material.',
+    )
     
     voltage = Quantity(
         type=float,
