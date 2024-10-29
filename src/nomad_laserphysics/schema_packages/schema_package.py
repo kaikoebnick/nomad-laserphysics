@@ -22,6 +22,7 @@ from nomad.metainfo import (
     Section,
     SubSection,
 )
+from results.material import elements
 
 m_package = SchemaPackage(name='laserphysics ELN schema')
 
@@ -101,10 +102,10 @@ class Reference(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    material = Quantity(
+    material = elements """Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        description='Name of the material.',
+        description='Name of the material.',"""
     )
     voltage = Quantity(
         type=float,
