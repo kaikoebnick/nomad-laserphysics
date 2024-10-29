@@ -1,5 +1,5 @@
 # ruff: noqa: E501
-#from nomad.config import _plugins
+from nomad.config import _plugins
 from nomad.config.models.plugins import AppEntryPoint
 from nomad.config.models.ui import (
     AlignEnum,
@@ -25,26 +25,26 @@ from nomad.config.models.ui import (
 )
 
 # Workaround: read the upload_ids from plugin's raw config.
-#try:
-#    upload_ids = _plugins['entry_points']['options']['nomad_laserphysics.apps:app_entry_point'][
-#        'upload_ids'
-#    ]
-#except KeyError:
-#    upload_ids = None
-#
-#if upload_ids:
-#    filters_locked = {
-#        'upload_id': upload_ids,
-#        'section_defs.definition_qualified_name:all': [
-#            'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
-#        ],
-#    }
-#else:
-#    filters_locked = {
-#        'section_defs.definition_qualified_name:all': [
-#           'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
-#        ]
-#    }
+try:
+    upload_ids = _plugins['entry_points']['options']['nomad_laserphysics.apps:app_entry_point'][
+        'upload_ids'
+    ]
+except KeyError:
+    upload_ids = None
+
+if upload_ids:
+    filters_locked = {
+        'upload_id': upload_ids,
+        'section_defs.definition_qualified_name': [
+            'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+        ],
+    }
+else:
+    filters_locked = {
+        'section_defs.definition_qualified_name': [
+           'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+        ]
+    }
 
 app_entry_point = AppEntryPoint(
     name='Laserphysics',
@@ -58,12 +58,7 @@ app_entry_point = AppEntryPoint(
             include=['*#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'],
             #exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
         ),
-        #filters_locked=filters_locked,
-        #filters_locked = {
-        #    'section_defs.definition_qualified_name': [
-        #       'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
-        #    ]
-        #},
+        filters_locked=filters_locked,
         
         columns=Columns(
             include=[
@@ -104,9 +99,9 @@ app_entry_point = AppEntryPoint(
         filter_menus=FilterMenus(
             options={
                 'custom_quantities': FilterMenu(
-                    label='Notebooks', size=FilterMenuSizeEnum.L
+                    label='Quantity filters', size=FilterMenuSizeEnum.L
                 ),
-                'author': FilterMenu(label='Author', size=FilterMenuSizeEnum.M),
+                'author': FilterMenu(label='Metadata', size=FilterMenuSizeEnum.M),
                 'metadata': FilterMenu(label='Visibility / IDs'),
             }
         ),
