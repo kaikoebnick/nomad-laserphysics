@@ -101,7 +101,16 @@ class Reference(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    material = results.material.elements 
+    material = Quantity(
+        type=MEnum(chemical_symbols),
+        shape=["0..*"],
+        default=[],
+        description='Names of the different elements present in the material.',
+        a_elasticsearch=[
+            Elasticsearch(material_type, many_all=True),
+            Elasticsearch(suggestion="simple")
+        ]
+    )
     """Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
