@@ -35,13 +35,13 @@ except KeyError:
 if upload_ids:
     filters_locked = {
         'upload_id': upload_ids,
-        'section_defs:all': [ #.definition_qualified_name
+        'section_defs.definition_qualified_name': [ 
             'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
         ],
     }
 else:
     filters_locked = {
-        'section_defs:all': [
+        'section_defs.definition_qualified_name': [
            'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
         ]
     }
