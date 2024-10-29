@@ -119,19 +119,19 @@ app_entry_point = AppEntryPoint(
                         BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
                     },
                 ),
-                #WidgetTerms(
-                #    type='terms',
-                #    quantity='data.methods.name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                #    title='Methods',
-                #    scale=ScaleEnum.POW1,
-                #    layout={
-                #        BreakpointEnum.XXL: Layout(h=6, w=6, x=6, y=0),
-                #        BreakpointEnum.XL: Layout(h=6, w=6, x=6, y=0),
-                #        BreakpointEnum.LG: Layout(h=6, w=6, x=6, y=0),
-                #        BreakpointEnum.MD: Layout(h=6, w=6, x=6, y=0),
-                #        BreakpointEnum.SM: Layout(h=6, w=6, x=6, y=0),
-                #    },
-                #),
+                WidgetTerms(
+                    type='periodictable',
+                    quantity='data.material.name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                    title='Material',
+                    scale=ScaleEnum.POW1,
+                    layout={
+                        BreakpointEnum.XXL: Layout(h=6, w=6, x=6, y=0),
+                        BreakpointEnum.XL: Layout(h=6, w=6, x=6, y=0),
+                        BreakpointEnum.LG: Layout(h=6, w=6, x=6, y=0),
+                        BreakpointEnum.MD: Layout(h=6, w=6, x=6, y=0),
+                        BreakpointEnum.SM: Layout(h=6, w=6, x=6, y=0),
+                    },
+                ),
                 #WidgetTerms(
                 #    type='terms',
                 #    quantity='data.systems.name#nomad_aitoolkit.schema.schema_package.AIToolkitNotebook',
