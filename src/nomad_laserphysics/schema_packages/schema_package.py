@@ -6,6 +6,8 @@ if TYPE_CHECKING:
 
 import xml
 
+from ase.data import chemical_symbols
+
 from nomad.datamodel.data import (
     ArchiveSection,
     EntryDataCategory,
@@ -14,11 +16,10 @@ from nomad.datamodel.data import (
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 #from nomad.datamodel.results import System
-from ase.data import chemical_symbols
 from nomad.metainfo import (
     Category,
     Datetime,
-    #MEnum,
+    MEnum,
     Quantity,
     SchemaPackage,
     Section,
