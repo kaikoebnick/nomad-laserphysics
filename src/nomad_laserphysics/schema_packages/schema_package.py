@@ -13,7 +13,7 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-from nomad.datamodel.results.material import elements as ResultsElements
+from nomad.datamodel.results import System
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -102,7 +102,7 @@ class Reference(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    material = ResultsElements
+    material = System.elements
     """Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
