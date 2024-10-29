@@ -119,16 +119,16 @@ app_entry_point = AppEntryPoint(
                         BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
                     },
                 ),
-                WidgetTerms(
+                WidgetPeriodicTable(
                     type='periodictable',
                     quantity='data.material#nomad_laserphysics.schema_packages.schema_package.Measurement',
                     title='Material',
                     scale=ScaleEnum.POW1,
                     layout={
+                        BreakpointEnum.MD: Layout(h=6, w=6, x=6, y=0),
                         BreakpointEnum.XXL: Layout(h=6, w=6, x=6, y=0),
                         BreakpointEnum.XL: Layout(h=6, w=6, x=6, y=0),
                         BreakpointEnum.LG: Layout(h=6, w=6, x=6, y=0),
-                        BreakpointEnum.MD: Layout(h=6, w=6, x=6, y=0),
                         BreakpointEnum.SM: Layout(h=6, w=6, x=6, y=0),
                     },
                 ),
