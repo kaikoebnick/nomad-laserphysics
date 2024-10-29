@@ -1,14 +1,12 @@
 from typing import TYPE_CHECKING
 
-from ase.data import chemical_symbols
-
-
 if TYPE_CHECKING:
     from nomad.datamodel.datamodel import EntryArchive
     from structlog.stdlib import BoundLogger
 
 import xml
 
+from ase.data import chemical_symbols
 from nomad.datamodel.data import (
     ArchiveSection,
     EntryDataCategory,
@@ -16,6 +14,7 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
+
 #from nomad.datamodel.results import System
 from nomad.metainfo import (
     Category,
