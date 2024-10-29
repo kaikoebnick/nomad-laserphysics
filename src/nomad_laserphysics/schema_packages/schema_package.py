@@ -34,26 +34,6 @@ def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
 
 
-class Measurement(ArchiveSection):
-    m_def = Section(a_eln=ELNAnnotation(overview=True))
-
-    material = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        description='Name of the material.',
-    )
-    voltage = Quantity(
-        type=float,
-        description='Voltage.',
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.NumberEditQuantity,
-        )
-
-    references = SubSection(section=Reference, repeats=True)
-
-    )
-
-
 class Author(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
@@ -117,6 +97,23 @@ class Reference(ArchiveSection):
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
         description='Optional field for adding version information.',
     )
+
+class Measurement(ArchiveSection):
+    m_def = Section(a_eln=ELNAnnotation(overview=True))
+
+    material = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        description='Name of the material.',
+    )
+    voltage = Quantity(
+        type=float,
+        description='Voltage.',
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.NumberEditQuantity,
+        )
+    )
+    references = SubSection(section=Reference, repeats=True)
 
 
 class laserphysicsELN(Schema):
