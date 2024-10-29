@@ -191,13 +191,13 @@ class laserphysicsELN(Schema):
         if self.name:
             archive.metadata.entry_name = self.name
 
-        if self.description:
+        """if self.description:
             if self.description.startswith('<'):
                 comment = remove_tags(self.description)
             else:
                 comment = self.description
 
-            archive.metadata.comment = comment
+            archive.metadata.comment = comment"""
 
         if self.authors:
             archive.metadata.entry_coauthors = [
