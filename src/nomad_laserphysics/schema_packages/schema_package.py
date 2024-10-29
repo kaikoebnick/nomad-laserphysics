@@ -113,6 +113,13 @@ class Measurement(ArchiveSection):
             component=ELNComponentEnum.NumberEditQuantity,
         )
     )
+
+    description = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
+        description='Extra details about the measurement.',
+    )
+    
     references = SubSection(section=Reference, repeats=True)
 
 
