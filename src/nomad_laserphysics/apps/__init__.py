@@ -121,7 +121,7 @@ app_entry_point = AppEntryPoint(
                 ),
                 WidgetTerms(
                     type='periodictable',
-                    quantity='data.material.name#nomad_laserphysics.schema_packages.schema_package.Measurement',
+                    quantity='data.material#nomad_laserphysics.schema_packages.schema_package.Measurement',
                     title='Material',
                     scale=ScaleEnum.POW1,
                     layout={
