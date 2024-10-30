@@ -25,11 +25,6 @@ from nomad.metainfo import (
     SubSection,
 )
 
-from nomad.metainfo.elasticsearch_extension import (
-    Elasticsearch,
-    material_type,
-)
-
 m_package = SchemaPackage(name='laserphysics ELN schema')
 
 
@@ -108,15 +103,11 @@ class Reference(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    material = Quantity( #System.elements
+    material = Quantity(
         type=MEnum(chemical_symbols),
         shape=['0..*'],
         a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
         description='Chemical formula of the material.',
-        a_elasticsearch=[
-            Elasticsearch(material_type, many_all=True),
-            Elasticsearch(suggestion='simple'),
-        ],
     )
     
     voltage = Quantity(
