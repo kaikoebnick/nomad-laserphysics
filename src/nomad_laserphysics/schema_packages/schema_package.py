@@ -14,10 +14,6 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-from nomad.metainfo.elasticsearch_extension import (
-    Elasticsearch,
-    material_type,
-)
 
 from nomad.metainfo import (
     Category,
@@ -27,6 +23,11 @@ from nomad.metainfo import (
     SchemaPackage,
     Section,
     SubSection,
+)
+
+from nomad.metainfo.elasticsearch_extension import (
+    Elasticsearch,
+    material_type,
 )
 
 m_package = SchemaPackage(name='laserphysics ELN schema')
