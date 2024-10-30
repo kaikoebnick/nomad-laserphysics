@@ -130,7 +130,7 @@ app_entry_point = AppEntryPoint(
                         'xl': Layout(h=9, w=19, x=0, y=0),
                         'xxl': Layout(h=10, w=25, x=0, y=0),
                     },
-                    quantity='data.material#nomad_laserphysics.schema_packages.schema_package.Measurememt',
+                    quantity='data.measurement.material#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
                     scale='linear',
                 ),
                 #WidgetTerms(
