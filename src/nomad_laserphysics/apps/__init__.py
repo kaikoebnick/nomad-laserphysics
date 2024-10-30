@@ -21,7 +21,7 @@ from nomad.config.models.ui import (
     Rows,
     RowSelection,
     ScaleEnum,
-    WidgetPeriodicTable,
+    #WidgetPeriodicTable,
     WidgetTerms,
 )
 
