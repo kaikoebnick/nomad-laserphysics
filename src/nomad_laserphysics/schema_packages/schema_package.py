@@ -14,8 +14,11 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
+from nomad.metainfo.elasticsearch_extension import (
+    Elasticsearch,
+    material_type,
+)
 
-#from nomad.datamodel.results import System
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -109,6 +112,10 @@ class Measurement(ArchiveSection):
         shape=['0..*'],
         a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
         description='Chemical formula of the material.',
+        a_elasticsearch=[
+            Elasticsearch(material_type, many_all=True),
+            Elasticsearch(suggestion='simple'),
+        ],
     )
     
     voltage = Quantity(
