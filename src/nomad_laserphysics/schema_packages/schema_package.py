@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import xml
-import datetime
+#import datetime
 
 from ase.data import chemical_symbols
 from nomad.datamodel.data import (
@@ -220,8 +220,8 @@ class laserphysicsELN(Schema):
             archive.metadata.entry_coauthors = [
                 NomadAuthor(**author.m_to_dict()) for author in self.authors
             ]
-        if self.date is None:
-            self.date = datetime.date.today()
+        #if self.date is None:
+        #    self.date = datetime.date.today()
         
 
 
