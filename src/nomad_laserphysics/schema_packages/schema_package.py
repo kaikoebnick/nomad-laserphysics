@@ -14,6 +14,7 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
+from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
 
 #from nomad.datamodel.results import System
 from nomad.metainfo.elasticsearch_extension import (
@@ -198,6 +199,8 @@ class laserphysicsELN(Schema):
 
     measurement = SubSection(section=Measurement, repeats=True)
 
+    archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
+
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
@@ -216,6 +219,9 @@ class laserphysicsELN(Schema):
             archive.metadata.entry_coauthors = [
                 NomadAuthor(**author.m_to_dict()) for author in self.authors
             ]
+        if self.date is None:
+            self.date = datetime.date.now()
+        
 
 
 m_package.__init_metainfo__()
