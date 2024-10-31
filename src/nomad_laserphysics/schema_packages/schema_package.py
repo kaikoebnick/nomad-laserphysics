@@ -221,7 +221,7 @@ class laserphysicsELN(Schema):
                 NomadAuthor(**author.m_to_dict()) for author in self.authors
             ]
         if self.date is None:
-            self.date = datetime.date.now()
+            self.date = datetime.date.today()
         
 
 
