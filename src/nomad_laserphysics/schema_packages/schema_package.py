@@ -200,7 +200,7 @@ class laserphysicsELN(Schema):
 
     measurement = SubSection(section=Measurement, repeats=True)
 
-    archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
+    #archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
 
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
