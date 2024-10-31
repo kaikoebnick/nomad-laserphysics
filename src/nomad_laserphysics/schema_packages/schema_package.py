@@ -5,6 +5,7 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import xml
+import datetime
 
 from ase.data import chemical_symbols
 from nomad.datamodel.data import (
