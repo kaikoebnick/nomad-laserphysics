@@ -15,7 +15,7 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
+#from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
 
 #from nomad.datamodel.results import System
 from nomad.metainfo.elasticsearch_extension import (
