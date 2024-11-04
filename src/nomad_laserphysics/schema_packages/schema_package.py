@@ -25,8 +25,8 @@ from nomad.metainfo import (
     SubSection,
 )
 
-#from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
-#from nomad.datamodel.results import System
+# from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
+# from nomad.datamodel.results import System
 from nomad.metainfo.elasticsearch_extension import (
     Elasticsearch,
     material_type,
@@ -107,6 +107,7 @@ class Reference(ArchiveSection):
         description='Optional field for adding version information.',
     )
 
+
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
@@ -126,7 +127,7 @@ class Measurement(ArchiveSection):
         description='Voltage.',
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
-        )
+        ),
     )
 
     description = Quantity(
@@ -152,12 +153,12 @@ class laserphysicsELN(Schema):
         description='Short name of the ELN.',
     )
 
-    #entry_reference = Quantity(
+    # entry_reference = Quantity(
     #    type=Reference,
     #    a_eln=ELNAnnotation(component=ELNComponentEnum.ReferenceEditQuantity),
     #    label='Reference to other entry',
     #    description='Reference to other entry.',
-    #)
+    # )
 
     date = Quantity(
         type=Datetime,
@@ -188,8 +189,8 @@ class laserphysicsELN(Schema):
 
     tag = Quantity(
         type=bool,
-        description='''Check if there is tag.''',
-        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity)
+        description="""Check if there is tag.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     """number_of_people_killed_during_measurement = Quantity(
@@ -202,12 +203,11 @@ class laserphysicsELN(Schema):
         )
     )"""
 
-
     authors = SubSection(section=Author, repeats=True)
 
     measurement = SubSection(section=Measurement, repeats=True)
 
-    #archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
+    # archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
 
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
@@ -227,9 +227,8 @@ class laserphysicsELN(Schema):
             archive.metadata.entry_coauthors = [
                 NomadAuthor(**author.m_to_dict()) for author in self.authors
             ]
-        if self.datetime is None:
-            self.datetime = datetime.datetime.now()
-
+        if self.date is None:
+            self.date = datetime.datetime.now()
 
 
 m_package.__init_metainfo__()
