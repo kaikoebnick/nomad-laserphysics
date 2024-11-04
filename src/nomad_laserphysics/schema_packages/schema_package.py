@@ -152,9 +152,16 @@ class laserphysicsELN(Schema):
         description='Short name of the ELN.',
     )
 
+    entry_reference = Quantity(
+        type=Reference,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.ReferenceEditQuantity),
+        label='Reference to other entry',
+        description='Reference to other entry.',
+    )
+
     date = Quantity(
         type=Datetime,
-        default=datetime.now(),
+        default=datetime.datetime.now(),
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
         label='Last update',
         description='The date of the last update.',
