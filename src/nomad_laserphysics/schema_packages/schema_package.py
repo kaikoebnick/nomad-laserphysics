@@ -4,9 +4,9 @@ if TYPE_CHECKING:
     from nomad.datamodel.datamodel import EntryArchive
     from structlog.stdlib import BoundLogger
 
+import datetime
 import xml
 
-#import datetime
 from ase.data import chemical_symbols
 from nomad.datamodel.data import (
     ArchiveSection,
@@ -120,7 +120,7 @@ class Measurement(ArchiveSection):
             Elasticsearch(suggestion='simple'),
         ],
     )
-    
+
     voltage = Quantity(
         type=float,
         description='Voltage.',
@@ -134,7 +134,7 @@ class Measurement(ArchiveSection):
         a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
         description='Extra details about the measurement.',
     )
-    
+
     references = SubSection(section=Reference, repeats=True)
 
 
@@ -154,6 +154,7 @@ class laserphysicsELN(Schema):
 
     date = Quantity(
         type=Datetime,
+        default=datetime.date.today(),
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
         label='Last update',
         description='The date of the last update.',
@@ -220,9 +221,9 @@ class laserphysicsELN(Schema):
             archive.metadata.entry_coauthors = [
                 NomadAuthor(**author.m_to_dict()) for author in self.authors
             ]
-        #if self.date is None:
+        #if self.date:
         #    self.date = datetime.date.today()
-        
+
 
 
 m_package.__init_metainfo__()
