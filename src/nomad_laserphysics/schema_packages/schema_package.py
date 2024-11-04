@@ -5,8 +5,8 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import xml
-#import datetime
 
+#import datetime
 from ase.data import chemical_symbols
 from nomad.datamodel.data import (
     ArchiveSection,
@@ -15,13 +15,6 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-#from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
-
-#from nomad.datamodel.results import System
-from nomad.metainfo.elasticsearch_extension import (
-    Elasticsearch,
-    material_type,
-)
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -30,6 +23,13 @@ from nomad.metainfo import (
     SchemaPackage,
     Section,
     SubSection,
+)
+
+#from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
+#from nomad.datamodel.results import System
+from nomad.metainfo.elasticsearch_extension import (
+    Elasticsearch,
+    material_type,
 )
 
 m_package = SchemaPackage(name='laserphysics ELN schema')
