@@ -154,7 +154,7 @@ class laserphysicsELN(Schema):
 
     date = Quantity(
         type=Datetime,
-        default=datetime.now()
+        default=datetime.now(),
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
         label='Last update',
         description='The date of the last update.',
