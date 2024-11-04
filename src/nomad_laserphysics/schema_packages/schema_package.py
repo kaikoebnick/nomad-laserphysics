@@ -161,7 +161,6 @@ class laserphysicsELN(Schema):
 
     date = Quantity(
         type=Datetime,
-        default=datetime.datetime.now(),
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
         label='Last update',
         description='The date of the last update.',
@@ -228,8 +227,8 @@ class laserphysicsELN(Schema):
             archive.metadata.entry_coauthors = [
                 NomadAuthor(**author.m_to_dict()) for author in self.authors
             ]
-        #if self.date:
-        #    self.date = datetime.date.today()
+        if self.datetime is None:
+            self.datetime = datetime.datetime.now()
 
 
 
