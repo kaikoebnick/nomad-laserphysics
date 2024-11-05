@@ -114,6 +114,7 @@ class Measurement(ArchiveSection):
     material = Quantity(
         type=MEnum(chemical_symbols),
         shape=['0..*'],
+        default=[],
         a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
         description='Chemical formula of the material.',
         a_elasticsearch=[
@@ -141,8 +142,8 @@ class Measurement(ArchiveSection):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if self.material:
-            archive.results.material.elements = self.material
+        if material:
+            archive.results.material.elements = material
 
 
 class laserphysicsELN(Schema):
