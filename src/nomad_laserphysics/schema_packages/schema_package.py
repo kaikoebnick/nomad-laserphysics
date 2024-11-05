@@ -138,6 +138,12 @@ class Measurement(ArchiveSection):
 
     references = SubSection(section=Reference, repeats=True)
 
+    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
+        super().normalize(archive, logger)
+
+        if self.material:
+            archive.results.System.elements = self.material
+
 
 class laserphysicsELN(Schema):
     m_def = Section(
@@ -231,8 +237,8 @@ class laserphysicsELN(Schema):
             self.date = datetime.datetime.now()
         if self.date:
             archive.metadata.upload_create_time = self.date
-        if self.measurement.material:
-            archive.results.System.elements = self.measurement.material
+        #if self.measurement.material:
+        #    archive.results.System.elements = self.measurement.material
 
 
 
