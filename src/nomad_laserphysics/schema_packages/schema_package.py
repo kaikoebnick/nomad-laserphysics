@@ -142,7 +142,7 @@ class Measurement(ArchiveSection):
         super().normalize(archive, logger)
 
         if self.material:
-            archive.results.System.elements = self.material
+            archive.results.material.elements = self.material
 
 
 class laserphysicsELN(Schema):
