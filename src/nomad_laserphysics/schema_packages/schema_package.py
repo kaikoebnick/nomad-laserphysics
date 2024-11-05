@@ -229,6 +229,9 @@ class laserphysicsELN(Schema):
             ]
         if self.date is None:
             self.date = datetime.datetime.now()
+        if self.date:
+            archive.metadata.upload_create_time = self.date
+
 
 
 m_package.__init_metainfo__()
