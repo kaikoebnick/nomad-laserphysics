@@ -185,15 +185,12 @@ class Measurement(ArchiveSection):
 
     references = SubSection(section=Reference, repeats=True)
 
-<<<<<<< HEAD
     #def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
     #    super().normalize(archive, logger)
 
         #if self.material:
         #    archive.results.System.elements = self.material
 
-=======
->>>>>>> e0beb461a6cf3bc06c497303d12c3c615a28b1f4
 
 class laserphysicsELN(Schema):
     m_def = Section(
