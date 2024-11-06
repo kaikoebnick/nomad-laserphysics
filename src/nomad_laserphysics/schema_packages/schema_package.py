@@ -114,6 +114,7 @@ class Measurement(ArchiveSection):
     material = Quantity(
         type=MEnum(chemical_symbols),
         shape=['0..*'],
+        default=[],
         a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
         description='Chemical formula of the material.',
         a_elasticsearch=[
@@ -184,12 +185,15 @@ class Measurement(ArchiveSection):
 
     references = SubSection(section=Reference, repeats=True)
 
+<<<<<<< HEAD
     #def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
     #    super().normalize(archive, logger)
 
         #if self.material:
         #    archive.results.System.elements = self.material
 
+=======
+>>>>>>> e0beb461a6cf3bc06c497303d12c3c615a28b1f4
 
 class laserphysicsELN(Schema):
     m_def = Section(
@@ -279,7 +283,7 @@ class laserphysicsELN(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
         #if self.measurement.material:
-        #    archive.results.System.elements = self.measurement.material
+        #    archive.results.material.elements = self.measurement.material
 
 
 
