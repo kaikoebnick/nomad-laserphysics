@@ -129,8 +129,9 @@ class Measurement(ArchiveSection):
         shape=['n_atoms'],
         a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
         )
-    #atom_positions = Quantity(type=float, shape=['n_atoms', 3], unit='angstrom',
-    #                          a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity),)
+    #atom_positions = Quantity(
+    #   type=float, shape=['n_atoms', 3], unit='angstrom',
+    #   a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity),)
 
     voltage = Quantity(
         type=float,
