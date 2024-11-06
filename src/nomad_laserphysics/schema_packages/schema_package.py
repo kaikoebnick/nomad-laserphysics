@@ -72,7 +72,7 @@ class Evaluation(ArchiveSection):
             component=ELNComponentEnum.EnumEditQuantity,
             props=dict(
                 suggestions=[
-                    'local file url'
+                    'local file url',
                     'article url',
                     'dataset url',
                     'video url',
@@ -126,7 +126,7 @@ class Measurement(ArchiveSection):
 
     voltage = Quantity(
         type=float,
-        unit='volt'
+        unit='volt',
         description="""Voltage in V.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
@@ -135,7 +135,7 @@ class Measurement(ArchiveSection):
 
     laserpower = Quantity(
         type=float,
-        unit='millitwatt'
+        unit='millitwatt',
         description="""Laserpower in mW.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
@@ -144,7 +144,7 @@ class Measurement(ArchiveSection):
 
     wavelength = Quantity(
         type=float,
-        unit='nanometer'
+        unit='nanometer',
         description="""Wavelength in nm.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
@@ -153,7 +153,7 @@ class Measurement(ArchiveSection):
 
     u_p = Quantity(
         type=float,
-        unit='electronvolt'
+        unit='electronvolt',
         description="""U_p in V.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
