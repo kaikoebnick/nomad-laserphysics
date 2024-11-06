@@ -125,10 +125,10 @@ class Measurement(ArchiveSection):
     )
 
     atom_labels = Quantity(
-        type=MEnum(chemical_symbols), shape=['n_atoms'])
-    atom_positions = Quantity(type=float, shape=['n_atoms', 3], unit='angstrom')
-    simulation_cell = Quantity(type=float, shape=[3, 3], unit='angstrom')
-    pbc = Quantity(type=bool, shape=[3])
+        type=MEnum(chemical_symbols), shape=['n_atoms'],
+        a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),)
+    atom_positions = Quantity(type=float, shape=['n_atoms', 3], unit='angstrom',
+                              a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity),)
 
     voltage = Quantity(
         type=float,
@@ -141,7 +141,7 @@ class Measurement(ArchiveSection):
 
     laserpower = Quantity(
         type=float,
-        unit='milliwatt',
+        unit='milli_watt',
         description="""Laserpower in mW.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
@@ -150,7 +150,7 @@ class Measurement(ArchiveSection):
 
     wavelength = Quantity(
         type=float,
-        unit='nm',
+        unit='nano_meter',
         description="""Wavelength in nm.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
