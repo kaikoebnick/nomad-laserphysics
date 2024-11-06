@@ -130,6 +130,52 @@ class Measurement(ArchiveSection):
         ),
     )
 
+    laserpower = Quantity(
+        type=float,
+        description='Laserpower.',
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.NumberEditQuantity,
+        ),
+    )
+
+    wavelength = Quantity(
+        type=float,
+        description='Wavelength.',
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.NumberEditQuantity,
+        ),
+    )
+
+    multiphoton_peaks = Quantity(
+        type=bool,
+        description="""Check if there are multiphoton peaks.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    plateau = Quantity(
+        type=bool,
+        description="""Check if there is a plateau.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    voltage_sweep = Quantity(
+        type=bool,
+        description="""Check if there is a voltage sweep.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    power_sweep = Quantity(
+        type=bool,
+        description="""Check if there is a power sweep.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    cep_sweep = Quantity(
+        type=bool,
+        description="""Check if there is a CEP sweep.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
     description = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
@@ -138,11 +184,11 @@ class Measurement(ArchiveSection):
 
     references = SubSection(section=Reference, repeats=True)
 
-    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
-        super().normalize(archive, logger)
+    #def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
+    #    super().normalize(archive, logger)
 
-        if self.material:
-            archive.results.System.elements = self.material
+        #if self.material:
+        #    archive.results.System.elements = self.material
 
 
 class laserphysicsELN(Schema):
@@ -193,11 +239,6 @@ class laserphysicsELN(Schema):
         ),
     )
 
-    tag = Quantity(
-        type=bool,
-        description="""Check if there is tag.""",
-        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
-    )
 
     """number_of_people_killed_during_measurement = Quantity(
         type=int,
