@@ -63,7 +63,7 @@ class Author(ArchiveSection):
     )
 
 
-class Reference(ArchiveSection):
+class Evaluation(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     kind = Quantity(
@@ -72,6 +72,7 @@ class Reference(ArchiveSection):
             component=ELNComponentEnum.EnumEditQuantity,
             props=dict(
                 suggestions=[
+                    'local file url'
                     'article url',
                     'dataset url',
                     'video url',
@@ -116,7 +117,7 @@ class Measurement(ArchiveSection):
         shape=['0..*'],
         default=[],
         a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
-        description='Chemical formula of the material.',
+        description="""Chemical formula of the material.""",
         a_elasticsearch=[
             Elasticsearch(material_type, many_all=True),
             Elasticsearch(suggestion='simple'),
@@ -125,7 +126,8 @@ class Measurement(ArchiveSection):
 
     voltage = Quantity(
         type=float,
-        description='Voltage.',
+        unit='volt'
+        description="""Voltage in V.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
         ),
@@ -133,7 +135,8 @@ class Measurement(ArchiveSection):
 
     laserpower = Quantity(
         type=float,
-        description='Laserpower.',
+        unit='millitwatt'
+        description="""Laserpower in mW.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
         ),
@@ -141,7 +144,17 @@ class Measurement(ArchiveSection):
 
     wavelength = Quantity(
         type=float,
-        description='Wavelength.',
+        unit='nanometer'
+        description="""Wavelength in nm.""",
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.NumberEditQuantity,
+        ),
+    )
+
+    u_p = Quantity(
+        type=float,
+        unit='electronvolt'
+        description="""U_p in V.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
         ),
@@ -183,7 +196,7 @@ class Measurement(ArchiveSection):
         description='Extra details about the measurement.',
     )
 
-    references = SubSection(section=Reference, repeats=True)
+    evaluations = SubSection(section=Evaluation, repeats=True)
 
     #def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
     #    super().normalize(archive, logger)
