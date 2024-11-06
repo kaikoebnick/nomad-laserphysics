@@ -150,7 +150,7 @@ class Measurement(ArchiveSection):
 
     wavelength = Quantity(
         type=float,
-        unit='nanometer',
+        unit='nm',
         description="""Wavelength in nm.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
@@ -159,6 +159,7 @@ class Measurement(ArchiveSection):
 
     u_p = Quantity(
         type=float,
+        label='U_p',
         unit='electron_volt',
         description="""U_p in V.""",
         a_eln=ELNAnnotation(
