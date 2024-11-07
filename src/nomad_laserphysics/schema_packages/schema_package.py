@@ -114,7 +114,7 @@ class Measurement(ArchiveSection):
 
     material = Quantity(
         type=MEnum(chemical_symbols),
-        shape= ['n_atoms'] #['0..*'],
+        shape= ['n_atoms'], #['0..*'],
         #default=[],
         a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
         description="""Chemical elements of the material.""",
