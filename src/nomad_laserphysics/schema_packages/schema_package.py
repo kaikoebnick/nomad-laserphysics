@@ -114,21 +114,16 @@ class Measurement(ArchiveSection):
 
     material = Quantity(
         type=MEnum(chemical_symbols),
-        shape=['0..*'],
-        default=[],
+        shape= ['n_atoms'] #['0..*'],
+        #default=[],
         a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
-        description="""Chemical formula of the material.""",
+        description="""Chemical elements of the material.""",
         a_elasticsearch=[
             Elasticsearch(material_type, many_all=True),
             Elasticsearch(suggestion='simple'),
         ],
     )
 
-    atom_labels = Quantity(
-        type=MEnum(chemical_symbols),
-        shape=['n_atoms'],
-        a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
-        )
     #atom_positions = Quantity(
     #   type=float, shape=['n_atoms', 3], unit='angstrom',
     #   a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity),)
@@ -144,7 +139,7 @@ class Measurement(ArchiveSection):
 
     laserpower = Quantity(
         type=float,
-        unit='milliwatt',
+        unit='mW',
         description="""Laserpower in mW.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
@@ -153,7 +148,7 @@ class Measurement(ArchiveSection):
 
     wavelength = Quantity(
         type=float,
-        unit='nanometer',
+        unit='nm',
         description="""Wavelength in nm.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,

@@ -36,7 +36,7 @@ except KeyError:
 if upload_ids:
     filters_locked = {
         'upload_id': upload_ids,
-        'section_defs.definition_qualified_name': [ 
+        'section_defs.definition_qualified_name': [
             'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
         ],
     }
@@ -60,7 +60,7 @@ app_entry_point = AppEntryPoint(
             #exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
         ),
         filters_locked=filters_locked,
-        
+
         columns=Columns(
             include=[
                 'entry_id',
@@ -68,7 +68,6 @@ app_entry_point = AppEntryPoint(
                 'authors',
                 'data.name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
                 'data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                #'data.platform#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
                 'data.date#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
             ],
             selected=[
@@ -87,9 +86,6 @@ app_entry_point = AppEntryPoint(
                 'data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN': Column(
                     label='Category'
                 ),
-                #'data.platform#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN': Column(
-                #    label='Platform', align=AlignEnum.LEFT
-                #),
                 'data.date#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN': Column(
                     label='Last update',
                     align=AlignEnum.LEFT,
