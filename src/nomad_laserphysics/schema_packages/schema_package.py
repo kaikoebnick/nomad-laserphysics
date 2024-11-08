@@ -336,8 +336,8 @@ class laserphysicsELN(Schema):
             self.date = datetime.datetime.now()
         if self.date:
             archive.metadata.upload_create_time = self.date
-        if self.measurement.material:
-            archive.results.Material.elements = self.measurement.material
+        if Measurement.material:
+            archive.results.Material.elements = Measurement.material
 
 
 
