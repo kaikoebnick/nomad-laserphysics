@@ -246,7 +246,7 @@ class Measurement(ArchiveSection):
         super().normalize(archive, logger)
 
         if self.material:
-            archive.results.Material.elements = self.material
+            archive.results.material.elements = self.material
 
 
 class laserphysicsELN(Schema):
@@ -336,8 +336,6 @@ class laserphysicsELN(Schema):
             self.date = datetime.datetime.now()
         if self.date:
             archive.metadata.upload_create_time = self.date
-        if Measurement.material:
-            archive.results.Material.elements = Measurement.material
 
 
 
