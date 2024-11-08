@@ -116,7 +116,10 @@ class Measurement(ArchiveSection):
         type=MEnum(chemical_symbols),
         shape= ['n_atoms'], #['0..*'],
         #default=[],
-        a_eln=ELNAnnotation(component=ELNComponentEnum.EnumEditQuantity),
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.EnumEditQuantity
+        ),
+        a_display={'visible': True},
         description="""Chemical elements of the material.""",
         a_elasticsearch=[
             Elasticsearch(material_type, many_all=True),
@@ -139,19 +142,21 @@ class Measurement(ArchiveSection):
 
     laserpower = Quantity(
         type=float,
-        unit='mW',
+        unit='milliwatt',
         description="""Laserpower in mW.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
+            defaultDisplayUnit='milliwatt'
         ),
     )
 
     wavelength = Quantity(
         type=float,
-        unit='nm',
+        unit='nanometer',
         description="""Wavelength in nm.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
+            defaultDisplayUnit='nanometer'
         ),
     )
 
@@ -192,6 +197,44 @@ class Measurement(ArchiveSection):
     cep_sweep = Quantity(
         type=bool,
         description="""Check if there is a CEP sweep.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    electrons = Quantity(
+        type=bool,
+        description="""Check if there are electrons.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    ions = Quantity(
+        type=bool,
+        description="""Check if there are ions.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    photons = Quantity(
+        type=bool,
+        description="""Check if there are photons.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    ToF_gauge_measurement = Quantity(
+        type=bool,
+        description="""Check if this is a ToF gauge measurement.""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    adc = Quantity(
+        label='ADC',
+        type=bool,
+        description="""Check if the measurement uses an ADC""",
+        a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
+    )
+
+    cfd = Quantity(
+        labe='CFD',
+        type=bool,
+        description="""Check if the measurment uses CFD.""",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
