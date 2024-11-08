@@ -119,7 +119,6 @@ class Measurement(ArchiveSection):
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.EnumEditQuantity
         ),
-        a_display={'visible': True},
         description="""Chemical elements of the material.""",
         a_elasticsearch=[
             Elasticsearch(material_type, many_all=True),
@@ -127,9 +126,6 @@ class Measurement(ArchiveSection):
         ],
     )
 
-    #atom_positions = Quantity(
-    #   type=float, shape=['n_atoms', 3], unit='angstrom',
-    #   a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity),)
 
     voltage = Quantity(
         type=float,
@@ -246,11 +242,11 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
-    #def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
-    #    super().normalize(archive, logger)
+    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
+        super().normalize(archive, logger)
 
-        #if self.material:
-        #    archive.results.System.elements = self.material
+        if self.material:
+            archive.results.Material.elements = self.material
 
 
 class laserphysicsELN(Schema):
