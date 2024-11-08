@@ -2,6 +2,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from nomad.datamodel.datamodel import EntryArchive
+    from nomad.datamodel.results import Material
     from structlog.stdlib import BoundLogger
 
 import datetime
@@ -242,11 +243,11 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
-    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
+    def normalize(self, archive: 'Material', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
         if self.material:
-            archive.results.material.elements = self.material
+            archive.elements = self.material
 
 
 class laserphysicsELN(Schema):
