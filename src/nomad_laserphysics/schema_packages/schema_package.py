@@ -113,7 +113,7 @@ class Evaluation(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    material_1 = SubSection(section=System, repeats=True)
+    #material_1 = SubSection(section=ElementalComposition, repeats=True)
 
     material = Quantity(
         type=MEnum(chemical_symbols),
@@ -244,11 +244,11 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
-    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
+    def normalize(self, archive: 'System', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
         if self.material:
-            archive.measurement.sample.elements = self.material
+            archive.ElementalComposition.element = self.material
 
 
 class laserphysicsELN(Schema):
