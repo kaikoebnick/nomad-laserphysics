@@ -248,8 +248,8 @@ class Measurement(ArchiveSection):
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if self.material not in archive.results.material.elements:
-            for el in self.material:
+        for el in self.material:
+            if el not in archive.results.material.elements:
                 archive.results.material.elements += [el]
 
         #if self.material:
