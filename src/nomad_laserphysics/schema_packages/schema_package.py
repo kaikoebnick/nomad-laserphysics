@@ -115,7 +115,7 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     #material_1 = SubSection(section=ElementalComposition, repeats=True)
-    material_2 = EntryArchive.results.Material.elements
+    material_2 = SubSection(section=EntryArchive.results.Material, repeats=True)
 
     material = Quantity(
         type=MEnum(chemical_symbols),
