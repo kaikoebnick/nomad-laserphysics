@@ -21,7 +21,7 @@ from nomad.config.models.ui import (
     Rows,
     RowSelection,
     ScaleEnum,
-    WidgetPeriodicTable,
+    #WidgetPeriodicTable,
     WidgetTerms,
 )
 
@@ -116,19 +116,19 @@ app_entry_point = AppEntryPoint(
                         BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
                     },
                 ),
-                WidgetPeriodicTable(
-                    type='periodictable',
-                    title='Material',
-                    quantity='data.material_1#nomad_laserphysics.schema_packages.schema_package.Measurement',
-                    scale='linear',
-                    layout={
-                        'lg': Layout(h=9, w=15, x=0, y=0),
-                        'md': Layout(h=8, w=11, x=0, y=0),
-                        'sm': Layout(h=6, w=9, x=0, y=0),
-                        'xl': Layout(h=9, w=19, x=0, y=0),
-                        'xxl': Layout(h=10, w=25, x=0, y=0),
-                    },
-                ),
+                #WidgetPeriodicTable(
+                #    type='periodictable',
+                #    title='Material',
+                #    quantity='data.material_1#nomad_laserphysics.schema_packages.schema_package.Measurement',
+                #    scale='linear',
+                #    layout={
+                #        'lg': Layout(h=9, w=15, x=0, y=0),
+                #        'md': Layout(h=8, w=11, x=0, y=0),
+                #        'sm': Layout(h=6, w=9, x=0, y=0),
+                #        'xl': Layout(h=9, w=19, x=0, y=0),
+                #        'xxl': Layout(h=10, w=25, x=0, y=0),
+                #    },
+                #),
                 #WidgetTerms(
                 #    type='terms',
                 #    quantity='data.systems.name#nomad_aitoolkit.schema.schema_package.AIToolkitNotebook',
