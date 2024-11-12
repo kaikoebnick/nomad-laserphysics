@@ -115,6 +115,7 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     #material_1 = SubSection(section=ElementalComposition, repeats=True)
+    material_2 = EntryArchive.results.Material.elements
 
     material = Quantity(
         type=MEnum(chemical_symbols),
@@ -248,9 +249,9 @@ class Measurement(ArchiveSection):
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        for el in self.material:
-            if el not in archive.results.material.elements:
-                archive.results.material.elements += [el]
+        #for el in self.material:
+        #    if el not in archive.results.material.elements:
+        #        archive.results.material.elements += [el]
 
         #if self.material:
         #    for el in self.material:
