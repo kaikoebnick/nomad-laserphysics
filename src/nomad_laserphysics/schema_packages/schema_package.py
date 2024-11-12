@@ -2,7 +2,6 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from nomad.datamodel.datamodel import EntryArchive
-    from nomad.datamodel.results import Material
     from structlog.stdlib import BoundLogger
 
 import datetime
@@ -113,8 +112,6 @@ class Evaluation(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-
-
     material = Quantity(
         type=MEnum(chemical_symbols),
         shape= ['0..*'], #['n_atoms'],
@@ -128,32 +125,6 @@ class Measurement(ArchiveSection):
             Elasticsearch(suggestion='simple'),
         ],
     )
-    material_1 = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity,
-            props=dict(
-                suggestions=[
-                     'Ac', 'Ag', 'Al', 'Am', 'Ar', 'As', 'At', 'Au',
-    'B', 'Ba', 'Be', 'Bh', 'Bi', 'Bk', 'Br', 'C',
-    'Ca', 'Cd', 'Ce', 'Cf', 'Cl', 'Cm', 'Cn', 'Co',
-    'Cr', 'Cs', 'Cu', 'Db', 'Ds', 'Dy', 'Er', 'Es',
-    'Eu', 'F', 'Fe', 'Fl', 'Fm', 'Fr', 'Ga', 'Gd',
-    'Ge', 'H', 'He', 'Hf', 'Hg', 'Ho', 'Hs', 'I',
-    'In', 'Ir', 'K', 'Kr', 'La', 'Li', 'Lr', 'Lu',
-    'Lv', 'Mc', 'Md', 'Mg', 'Mn', 'Mo', 'Mt', 'N',
-    'Na', 'Nb', 'Nd', 'Ne', 'Nh', 'Ni', 'No', 'Np',
-    'O', 'Og', 'Os', 'P', 'Pa', 'Pb', 'Pd', 'Pm',
-    'Po', 'Pr', 'Pt', 'Pu', 'Ra', 'Rb', 'Re', 'Rf',
-    'Rg', 'Rh', 'Rn', 'Ru', 'S', 'Sb', 'Sc', 'Se',
-    'Sg', 'Si', 'Sm', 'Sn', 'Sr', 'Ta', 'Tb', 'Tc',
-    'Te', 'Th', 'Ti', 'Tl', 'Tm', 'Ts', 'U', 'V',
-    'W', 'X', 'Xe', 'Y', 'Yb', 'Zn', 'Zr'
-                ]
-            ),
-        ),
-    )
-
 
     voltage = Quantity(
         type=float,
@@ -270,11 +241,11 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
-    def normalize(self, archive: 'Material', logger: 'BoundLogger') -> None:
+    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
         if self.material:
-            archive.elements = self.material
+            archive.material.sample.elements = self.material
 
 
 class laserphysicsELN(Schema):
