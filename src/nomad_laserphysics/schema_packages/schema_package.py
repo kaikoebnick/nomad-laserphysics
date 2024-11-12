@@ -15,6 +15,7 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
+from nomad.datamodel.metainfo.basesections import System
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -111,6 +112,8 @@ class Evaluation(ArchiveSection):
 
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
+
+    material_1 = SubSection(section=System, repeats=True)
 
     material = Quantity(
         type=MEnum(chemical_symbols),
