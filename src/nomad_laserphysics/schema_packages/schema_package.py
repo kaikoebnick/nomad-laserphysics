@@ -15,7 +15,7 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-from nomad.datamodel.metainfo.basesections import System
+#from nomad.datamodel.metainfo.basesections import System
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -244,12 +244,16 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
-    def normalize(self, archive: 'System', logger: 'BoundLogger') -> None:
+    def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if self.material:
+        if self.element not in archive.results.material.elements:
             for el in self.material:
-                archive.ElementalComposition.element = el
+                archive.results.material.elements += [el]
+
+        #if self.material:
+        #    for el in self.material:
+        #        archive.ElementalComposition.element = el
 
 
 class laserphysicsELN(Schema):
