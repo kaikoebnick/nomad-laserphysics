@@ -16,6 +16,7 @@ from nomad.datamodel.data import (
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.datamodel.metainfo.basesections import ElementalComposition
+from nomad.datamodel.results import Material, Results
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -113,7 +114,7 @@ class Evaluation(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    #material_1 = SubSection(section=ElementalComposition, repeats=True)
+    material_1 = SubSection(section=ElementalComposition, repeats=True)
     material_2 = SubSection(section=ElementalComposition, repeats=True)
     #EntryArchive.results.Material
 
@@ -249,9 +250,15 @@ class Measurement(ArchiveSection):
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        #for el in self.material:
-        #    if el not in archive.results.material.elements:
-        #        archive.results.material.elements += [el]
+        if self.element:
+            if not archive.results:
+                archive.results = Results()
+            if not archive.results.material:
+                archive.results.material = Material()
+
+        for el in self.material:
+            if el not in archive.results.material.elements:
+                archive.results.material.elements += [el]
 
         #if self.material:
         #    for el in self.material:
