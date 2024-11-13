@@ -114,8 +114,8 @@ class Evaluation(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    material_1 = SubSection(section=ElementalComposition, repeats=True)
-    material_2 = SubSection(section=ElementalComposition, repeats=True)
+    #material_1 = SubSection(section=ElementalComposition, repeats=True)
+    #material_2 = SubSection(section=ElementalComposition, repeats=True)
     #EntryArchive.results.Material
 
     material = Quantity(
@@ -250,7 +250,7 @@ class Measurement(ArchiveSection):
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if self.element:
+        if self.material:
             if not archive.results:
                 archive.results = Results()
             if not archive.results.material:
