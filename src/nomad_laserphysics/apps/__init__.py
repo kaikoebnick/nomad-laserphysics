@@ -14,6 +14,9 @@ from nomad.config.models.ui import (
     Filters,
     Format,
     Layout,
+    MenuItemCustomQuantities,
+    MenuItemPeriodicTable,
+    MenuItemVisibility,
     ModeEnum,
     RowActions,
     RowActionURL,
@@ -93,6 +96,23 @@ app_entry_point = AppEntryPoint(
                 ),
             },
         ),
+
+        menu_item_custom_quantities=MenuItemCustomQuantities(
+            title='quantity menu',
+            type='custom_quantities',
+        ),
+
+        menu_item_periodic_table=MenuItemPeriodicTable(
+            title='periodic table menu',
+            search_quantity='results.material.elements',
+            type='periodic_table',
+        ),
+
+        menu_item_visibility=MenuItemVisibility(
+            title='visibility menu',
+            type='visibility',
+        ),
+
         filter_menus=FilterMenus(
             options={
                 'custom_quantities': FilterMenu(
