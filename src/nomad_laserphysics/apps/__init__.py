@@ -120,15 +120,15 @@ app_entry_point = AppEntryPoint(
             ]
         ),
 
-        filter_menus=FilterMenus(
-            options={
-                'custom_quantities': FilterMenu(
-                    label='Quantity filters', size=FilterMenuSizeEnum.L
-                ),
-                'author': FilterMenu(label='Metadata', size=FilterMenuSizeEnum.M),
-                'metadata': FilterMenu(label='Visibility / IDs'),
-            }
-        ),
+        #filter_menus=FilterMenus(
+        #    options={
+        #        'custom_quantities': FilterMenu(
+        #            label='Quantity filters', size=FilterMenuSizeEnum.L
+        #        ),
+        #        'author': FilterMenu(label='Metadata', size=FilterMenuSizeEnum.M),
+        #        'metadata': FilterMenu(label='Visibility / IDs'),
+        #    }
+        #),
         dashboard=Dashboard(
             widgets=[
                 WidgetTerms(
