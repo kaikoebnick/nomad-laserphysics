@@ -16,6 +16,8 @@ from nomad.config.models.ui import (
     Layout,
     Menu,
     MenuItemCustomQuantities,
+    MenuItemDefinitions,
+    MenuItemOption,
     MenuItemPeriodicTable,
     MenuItemVisibility,
     ModeEnum,
@@ -106,16 +108,21 @@ app_entry_point = AppEntryPoint(
                     title='quantity menu',
                     type='custom_quantities',
                 ),
-
                 MenuItemPeriodicTable(
                     title='periodic table menu',
                     search_quantity='results.material.elements',
                     type='periodic_table',
                 ),
-
                 MenuItemVisibility(
                     title='visibility menu',
                     type='visibility',
+                ),
+                MenuItemDefinitions(
+                    title='definitions menu',
+                    type='definitions'
+                ),
+                MenuItemOption(
+                    label='option menu',
                 ),
             ]
         ),
