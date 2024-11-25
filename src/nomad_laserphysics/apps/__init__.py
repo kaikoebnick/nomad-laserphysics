@@ -17,7 +17,6 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemDefinitions,
-    MenuItemOption,
     MenuItemPeriodicTable,
     MenuItemVisibility,
     ModeEnum,
@@ -120,9 +119,6 @@ app_entry_point = AppEntryPoint(
                 MenuItemDefinitions(
                     title='definitions menu',
                     type='definitions'
-                ),
-                MenuItemOption(
-                    label='option menu',
                 ),
             ]
         ),
