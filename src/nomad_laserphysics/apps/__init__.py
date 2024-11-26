@@ -109,23 +109,22 @@ app_entry_point = AppEntryPoint(
                     title='date of the last update',
                     x='archive.metadata.upload_create_time',
                 ),
-                #Menu(
-                #    title='value-menu',
-                #    items=[
-                #        MenuItemHistogram(
-                #            x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                #        ),
-                #    ],
-                #),
                 Menu(
-                    title='tag-menu',
-                    type='nested_object',
+                    title='value-menu',
                     items=[
-                        MenuItemTerms(
-                            search_quantity='data.measurement.multiphoton_peaks#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                        MenuItemHistogram(
+                            x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
                         ),
                     ],
                 ),
+                #Menu(
+                #    title='tag-menu',
+                #    items=[
+                #        MenuItemTerms(
+                #            search_quantity='data.measurement.multiphoton_peaks#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                #        ),
+                #    ],
+                #),
                 MenuItemPeriodicTable(
                     title='periodic table menu',
                     search_quantity='results.material.elements',
