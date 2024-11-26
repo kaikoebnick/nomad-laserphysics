@@ -117,20 +117,20 @@ app_entry_point = AppEntryPoint(
                     items=[
                         MenuItemTerms(
                             type='terms',
-                            search_quantity='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                            search_quantity='archive.metadata.entry_coauthors',#'data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
                         ),
                     ],
                 ),
-                Menu(
-                    title='tag-menu',
-                    type='nested_object',
-                    items=[
-                        MenuItemTerms(
-                            type='terms',
-                            search_quantity='data.measurement.multiphoton_peaks#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
-                        ),
-                    ],
-                ),
+                #Menu(
+                #    title='tag-menu',
+                #    type='nested_object',
+                #    items=[
+                #        MenuItemTerms(
+                #            type='terms',
+                #            search_quantity='data.measurement.multiphoton_peaks#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                #        ),
+                #    ],
+                #),
                 MenuItemOptimade(
                     type='optimade',
                     title='optimade',
