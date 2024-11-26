@@ -109,7 +109,7 @@ app_entry_point = AppEntryPoint(
                 MenuItemHistogram(
                     type='histogram',
                     title='date of the last update',
-                    search_quantity='archive.metadata.upload_create_time',
+                    quantity='archive.metadata.upload_create_time',
                 ),
                 Menu(
                     title='value-menu',
