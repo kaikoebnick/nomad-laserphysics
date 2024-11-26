@@ -4,21 +4,21 @@ from nomad.config.models.plugins import AppEntryPoint
 from nomad.config.models.ui import (
     AlignEnum,
     App,
-    BreakpointEnum,
+    #BreakpointEnum,
     Column,
     Columns,
-    Dashboard,
+    #Dashboard,
     #FilterMenu,
     #FilterMenus,
     #FilterMenuSizeEnum,
     Filters,
     Format,
-    Layout,
+    #Layout,
     Menu,
     MenuItemCustomQuantities,
-    MenuItemDefinitions,
+    #MenuItemDefinitions,
     MenuItemHistogram,
-    MenuItemOptimade,
+    #MenuItemOptimade,
     MenuItemPeriodicTable,
     MenuItemTerms,
     MenuItemVisibility,
@@ -28,9 +28,9 @@ from nomad.config.models.ui import (
     RowDetails,
     Rows,
     RowSelection,
-    ScaleEnum,
-    WidgetPeriodicTable,
-    WidgetTerms,
+    #ScaleEnum,
+    #WidgetPeriodicTable,
+    #WidgetTerms,
 )
 
 # Workaround: read the upload_ids from plugin's raw config.
@@ -109,14 +109,14 @@ app_entry_point = AppEntryPoint(
                     title='date of the last update',
                     x='archive.metadata.upload_create_time',
                 ),
-                Menu(
-                    title='value-menu',
-                    items=[
-                        MenuItemHistogram(
-                            x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                        ),
-                    ],
-                ),
+                #Menu(
+                #    title='value-menu',
+                #    items=[
+                #        MenuItemHistogram(
+                #            x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                #        ),
+                #    ],
+                #),
                 Menu(
                     title='tag-menu',
                     type='nested_object',
