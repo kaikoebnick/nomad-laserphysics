@@ -20,7 +20,7 @@ from nomad.config.models.ui import (
     MenuItemHistogram,
     #MenuItemOptimade,
     MenuItemPeriodicTable,
-    MenuItemTerms,
+    #MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
