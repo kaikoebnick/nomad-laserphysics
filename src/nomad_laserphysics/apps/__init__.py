@@ -17,7 +17,10 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemDefinitions,
+    MenuItemHistogram,
+    MenuItemOptimade,
     MenuItemPeriodicTable,
+    MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
@@ -100,12 +103,37 @@ app_entry_point = AppEntryPoint(
         ),
 
         menu=Menu(
-            title='menu',
+            title='filter-menu',
             type='nested_object',
             items=[
-                MenuItemCustomQuantities(
-                    title='quantity menu',
-                    type='custom_quantities',
+                MenuItemHistogram(
+                    type='histogram',
+                    title='date of the last update',
+                    search_quantity='archive.metadata.upload_create_time',
+                ),
+                Menu(
+                    title='value-menu',
+                    type='nested_object',
+                    items=[
+                        MenuItemTerms(
+                            type='terms',
+                            search_quantity='data.volatage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN.measurement'
+                        ),
+                    ],
+                ),
+                Menu(
+                    title='tag-menu',
+                    type='nested_object',
+                    items=[
+                        MenuItemTerms(
+                            type='terms',
+                            search_quantity='data.multiphoton_peaks#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN.measurement'
+                        ),
+                    ],
+                ),
+                MenuItemOptimade(
+                    type='optimade',
+                    title='optimade',
                 ),
                 MenuItemPeriodicTable(
                     title='periodic table menu',
@@ -119,6 +147,10 @@ app_entry_point = AppEntryPoint(
                 MenuItemDefinitions(
                     title='definitions menu',
                     type='definitions'
+                ),
+                MenuItemCustomQuantities(
+                    title='custom quantity menu',
+                    type='custom_quantities',
                 ),
             ]
         ),

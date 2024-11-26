@@ -115,10 +115,6 @@ class Evaluation(ArchiveSection):
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    #material_1 = SubSection(section=ElementalComposition, repeats=True)
-    #material_2 = SubSection(section=ElementalComposition, repeats=True)
-    #EntryArchive.results.Material
-
     material = Quantity(
         type=MEnum(chemical_symbols),
         shape= ['0..*'], #['n_atoms'],
@@ -261,10 +257,6 @@ class Measurement(ArchiveSection):
             if el not in archive.results.material.elements:
                 archive.results.material.elements += [el]
 
-        #if self.material:
-        #    for el in self.material:
-        #        archive.ElementalComposition.element = el
-
 
 class laserphysicsELN(Schema):
     m_def = Section(
@@ -313,17 +305,6 @@ class laserphysicsELN(Schema):
             ),
         ),
     )
-
-
-    """number_of_people_killed_during_measurement = Quantity(
-        type=int,
-        description='''Let us hope it is zero.''',
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.SliderEditQuantity,
-            minValue=0,
-            maxValue=50,
-        )
-    )"""
 
     authors = SubSection(section=Author, repeats=True)
 
