@@ -109,14 +109,14 @@ app_entry_point = AppEntryPoint(
                     title='date of the last update',
                     x='archive.metadata.upload_create_time',
                 ),
-                Menu(
-                    title='value-menu',
-                    items=[
-                        MenuItemHistogram(
-                            x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                        ),
-                    ],
-                ),
+                #Menu(
+                #    title='value-menu',
+                #    items=[
+                #        MenuItemHistogram(
+                #            x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                #        ),
+                #    ],
+                #),
                 #Menu(
                 #    title='tag-menu',
                 #    items=[
