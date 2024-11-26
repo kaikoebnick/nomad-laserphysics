@@ -17,7 +17,7 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemDefinitions,
-    MenuItemHistogram,
+    #MenuItemHistogram,
     MenuItemOptimade,
     MenuItemPeriodicTable,
     MenuItemTerms,
@@ -104,20 +104,17 @@ app_entry_point = AppEntryPoint(
 
         menu=Menu(
             title='filter-menu',
-            type='nested_object',
             items=[
-                MenuItemHistogram(
-                    type='histogram',
-                    title='date of the last update',
-                    quantity='archive.metadata.upload_create_time',
-                ),
+                #MenuItemHistogram(
+                #    title='date of the last update',
+                #    quantity='archive.metadata.upload_create_time',
+                #),
                 Menu(
                     title='value-menu',
-                    type='nested_object',
                     items=[
                         MenuItemTerms(
-                            type='terms',
-                            search_quantity='archive.metadata.entry_coauthors',#'data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                            title='voltage',
+                            search_quantity='data.name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',#'data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
                         ),
                     ],
                 ),
@@ -132,25 +129,20 @@ app_entry_point = AppEntryPoint(
                 #    ],
                 #),
                 MenuItemOptimade(
-                    type='optimade',
                     title='optimade',
                 ),
                 MenuItemPeriodicTable(
                     title='periodic table menu',
                     search_quantity='results.material.elements',
-                    type='periodic_table',
                 ),
                 MenuItemVisibility(
                     title='visibility menu',
-                    type='visibility',
                 ),
                 MenuItemDefinitions(
                     title='definitions menu',
-                    type='definitions'
                 ),
                 MenuItemCustomQuantities(
                     title='custom quantity menu',
-                    type='custom_quantities',
                 ),
             ],
         ),
