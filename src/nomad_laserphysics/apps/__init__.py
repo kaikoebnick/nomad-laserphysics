@@ -117,7 +117,7 @@ app_entry_point = AppEntryPoint(
                     items=[
                         MenuItemTerms(
                             type='terms',
-                            search_quantity='data.volatage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN.measurement'
+                            search_quantity='data.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN.measurement'
                         ),
                     ],
                 ),
