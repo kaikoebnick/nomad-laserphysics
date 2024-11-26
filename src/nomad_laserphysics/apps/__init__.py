@@ -17,7 +17,7 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemDefinitions,
-    #MenuItemHistogram,
+    MenuItemHistogram,
     MenuItemOptimade,
     MenuItemPeriodicTable,
     MenuItemTerms,
@@ -105,31 +105,26 @@ app_entry_point = AppEntryPoint(
         menu=Menu(
             title='filter-menu',
             items=[
-                #MenuItemHistogram(
-                #    title='date of the last update',
-                #    quantity='archive.metadata.upload_create_time',
-                #),
+                MenuItemHistogram(
+                    title='date of the last update',
+                    x='archive.metadata.upload_create_time',
+                ),
                 Menu(
                     title='value-menu',
                     items=[
-                        MenuItemTerms(
-                            title='voltage',
-                            search_quantity='data.name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',#'data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                        MenuItemHistogram(
+                            x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
                         ),
                     ],
                 ),
-                #Menu(
-                #    title='tag-menu',
-                #    type='nested_object',
-                #    items=[
-                #        MenuItemTerms(
-                #            type='terms',
-                #            search_quantity='data.measurement.multiphoton_peaks#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
-                #        ),
-                #    ],
-                #),
-                MenuItemOptimade(
-                    title='optimade',
+                Menu(
+                    title='tag-menu',
+                    type='nested_object',
+                    items=[
+                        MenuItemTerms(
+                            search_quantity='data.measurement.multiphoton_peaks#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                        ),
+                    ],
                 ),
                 MenuItemPeriodicTable(
                     title='periodic table menu',
@@ -137,9 +132,6 @@ app_entry_point = AppEntryPoint(
                 ),
                 MenuItemVisibility(
                     title='visibility menu',
-                ),
-                MenuItemDefinitions(
-                    title='definitions menu',
                 ),
                 MenuItemCustomQuantities(
                     title='custom quantity menu',
@@ -156,33 +148,33 @@ app_entry_point = AppEntryPoint(
         #        'metadata': FilterMenu(label='Visibility / IDs'),
         #    }
         #),
-        dashboard=Dashboard(
-            widgets=[
-                WidgetTerms(
-                    type='terms',
-                    quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                    scale=ScaleEnum.POW1,
-                    layout={
-                        BreakpointEnum.XXL: Layout(h=6, w=6, x=0, y=0),
-                        BreakpointEnum.XL: Layout(h=6, w=6, x=0, y=0),
-                        BreakpointEnum.LG: Layout(h=6, w=6, x=0, y=0),
-                        BreakpointEnum.MD: Layout(h=6, w=6, x=0, y=0),
-                        BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
-                    },
-                ),
-                WidgetPeriodicTable(
-                    type='periodictable',
-                    title='Material',
-                    quantity='results.material.elements',
-                    scale='linear',
-                    layout={
-                        'lg': Layout(h=9, w=15, x=0, y=0),
-                        'md': Layout(h=8, w=11, x=0, y=0),
-                        'sm': Layout(h=6, w=9, x=0, y=0),
-                        'xl': Layout(h=9, w=19, x=0, y=0),
-                        'xxl': Layout(h=10, w=25, x=0, y=0),
-                    },
-                ),
+        #dashboard=Dashboard(
+        #    widgets=[
+        #        WidgetTerms(
+        #            type='terms',
+        #            quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+        #            scale=ScaleEnum.POW1,
+        #            layout={
+        #                BreakpointEnum.XXL: Layout(h=6, w=6, x=0, y=0),
+        #                BreakpointEnum.XL: Layout(h=6, w=6, x=0, y=0),
+        #                BreakpointEnum.LG: Layout(h=6, w=6, x=0, y=0),
+        #                BreakpointEnum.MD: Layout(h=6, w=6, x=0, y=0),
+        #                BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
+        #            },
+        #        ),
+        #        WidgetPeriodicTable(
+        #            type='periodictable',
+        #            title='Material',
+        #            quantity='results.material.elements',
+        #            scale='linear',
+        #            layout={
+        #               'lg': Layout(h=9, w=15, x=0, y=0),
+        #                'md': Layout(h=8, w=11, x=0, y=0),
+        #                'sm': Layout(h=6, w=9, x=0, y=0),
+        #                'xl': Layout(h=9, w=19, x=0, y=0),
+        #                'xxl': Layout(h=10, w=25, x=0, y=0),
+        #            },
+        #        ),
                 #WidgetTerms(
                 #    type='terms',
                 #    quantity='data.systems.name#nomad_aitoolkit.schema.schema_package.AIToolkitNotebook',
@@ -196,8 +188,8 @@ app_entry_point = AppEntryPoint(
                 #        BreakpointEnum.SM: Layout(h=6, w=6, x=12, y=0),
                 #    },
                 #),
-            ]
-        ),
+        #    ]
+        #),
         rows=Rows(
             actions=RowActions(
                 enabled=True,
