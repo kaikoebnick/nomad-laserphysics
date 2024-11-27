@@ -113,9 +113,7 @@ app_entry_point = AppEntryPoint(
                 MenuItemTerms(
                     title='category',
                     search_quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                    options=[
-                        {'a': MenuItemOption(label='b')},
-                    ],
+                    options={'a': MenuItemOption(label='b')},
                 ),
                 MenuItemTerms(
                     title='something',
