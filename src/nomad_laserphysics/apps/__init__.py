@@ -19,8 +19,9 @@ from nomad.config.models.ui import (
     #MenuItemDefinitions,
     MenuItemHistogram,
     #MenuItemOptimade,
+    MenuItemOption,
     MenuItemPeriodicTable,
-    #MenuItemTerms,
+    MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
@@ -108,6 +109,17 @@ app_entry_point = AppEntryPoint(
                 MenuItemHistogram(
                     title='date of the last update',
                     x='upload_create_time',
+                ),
+                MenuItemTerms(
+                    title='category',
+                    search_quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                    options=[
+                        {'a': MenuItemOption(label='b')},
+                    ],
+                ),
+                MenuItemTerms(
+                    title='something',
+                    search_quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
                 ),
                 Menu(
                     title='value-menu',
@@ -200,7 +212,6 @@ app_entry_point = AppEntryPoint(
                 enabled=True,
                 options={
                     'launch': RowActionURL(
-                        type='url',
                         path="data.references[?kind=='hub'].uri",
                         description='Launch Jupyter notebook',
                     )
