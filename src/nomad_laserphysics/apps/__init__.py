@@ -111,7 +111,7 @@ app_entry_point = AppEntryPoint(
                     x='upload_create_time',
                 ),
                 MenuItemTerms(
-                    title='something',
+                    title='category',
                     search_quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
                 ),
                 Menu(
