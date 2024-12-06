@@ -106,16 +106,29 @@ app_entry_point = AppEntryPoint(
         menu=Menu(
             title='filter-menu',
             items=[
-                MenuItemHistogram(
-                    title='date of the last update',
-                    x='upload_create_time',
-                ),
-                MenuItemTerms(
-                    title='category',
-                    search_quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                Menu(
+                    title='Basic data',
+                    items=[
+                        MenuItemHistogram(
+                            title='date of the last update',
+                            x='upload_create_time',
+                        ),
+                        MenuItemTerms(
+                          title='category',
+                         search_quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                        ),
+                        MenuItemTerms(
+                          title='author\'s first name',
+                         search_quantity='data.authors.first_name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                        ),
+                        MenuItemTerms(
+                          title='author\'s last name',
+                         search_quantity='data.authors.last_name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                        ),
+                    ],
                 ),
                 Menu(
-                    title='value-menu',
+                    title='value data',
                     items=[
                         MenuItemHistogram(
                             x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
@@ -128,17 +141,23 @@ app_entry_point = AppEntryPoint(
                         ),
                     ],
                 ),
-                #Menu(
-                #    title='tag-menu',
-                #    items=[
-                #        MenuItemTerms(
-                #            search_quantity='data.measurement.multiphoton_peaks#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
-                #        ),
-                #    ],
-                #),
-                MenuItemPeriodicTable(
-                    title='periodic table menu',
-                    search_quantity='results.material.elements',
+                Menu(
+                    title='tag data',
+                    items=[
+                        MenuItemTerms(
+                            title='tags',
+                            search_quantity='data.material.tags#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                        ),
+                    ],
+                ),
+                Menu(
+                    title='elemental table',
+                    items=[
+                        MenuItemPeriodicTable(
+                        title='periodic table menu',
+                        search_quantity='results.material.elements',
+                        ),
+                    ],
                 ),
                 MenuItemVisibility(
                     title='visibility menu',

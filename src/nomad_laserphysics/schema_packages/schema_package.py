@@ -242,6 +242,11 @@ class Measurement(ArchiveSection):
         description='Extra details about the measurement.',
     )
 
+    tags = Quantity(
+        type=str,
+        shape=['*'],
+    )
+
     evaluations = SubSection(section=Evaluation, repeats=True)
 
     def normalize(self, archive, logger: 'BoundLogger') -> None:
@@ -256,6 +261,10 @@ class Measurement(ArchiveSection):
         for el in self.material:
             if el not in archive.results.material.elements:
                 archive.results.material.elements += [el]
+
+        #TODO
+        if self.multiphoton_peaks:
+            self.tags += "multiphoton peaks"
 
 
 class laserphysicsELN(Schema):
