@@ -112,7 +112,9 @@ class Evaluation(ArchiveSection):
     )
 
 class Tags(ArchiveSection):
-    m_def = Section(a_eln=ELNAnnotation(), a_display={'visible': False, 'editable': False})
+    m_def = Section(a_eln=ELNAnnotation(), a_display=
+    {'visible': False, 'editable': False}
+    )
 
     tag = Quantity(
         type=str,
