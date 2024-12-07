@@ -257,16 +257,22 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
-    tags = SubSection(section=Tags, repeats=True)
+    tags = SubSection(section=Tags, repeats=True,
+    a_display={'visible': False, 'editable': False}
+    )
 
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
         if self.material:
             if not archive.results:
-                archive.results = Results()
+                archive.results = Results(
+                    a_display={'visible': False, 'editable': False}
+                    )
             if not archive.results.material:
-                archive.results.material = Material()
+                archive.results.material = Material(
+                    a_display={'visible': False, 'editable': False}
+                    )
 
         for el in self.material:
             if el not in archive.results.material.elements:
