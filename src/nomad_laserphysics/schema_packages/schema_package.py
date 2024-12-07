@@ -255,7 +255,7 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
-    tags = SubSection(section=Tags, repeats=True)
+    tags = SubSection(section=Tags, repeats=True, a_display={'visible': False})
 
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
