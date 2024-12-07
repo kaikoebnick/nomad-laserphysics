@@ -173,16 +173,13 @@ class Measurement(ArchiveSection):
         description="""Check if there are multiphoton peaks.""",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
-    
+
     tag_multiphoton_peaks = Quantity(
         type=str,
-        a_display={'visible': False, 'editable': True},
+        a_display={'visible': False},
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.EnumEditQuantity,
             props=dict(
-                suggestions=[
-                    'multiphoton peaks',
-                ]
             ),
         ),
     )
@@ -272,9 +269,9 @@ class Measurement(ArchiveSection):
 
         #TODO
         if self.multiphoton_peaks:
-            self.tag_multiphoton_peaks = ['multiphoton peaks']
+            self.tag_multiphoton_peaks = 'multiphoton peaks'
         else:
-            self.tag_multiphoton_peaks = []
+            self.tag_multiphoton_peaks = ''
 
 
 class laserphysicsELN(Schema):
