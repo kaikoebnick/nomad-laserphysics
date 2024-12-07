@@ -244,7 +244,7 @@ class Measurement(ArchiveSection):
 
     tags = Quantity(
         type=str,
-        a_display={'visible': False},
+        a_display={'visible': False, 'editable': True},
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.EnumEditQuantity,
         ),
