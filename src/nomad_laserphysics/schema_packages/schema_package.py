@@ -173,6 +173,19 @@ class Measurement(ArchiveSection):
         description="""Check if there are multiphoton peaks.""",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
+    
+    tag_multiphoton_peaks = Quantity(
+        type=str,
+        a_display={'visible': False, 'editable': True},
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.EnumEditQuantity,
+            props=dict(
+                suggestions=[
+                    'multiphoton peaks',
+                ]
+            ),
+        ),
+    )
 
     plateau = Quantity(
         type=bool,
@@ -242,14 +255,6 @@ class Measurement(ArchiveSection):
         description='Extra details about the measurement.',
     )
 
-    tags = Quantity(
-        type=str,
-        a_display={'visible': False, 'editable': True},
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity,
-        ),
-    )
-
     evaluations = SubSection(section=Evaluation, repeats=True)
 
     def normalize(self, archive, logger: 'BoundLogger') -> None:
@@ -267,7 +272,9 @@ class Measurement(ArchiveSection):
 
         #TODO
         if self.multiphoton_peaks:
-            self.tags += ["multiphoton peaks"]
+            self.tag_multiphoton_peaks = ['multiphoton peaks']
+        else:
+            self.tag_multiphoton_peaks = []
 
 
 class laserphysicsELN(Schema):
