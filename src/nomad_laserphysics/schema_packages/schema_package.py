@@ -267,7 +267,7 @@ class Measurement(ArchiveSection):
 
         #TODO
         if self.multiphoton_peaks:
-            self.tags += "multiphoton peaks"
+            self.tags += ["multiphoton peaks"]
 
 
 class laserphysicsELN(Schema):
