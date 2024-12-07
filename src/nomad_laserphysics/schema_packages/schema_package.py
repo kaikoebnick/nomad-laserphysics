@@ -112,11 +112,11 @@ class Evaluation(ArchiveSection):
     )
 
 class Tags(ArchiveSection):
-    m_def = Section(a_eln=ELNAnnotation(), a_display={'visible': False})
+    m_def = Section(a_eln=ELNAnnotation(), a_display={'visible': False, 'editable': False})
 
     tag = Quantity(
         type=str,
-        a_display={'visible': False},
+        a_display={'visible': False, 'editable': False},
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.EnumEditQuantity,
             props=dict(),
@@ -255,7 +255,7 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
-    tags = SubSection(section=Tags, repeats=True, a_display={'visible': False})
+    tags = SubSection(section=Tags, repeats=True)
 
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
