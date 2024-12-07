@@ -146,7 +146,7 @@ app_entry_point = AppEntryPoint(
                     items=[
                         MenuItemTerms(
                             title='tags',
-                            search_quantity='data.measurement.tags#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                            search_quantity='data.measurement.tags.tag#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
                         ),
                     ],
                 ),
