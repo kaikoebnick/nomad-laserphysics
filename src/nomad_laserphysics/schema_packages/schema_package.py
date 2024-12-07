@@ -111,6 +111,17 @@ class Evaluation(ArchiveSection):
         description='Optional field for adding version information.',
     )
 
+class Tags(ArchiveSection):
+    m_def = Section(a_eln=ELNAnnotation(), a_display={'visible': False})
+
+    tag = Quantity(
+        type=str,
+        a_display={'visible': False},
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.EnumEditQuantity,
+            props=dict(),
+        ),
+    )
 
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
@@ -172,16 +183,6 @@ class Measurement(ArchiveSection):
         type=bool,
         description="""Check if there are multiphoton peaks.""",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
-    )
-
-    tag_multiphoton_peaks = Quantity(
-        type=str,
-        a_display={'visible': False},
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity,
-            props=dict(
-            ),
-        ),
     )
 
     plateau = Quantity(
@@ -254,6 +255,8 @@ class Measurement(ArchiveSection):
 
     evaluations = SubSection(section=Evaluation, repeats=True)
 
+    tags = SubSection(section=Tags, repeats=True)
+
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
@@ -268,10 +271,17 @@ class Measurement(ArchiveSection):
                 archive.results.material.elements += [el]
 
         #TODO
-        if self.multiphoton_peaks:
-            self.tag_multiphoton_peaks = 'multiphoton peaks'
-        else:
-            self.tag_multiphoton_peaks = ''
+        boolean_to_tag_map = {
+            'multiphoton_peaks': self.multiphoton_peaks,
+            'plateau': self.plateau,
+        }
+
+        for boolean_name, boolean_value in boolean_to_tag_map.items():
+            if boolean_value:
+                existing_tags = [t.tag for t in self.tags]
+                if boolean_name not in existing_tags:
+                    new_tag = Tags(tag=boolean_name)
+                    self.tags.append(new_tag)
 
 
 class laserphysicsELN(Schema):
