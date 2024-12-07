@@ -274,14 +274,28 @@ class Measurement(ArchiveSection):
         boolean_to_tag_map = {
             'multiphoton_peaks': self.multiphoton_peaks,
             'plateau': self.plateau,
+            'voltage_sweep': self.voltage_sweep,
+            'power_sweep': self.power_sweep,
+            'cep_sweep': self.cep_sweep,
+            'electrons': self.electrons,
+            'ions': self.ions,
+            'photons': self.photons,
+            'ToF_gauge_measurement': self.ToF_gauge_measurement,
+            'adc': self.adc,
+            'cfd': self.cfd,
         }
 
         for boolean_name, boolean_value in boolean_to_tag_map.items():
-            if boolean_value:
-                existing_tags = [t.tag for t in self.tags]
-                if boolean_name not in existing_tags:
-                    new_tag = Tags(tag=boolean_name)
-                    self.tags.append(new_tag)
+            # Check wether tag exists
+            existing_tags = [tag.tag for tag in self.tags]
+
+            if boolean_value and boolean_name not in existing_tags:
+                # Bool True but Tag does not yet exist -> add
+                new_tag = Tags(tag=boolean_name)
+                self.tags.append(new_tag)
+            elif not boolean_value and boolean_name in existing_tags:
+                # Boll False, but Tag does exist -> delete
+                self.tags = [tag for tag in self.tags if tag.tag != boolean_name]
 
 
 class laserphysicsELN(Schema):
