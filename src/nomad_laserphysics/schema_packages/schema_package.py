@@ -244,7 +244,10 @@ class Measurement(ArchiveSection):
 
     tags = Quantity(
         type=str,
-        shape=['*'],
+        #shape=['*'],
+        a_eln=ELNAnnotation(
+            props=dict(),
+        ),
     )
 
     evaluations = SubSection(section=Evaluation, repeats=True)
