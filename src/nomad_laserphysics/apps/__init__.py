@@ -107,7 +107,7 @@ app_entry_point = AppEntryPoint(
             title='filter-menu',
             items=[
                 Menu(
-                    title='Basic data',
+                    title='basic data',
                     items=[
                         MenuItemHistogram(
                             title='date of the last update',
@@ -128,7 +128,7 @@ app_entry_point = AppEntryPoint(
                     ],
                 ),
                 Menu(
-                    title='value data',
+                    title='values',
                     items=[
                         MenuItemHistogram(
                             x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
@@ -142,7 +142,7 @@ app_entry_point = AppEntryPoint(
                     ],
                 ),
                 Menu(
-                    title='tag data',
+                    title='tags',
                     items=[
                         MenuItemTerms(
                             title='tags',
@@ -160,10 +160,10 @@ app_entry_point = AppEntryPoint(
                     ],
                 ),
                 MenuItemVisibility(
-                    title='visibility menu',
+                    title='visibility',
                 ),
                 MenuItemCustomQuantities(
-                    title='custom quantity menu',
+                    title='custom quantities',
                 ),
             ],
         ),
