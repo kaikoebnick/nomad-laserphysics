@@ -112,17 +112,17 @@ class Evaluation(ArchiveSection):
     )
 
 class Tags(ArchiveSection):
-    m_def = Section(a_eln=ELNAnnotation(), a_display=
-    {'visible': False, 'editable': False}
+    m_def = Section(a_display=
+    {'visible': False, 'editable': False}#, a_eln=ELNAnnotation()
     )
 
     tag = Quantity(
         type=str,
         a_display={'visible': False, 'editable': False},
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity,
-            props=dict(),
-        ),
+        #a_eln=ELNAnnotation(
+        #    component=ELNComponentEnum.EnumEditQuantity,
+        #    props=dict(),
+        #),
     )
 
 class Measurement(ArchiveSection):
@@ -278,7 +278,6 @@ class Measurement(ArchiveSection):
             if el not in archive.results.material.elements:
                 archive.results.material.elements += [el]
 
-        #TODO
         boolean_to_tag_map = {
             'multiphoton_peaks': self.multiphoton_peaks,
             'plateau': self.plateau,
