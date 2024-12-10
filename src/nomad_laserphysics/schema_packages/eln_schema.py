@@ -122,7 +122,7 @@ class Measurement(ArchiveSection):
         type=laserphysicsTip.m_def,
         description="""Type of the tip.""",
         a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity,
+            component=ELNComponentEnum.ReferenceEditQuantity,
         ),
     )
 
