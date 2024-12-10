@@ -307,7 +307,7 @@ class Measurement(ArchiveSection):
 
 class laserphysicsELN(Schema):
     m_def = Section(
-        label='laserphysics ELN schema',
+        label='laserphysics ELN',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
     )
@@ -315,7 +315,7 @@ class laserphysicsELN(Schema):
     name = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='Name/Title',
+        label='name/title',
         description='Short name of the ELN.',
     )
 
@@ -329,8 +329,8 @@ class laserphysicsELN(Schema):
     date = Quantity(
         type=Datetime,
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
-        label='Last update',
-        description='The date of the last update.',
+        label='measurement date',
+        description='The date of the measurement.',
     )
 
     description = Quantity(
