@@ -46,13 +46,13 @@ if upload_ids:
     filters_locked = {
         'upload_id': upload_ids,
         'section_defs.definition_qualified_name': [
-            'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+            'nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'
         ],
     }
 else:
     filters_locked = {
         'section_defs.definition_qualified_name': [
-           'nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+           'nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'
         ]
     }
 
@@ -65,7 +65,7 @@ app_entry_point = AppEntryPoint(
         path='laserphysics',
         category='Chair for Laserphysics',
         filters=Filters(
-            include=['*#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'],
+            include=['*#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'],
             #exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
         ),
         filters_locked=filters_locked,
@@ -75,27 +75,27 @@ app_entry_point = AppEntryPoint(
                 'entry_id',
                 'entry_type',
                 'authors',
-                'data.name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                'data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                'data.date#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                'data.name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                'data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                'data.date#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
             ],
             selected=[
-                'data.name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                'data.name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
                 'authors',
-                'data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
-                'data.date#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                'data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                'data.date#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
             ],
             options={
                 'entry_id': Column(),
                 'entry_type': Column(label='Entry type', align=AlignEnum.LEFT),
                 'authors': Column(label='Authors', align=AlignEnum.LEFT),
-                'data.name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN': Column(
+                'data.name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN': Column(
                     label='Name', align=AlignEnum.LEFT
                 ),
-                'data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN': Column(
+                'data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN': Column(
                     label='Category'
                 ),
-                'data.date#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN': Column(
+                'data.date#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN': Column(
                     label='Last update',
                     align=AlignEnum.LEFT,
                     format=Format(mode=ModeEnum.DATE),
@@ -115,15 +115,15 @@ app_entry_point = AppEntryPoint(
                         ),
                         MenuItemTerms(
                           title='category',
-                         search_quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                         search_quantity='data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
                         ),
                         MenuItemTerms(
                           title='author\'s first name',
-                         search_quantity='data.authors.first_name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                         search_quantity='data.authors.first_name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
                         ),
                         MenuItemTerms(
                           title='author\'s last name',
-                         search_quantity='data.authors.last_name#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                         search_quantity='data.authors.last_name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
                         ),
                     ],
                 ),
@@ -131,13 +131,13 @@ app_entry_point = AppEntryPoint(
                     title='values',
                     items=[
                         MenuItemHistogram(
-                            x='data.measurement.voltage#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                            x='data.measurement.voltage#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
                         ),
                         MenuItemHistogram(
-                            x='data.measurement.laserpower#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                            x='data.measurement.laserpower#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
                         ),
                         MenuItemHistogram(
-                            x='data.measurement.wavelength#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+                            x='data.measurement.wavelength#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
                         ),
                     ],
                 ),
@@ -146,7 +146,7 @@ app_entry_point = AppEntryPoint(
                     items=[
                         MenuItemTerms(
                             title='tags',
-                            search_quantity='data.measurement.tags.tag#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN'
+                            search_quantity='data.measurement.tags.tag#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'
                         ),
                     ],
                 ),
@@ -181,7 +181,7 @@ app_entry_point = AppEntryPoint(
         #    widgets=[
         #        WidgetTerms(
         #            type='terms',
-        #            quantity='data.category#nomad_laserphysics.schema_packages.schema_package.laserphysicsELN',
+        #            quantity='data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
         #            scale=ScaleEnum.POW1,
         #            layout={
         #                BreakpointEnum.XXL: Layout(h=6, w=6, x=0, y=0),
@@ -206,7 +206,7 @@ app_entry_point = AppEntryPoint(
         #        ),
                 #WidgetTerms(
                 #    type='terms',
-                #    quantity='data.systems.name#nomad_aitoolkit.schema.schema_package.AIToolkitNotebook',
+                #    quantity='data.systems.name#nomad_aitoolkit.schema.eln_schema.AIToolkitNotebook',
                 #    title='Systems',
                 #    scale=ScaleEnum.POW1,
                 #    layout={
