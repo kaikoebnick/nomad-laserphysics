@@ -124,7 +124,7 @@ class Measurement(ArchiveSection):
             component=ELNComponentEnum.EnumEditQuantity,
             props={
                 'section_defs.definition_qualified_name': [
-                    'nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'
+                    'nomad_laserphysics.schema_packages.tip_schema.laserphysicsTip'
                 ],
             }
         ),
