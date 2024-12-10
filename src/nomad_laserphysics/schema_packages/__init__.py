@@ -19,13 +19,13 @@ class TipSchemaPackageEntryPoint(SchemaPackageEntryPoint):
         return m_package
 
 
-eln_schema_entry_point = ElnSchemaPackageEntryPoint(
+eln_schema_package_entry_point = ElnSchemaPackageEntryPoint(
     name='eln schema',
     description='New schema package entry point configuration.',
     plugin_package='tools',
 )
 
-tip_schema_entry_point = TipSchemaPackageEntryPoint(
+tip_schema_package_entry_point = TipSchemaPackageEntryPoint(
     name='tip schema',
     description='New schema package entry point configuration.',
     plugin_package='tools',
