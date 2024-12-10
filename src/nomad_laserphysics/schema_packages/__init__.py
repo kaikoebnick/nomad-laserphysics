@@ -2,7 +2,7 @@ from nomad.config.models.plugins import SchemaPackageEntryPoint
 from pydantic import Field
 
 
-class NewSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+class ElnSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
     def load(self):
@@ -10,9 +10,23 @@ class NewSchemaPackageEntryPoint(SchemaPackageEntryPoint):
 
         return m_package
 
+class TipSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+    parameter: int = Field(0, description='Custom configuration parameter')
 
-eln_schema_entry_point = NewSchemaPackageEntryPoint(
-    name='NewSchemaPackage',
+    def load(self):
+        from nomad_laserphysics.schema_packages.tip_schema import m_package
+
+        return m_package
+
+
+eln_schema_entry_point = ElnSchemaPackageEntryPoint(
+    name='eln schema',
+    description='New schema package entry point configuration.',
+    plugin_package='tools',
+)
+
+tip_schema_entry_point = TipSchemaPackageEntryPoint(
+    name='tip schema',
     description='New schema package entry point configuration.',
     plugin_package='tools',
 )
