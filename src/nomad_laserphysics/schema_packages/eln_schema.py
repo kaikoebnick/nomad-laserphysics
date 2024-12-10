@@ -7,7 +7,6 @@ if TYPE_CHECKING:
 import datetime
 import xml
 
-from ase.data import chemical_symbols
 from nomad.datamodel.data import (
     ArchiveSection,
     EntryDataCategory,
@@ -17,11 +16,9 @@ from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 
 #from nomad.datamodel.metainfo.basesections import ElementalComposition
-from nomad.datamodel.results import Material, Results
 from nomad.metainfo import (
     Category,
     Datetime,
-    MEnum,
     Quantity,
     SchemaPackage,
     Section,
@@ -30,10 +27,6 @@ from nomad.metainfo import (
 
 # from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
 # from nomad.datamodel.results import System
-from nomad.metainfo.elasticsearch_extension import (
-    Elasticsearch,
-    material_type,
-)
 
 m_package = SchemaPackage(name='laserphysics ELN schema')
 
@@ -119,27 +112,22 @@ class Tags(ArchiveSection):
     tag = Quantity(
         type=str,
         a_display={'visible': False, 'editable': False},
-        #a_eln=ELNAnnotation(
-        #    component=ELNComponentEnum.EnumEditQuantity,
-        #    props=dict(),
-        #),
     )
 
 class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
-    material = Quantity(
-        type=MEnum(chemical_symbols),
-        shape= ['0..*'], #['n_atoms'],
-        default=[],
+    tip = Quantity(
+        type=str,
+        description="""Type of the tip.""",
         a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity
+            component=ELNComponentEnum.EnumEditQuantity,
+            props={
+                'section_defs.definition_qualified_name': [
+                    'nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'
+                ],
+            }
         ),
-        description="""Chemical elements of the material.""",
-        a_elasticsearch=[
-            Elasticsearch(material_type, many_all=True),
-            Elasticsearch(suggestion='simple'),
-        ],
     )
 
     voltage = Quantity(
@@ -263,20 +251,6 @@ class Measurement(ArchiveSection):
 
     def normalize(self, archive, logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
-
-        if self.material:
-            if not archive.results:
-                archive.results = Results(
-                    a_display={'visible': False, 'editable': False}
-                    )
-            if not archive.results.material:
-                archive.results.material = Material(
-                    a_display={'visible': False, 'editable': False}
-                    )
-
-        for el in self.material:
-            if el not in archive.results.material.elements:
-                archive.results.material.elements += [el]
 
         boolean_to_tag_map = {
             'multiphoton_peaks': self.multiphoton_peaks,
