@@ -89,6 +89,7 @@ app_entry_point = AppEntryPoint(
             Column(search_quantity='data.measurement.voltage#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
             Column(search_quantity='data.measurement.laserpower#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
             Column(search_quantity='data.measurement.wavelength#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
+            Column(search_quantity='data.measurement.u_p#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
         ],
 
         menu=Menu(
