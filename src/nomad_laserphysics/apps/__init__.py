@@ -86,6 +86,9 @@ app_entry_point = AppEntryPoint(
                 format=Format(mode=ModeEnum.DATE),
                 selected=True
             ),
+            Column(search_quantity='data.measurement.voltage#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
+            Column(search_quantity='data.measurement.laserpower#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
+            Column(search_quantity='data.measurement.wavelength#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
         ],
 
         menu=Menu(
