@@ -6,7 +6,7 @@ from nomad.config.models.ui import (
     App,
     #BreakpointEnum,
     Column,
-    Columns,
+    #Columns,
     #Dashboard,
     #FilterMenu,
     #FilterMenus,
@@ -70,38 +70,23 @@ app_entry_point = AppEntryPoint(
         ),
         filters_locked=filters_locked,
 
-        columns=Columns(
-            include=[
-                'entry_id',
-                'entry_type',
-                'authors',
-                'data.name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
-                'data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
-                'data.date#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
-            ],
-            selected=[
-                'data.name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
-                'authors',
-                'data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
-                'data.date#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
-            ],
-            options={
-                'entry_id': Column(),
-                'entry_type': Column(label='Entry type', align=AlignEnum.LEFT),
-                'authors': Column(label='Authors', align=AlignEnum.LEFT),
-                'data.name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN': Column(
-                    label='Name', align=AlignEnum.LEFT
-                ),
-                'data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN': Column(
-                    label='Category'
-                ),
-                'data.date#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN': Column(
-                    label='Last update',
-                    align=AlignEnum.LEFT,
-                    format=Format(mode=ModeEnum.DATE),
-                ),
-            },
-        ),
+        columns=[
+            Column(search_quantity='entry_id'),
+            Column(search_quantity='entry_type', align=AlignEnum.LEFT),
+            Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
+            Column(search_quantity='data.name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                label='Name', align=AlignEnum.LEFT, selected=True
+            ),
+            Column(search_quantity='data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                label='Category', selected=True
+            ),
+            Column(search_quantity='data.date#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                label='Measurement date',
+                align=AlignEnum.LEFT,
+                format=Format(mode=ModeEnum.DATE),
+                selected=True
+            ),
+        ],
 
         menu=Menu(
             title='filter-menu',
