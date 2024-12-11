@@ -120,11 +120,11 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     tip = Quantity(
-        type=Reference(laserphysicsTip),
+        type=laserphysicsTip,
         description="""Type of the tip.""",
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.ReferenceEditQuantity,
-        ),
+        #a_eln=ELNAnnotation(
+        #    component=ELNComponentEnum.ReferenceEditQuantity,
+        #),
     )
 
     voltage = Quantity(
