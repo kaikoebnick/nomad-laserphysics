@@ -9,7 +9,7 @@ import xml
 from ase.data import chemical_symbols
 from nomad.datamodel.data import (
     EntryDataCategory,
-    #Schema,
+    Schema,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 
@@ -18,7 +18,7 @@ from nomad.datamodel.results import Material, Results
 from nomad.metainfo import (
     Category,
     MEnum,
-    Msection,
+    #Msection,
     Quantity,
     SchemaPackage,
     Section,
@@ -42,7 +42,7 @@ def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
 
 
-class laserphysicsTip(Msection):
+class laserphysicsTip(Schema):
     m_def = Section(
         label='laserphysics Tip',
         categories=[ToolsCategory],
