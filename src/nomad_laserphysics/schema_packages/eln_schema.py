@@ -20,6 +20,7 @@ from nomad.metainfo import (
     Category,
     Datetime,
     Quantity,
+    Reference,
     SchemaPackage,
     Section,
     SubSection,
