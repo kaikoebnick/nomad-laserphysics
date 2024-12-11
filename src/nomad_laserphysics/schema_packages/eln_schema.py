@@ -25,7 +25,6 @@ from nomad.metainfo import (
     Section,
     SubSection,
 )
-
 from tip_schema import laserphysicsTip
 
 # from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
