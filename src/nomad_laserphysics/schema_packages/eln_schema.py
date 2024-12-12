@@ -20,7 +20,7 @@ from nomad.metainfo import (
     Category,
     Datetime,
     Quantity,
-    #Reference,
+    Reference,
     SchemaPackage,
     Section,
     SubSection,
@@ -119,10 +119,10 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     tip = Quantity(
-        type=str,#Reference(laserphysicsTip.m_def),
+        type=Reference(Tags.m_def),
         description="""Type of the tip.""",
         a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity,
+            component=ELNComponentEnum.ReferenceEditQuantity,
         ),
     )
 
