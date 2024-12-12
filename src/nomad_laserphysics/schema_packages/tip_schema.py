@@ -25,13 +25,6 @@ from nomad.metainfo import (
     Section,
 )
 
-# from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
-# from nomad.datamodel.results import System
-#from nomad.metainfo.elasticsearch_extension import (
-#    Elasticsearch,
-    #material_type,
-#)
-
 m_package = SchemaPackage(name='laserphysics tip schema')
 
 
