@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from nomad.datamodel.datamodel import EntryArchive
     from structlog.stdlib import BoundLogger
+    from tip_schema import laserphysicsTip
 
 import datetime
 import xml
@@ -119,7 +120,7 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     tip = Quantity(
-        type=Reference(Tags.m_def),
+        type=Reference(laserphysicsTip.Tags.m_def),
         description="""Type of the tip.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,

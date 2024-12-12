@@ -43,6 +43,7 @@ def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
 
 
+
 class laserphysicsTip(ArchiveSection):
     m_def = Section(validate=False,
         #label='laserphysics Tip',
