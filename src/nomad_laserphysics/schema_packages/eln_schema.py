@@ -49,7 +49,7 @@ def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
 
 
-class laserphysicsTip1(ArchiveSection):
+class laserphysicsTip(ArchiveSection):
     m_def = Section(validate=False,
         label='laserphysics Tip',
         categories=[ToolsCategory],
@@ -180,11 +180,11 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     tip = Quantity(
-        type=SectionProxy('schema_packages.tip_schema.laserphysicsTip'),
+        type=SectionProxy('laserphysicsTip'),
         description="""Type of the tip.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,
-            #showSectionLabel=True,
+            showSectionLabel=True,
         ),
     )
 
@@ -388,6 +388,8 @@ class laserphysicsELN(Schema):
     authors = SubSection(section=Author, repeats=True)
 
     measurement = SubSection(section=Measurement, repeats=True)
+
+    tips = SubSection(section=laserphysicsTip, repeats=True)
 
     # archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
 
