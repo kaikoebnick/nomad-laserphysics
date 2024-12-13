@@ -39,14 +39,14 @@ def remove_tags(text):
 
 class laserphysicsTip(ArchiveSection):
     m_def = Section(validate=False,
-        #label='laserphysics Tip',
-        #categories=[ToolsCategory],
-        #a_eln=ELNAnnotation(),
+        label='laserphysics Tip',
+        categories=[ToolsCategory],
+        a_eln=ELNAnnotation(),
     )
 
     tip_type = Quantity(
         type=str,
-        #a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
         label='type',
         description='Type of the tip.',
     )
@@ -55,19 +55,19 @@ class laserphysicsTip(ArchiveSection):
         type=MEnum(chemical_symbols),
         shape= ['0..*'], #['n_atoms'],
         default=[],
-        #a_eln=ELNAnnotation(
-        #    component=ELNComponentEnum.EnumEditQuantity
-        #),
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.EnumEditQuantity
+        ),
         description="""Chemical elements of the material.""",
-        #a_elasticsearch=[
-        #    Elasticsearch(material_type, many_all=True),
-        #    Elasticsearch(suggestion='simple'),
-        #],
+        a_elasticsearch=[
+            Elasticsearch(material_type, many_all=True),
+            Elasticsearch(suggestion='simple'),
+        ],
     )
 
     description = Quantity(
         type=str,
-        #a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
+        a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
         description='Short description of the ELN. You can add pictures!',
     )
 
