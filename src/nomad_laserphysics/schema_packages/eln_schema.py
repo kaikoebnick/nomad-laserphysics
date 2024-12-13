@@ -23,15 +23,18 @@ from nomad.metainfo import (
     Datetime,
     MEnum,
     Quantity,
-    Reference,
     SchemaPackage,
     Section,
+    #Reference,
+    SectionProxy,
     SubSection,
 )
 from nomad.metainfo.elasticsearch_extension import (
     Elasticsearch,
     material_type,
 )
+
+#from tip_schema import laserphysicsTip
 
 # from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
 # from nomad.datamodel.results import System
@@ -47,7 +50,7 @@ def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
 
 
-class laserphysicsTip(ArchiveSection):
+class laserphysicsTip1(ArchiveSection):
     m_def = Section(validate=False,
         label='laserphysics Tip',
         categories=[ToolsCategory],
@@ -178,7 +181,7 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     tip = Quantity(
-        type=Reference(laserphysicsTip.m_def),
+        type=SectionProxy('laserphysicsTip.m_def'),
         description="""Type of the tip.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,
