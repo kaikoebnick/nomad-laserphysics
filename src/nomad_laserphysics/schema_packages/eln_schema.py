@@ -23,9 +23,9 @@ from nomad.metainfo import (
     Datetime,
     MEnum,
     Quantity,
-    Reference,
     SchemaPackage,
     Section,
+    Reference,
     #SectionProxy,
     SubSection,
 )
@@ -52,7 +52,7 @@ def remove_tags(text):
 
 class laserphysicsTip(ArchiveSection):
     m_def = Section(
-        a_eln=ELNAnnotation(overview=True),
+        a_eln=ELNAnnotation(),
     )
 
     tip_type = Quantity(
