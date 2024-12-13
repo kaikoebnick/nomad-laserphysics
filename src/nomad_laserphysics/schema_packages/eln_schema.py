@@ -180,7 +180,7 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     tip = Quantity(
-        type=SectionProxy('nomad_laserphysics.schema_packages.tip_schema.laserphysicsTip.m_def'),
+        type=SectionProxy('schema_packageslaserphysicsTip'),
         description="""Type of the tip.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,

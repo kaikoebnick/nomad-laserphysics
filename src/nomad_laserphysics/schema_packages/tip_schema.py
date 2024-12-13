@@ -8,9 +8,9 @@ import xml
 
 from ase.data import chemical_symbols
 from nomad.datamodel.data import (
-    #Schema,
-    ArchiveSection,
+    #ArchiveSection,
     EntryDataCategory,
+    Schema,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 
@@ -41,7 +41,7 @@ def remove_tags(text):
 
 
 
-class laserphysicsTip(ArchiveSection):
+class laserphysicsTip(Schema):
     m_def = Section(validate=False,
         label='laserphysics Tip',
         categories=[ToolsCategory],
