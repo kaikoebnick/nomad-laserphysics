@@ -10,12 +10,6 @@ class TipSchemaPackageEntryPoint(SchemaPackageEntryPoint):
 
         return m_package
 
-tip_schema_package_entry_point = TipSchemaPackageEntryPoint(
-    name='tip schema',
-    description='New schema package entry point configuration.',
-    plugin_package='schema_packages',
-)
-
 class ElnSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
@@ -26,6 +20,12 @@ class ElnSchemaPackageEntryPoint(SchemaPackageEntryPoint):
 
 eln_schema_package_entry_point = ElnSchemaPackageEntryPoint(
     name='eln schema',
+    description='New schema package entry point configuration.',
+    plugin_package='schema_packages',
+)
+
+tip_schema_package_entry_point = TipSchemaPackageEntryPoint(
+    name='tip schema',
     description='New schema package entry point configuration.',
     plugin_package='schema_packages',
 )

@@ -51,10 +51,8 @@ def remove_tags(text):
 
 
 class laserphysicsTip(ArchiveSection):
-    m_def = Section(validate=False,
-        label='laserphysics Tip',
-        categories=[ToolsCategory],
-        a_eln=ELNAnnotation(),
+    m_def = Section(
+        a_eln=ELNAnnotation(overview=True),
     )
 
     tip_type = Quantity(
