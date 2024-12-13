@@ -12,8 +12,8 @@ from nomad.datamodel.data import (
     ArchiveSection,
     EntryDataCategory,
 )
+from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 
-#from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 #from nomad.datamodel.metainfo.basesections import ElementalComposition
 from nomad.datamodel.results import Material, Results
 from nomad.metainfo import (
@@ -23,6 +23,10 @@ from nomad.metainfo import (
     Quantity,
     SchemaPackage,
     Section,
+)
+from nomad.metainfo.elasticsearch_extension import (
+    Elasticsearch,
+    material_type,
 )
 
 m_package = SchemaPackage(name='laserphysics tip schema')

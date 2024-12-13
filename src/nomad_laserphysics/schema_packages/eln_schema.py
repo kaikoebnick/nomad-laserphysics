@@ -23,9 +23,9 @@ from nomad.metainfo import (
     Datetime,
     MEnum,
     Quantity,
+    Reference,
     SchemaPackage,
     Section,
-    Reference,
     SectionProxy,
     SubSection,
 )
