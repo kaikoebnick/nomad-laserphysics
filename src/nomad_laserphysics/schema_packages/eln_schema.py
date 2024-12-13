@@ -23,9 +23,10 @@ from nomad.metainfo import (
     Datetime,
     MEnum,
     Quantity,
+    Reference,
     SchemaPackage,
     Section,
-    SectionProxy,
+    #SectionProxy,
     SubSection,
 )
 from nomad.metainfo.elasticsearch_extension import (
@@ -180,7 +181,7 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     tip = Quantity(
-        type=SectionProxy('laserphysicsTip'),
+        type=Reference(laserphysicsTip),
         description="""Type of the tip.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,
