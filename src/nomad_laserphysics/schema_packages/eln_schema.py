@@ -392,7 +392,7 @@ class laserphysicsELN(Schema):
 
     measurement = SubSection(section=Measurement, repeats=True)
 
-    tip = SubSection(section=laserphysicsTip, repeats=True)
+    tip = SubSection(section=laserphysicsTip)
 
     # archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
 
