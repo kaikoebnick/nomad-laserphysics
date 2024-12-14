@@ -53,12 +53,13 @@ def remove_tags(text):
 class laserphysicsTip(ArchiveSection):
     m_def = Section(
         a_eln=ELNAnnotation(),
+        label='',
     )
 
-    tip_type = Quantity(
+    tip_label = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='type',
+        label='label',
         description='Type of the tip.',
     )
 
@@ -79,7 +80,7 @@ class laserphysicsTip(ArchiveSection):
     description = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
-        description='Short description of the ELN. You can add pictures!',
+        description='Short description of the tip. You can add pictures!',
     )
 
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
@@ -98,6 +99,9 @@ class laserphysicsTip(ArchiveSection):
         for el in self.material:
             if el not in archive.results.material.elements:
                 archive.results.material.elements += [el]
+
+        if self.tip_label:
+            self.m_def.label=self.tip_label,
 
 
 class Author(ArchiveSection):
