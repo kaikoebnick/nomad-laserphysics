@@ -101,7 +101,7 @@ class laserphysicsTip(ArchiveSection):
                 archive.results.material.elements += [el]
 
         if self.tip_label:
-            self.m_def.label=self.tip_label,
+            self.m_def.label=self.tip_label
 
 
 class Author(ArchiveSection):
@@ -392,7 +392,7 @@ class laserphysicsELN(Schema):
 
     measurement = SubSection(section=Measurement, repeats=True)
 
-    tips = SubSection(section=laserphysicsTip, repeats=True)
+    tip = SubSection(section=laserphysicsTip, repeats=True)
 
     # archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
 
@@ -418,6 +418,8 @@ class laserphysicsELN(Schema):
             self.date = datetime.datetime.now()
         if self.date:
             archive.metadata.upload_create_time = self.date
+        if self.tip:
+            self.tip.label=self.tip.tip_label
 
 
 
