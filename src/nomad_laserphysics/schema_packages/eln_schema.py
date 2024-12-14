@@ -53,7 +53,7 @@ def remove_tags(text):
 class laserphysicsTip(ArchiveSection):
     m_def = Section(
         a_eln=ELNAnnotation(),
-        label='',
+        label='tip',
     )
 
     tip_label = Quantity(
@@ -419,7 +419,7 @@ class laserphysicsELN(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
         if self.tip:
-            self.tip.label=self.tip.tip_label
+            self.tip.m_def.label=self.tip.tip_label
 
 
 
