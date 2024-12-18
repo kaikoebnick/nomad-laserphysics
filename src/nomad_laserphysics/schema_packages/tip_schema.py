@@ -42,7 +42,7 @@ def remove_tags(text):
 
 
 class laserphysicsTip(Schema):
-    m_def = Section(validate=False,
+    m_def = Section(
         label='laserphysics Tip',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
