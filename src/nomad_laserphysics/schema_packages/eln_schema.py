@@ -354,8 +354,6 @@ class laserphysicsELN(Schema):
             self.date = datetime.datetime.now()
         if self.date:
             archive.metadata.upload_create_time = self.date
-        if self.tip:
-            self.tip.m_def.label=self.tip.tip_label
 
 
 
