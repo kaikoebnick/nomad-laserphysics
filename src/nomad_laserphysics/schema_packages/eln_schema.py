@@ -284,12 +284,19 @@ class laserphysicsELN(Schema):
         a_eln=ELNAnnotation(),
     )
 
-    #name = Quantity(
-    #    type=str,
-    #    a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-    #    label='name/title',
-    #    description='Short name of the ELN.',
-    #)
+    name = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        label='name/title',
+        description='Short name of the ELN.',
+    )
+
+    test = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        label='name/title',
+        description='Short name of the ELN.',
+    )
 
     # entry_reference = Quantity(
     #    type=Reference,
@@ -305,11 +312,11 @@ class laserphysicsELN(Schema):
         description='The date of the measurement.',
     )
 
-    #description = Quantity(
-    #    type=str,
-    #    a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
-    #    description='Short description of the ELN. You can add pictures!',
-    #)
+    description = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
+        description='Short description of the ELN. You can add pictures!',
+    )
 
     category = Quantity(
         type=str,
@@ -335,8 +342,8 @@ class laserphysicsELN(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        #if self.name:
-        #    archive.metadata.entry_name = self.name
+        if self.name:
+            archive.metadata.entry_name = self.name
 
         """if self.description:
             if self.description.startswith('<'):
