@@ -25,7 +25,7 @@ from nomad.metainfo import (
     SubSection,
 )
 
-from nomad_laserphysics.schema_packages.tip_schema import laserphysicsTip
+from nomad_laserphysics.schema_packages.tip_schema import tipSample
 
 # from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
 # from nomad.datamodel.results import System
@@ -120,7 +120,7 @@ class Measurement(ArchiveSection):
     m_def = Section(a_eln=ELNAnnotation(overview=True))
 
     tip = Quantity(
-        type=laserphysicsTip,
+        type=tipSample,
         description="""Type of the tip.""",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,

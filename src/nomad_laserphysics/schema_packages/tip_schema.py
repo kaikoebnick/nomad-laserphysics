@@ -41,7 +41,7 @@ def remove_tags(text):
 
 
 
-class laserphysicsTip(Schema):
+class tipSample(Schema):
     m_def = Section(
         label='laserphysics Tip',
         categories=[ToolsCategory],
