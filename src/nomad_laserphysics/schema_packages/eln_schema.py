@@ -335,8 +335,8 @@ class laserphysicsELN(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if self.name:
-            archive.metadata.entry_name = self.name
+        #if self.name:
+        #    archive.metadata.entry_name = self.name
 
         """if self.description:
             if self.description.startswith('<'):
