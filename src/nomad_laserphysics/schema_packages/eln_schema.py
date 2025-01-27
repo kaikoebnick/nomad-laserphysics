@@ -291,13 +291,6 @@ class laserphysicsELN(Schema):
         description='Short name of the ELN.',
     )
 
-    test = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='name/title',
-        description='Short name of the ELN.',
-    )
-
     # entry_reference = Quantity(
     #    type=Reference,
     #    a_eln=ELNAnnotation(component=ELNComponentEnum.ReferenceEditQuantity),
