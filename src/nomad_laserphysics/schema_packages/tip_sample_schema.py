@@ -62,7 +62,7 @@ class tipSample(Schema):
 
     material = Quantity(
         type=MEnum(chemical_symbols),
-        shape= ['0..*'], #['n_atoms'],
+        shape= ['0..*'],
         default=[],
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.EnumEditQuantity
