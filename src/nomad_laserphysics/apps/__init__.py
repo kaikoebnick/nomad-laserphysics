@@ -4,22 +4,12 @@ from nomad.config.models.plugins import AppEntryPoint
 from nomad.config.models.ui import (
     AlignEnum,
     App,
-    #BreakpointEnum,
     Column,
-    #Columns,
-    #Dashboard,
-    #FilterMenu,
-    #FilterMenus,
-    #FilterMenuSizeEnum,
     Filters,
     Format,
-    #Layout,
     Menu,
     MenuItemCustomQuantities,
-    #MenuItemDefinitions,
     MenuItemHistogram,
-    #MenuItemOptimade,
-    #MenuItemOption,
     MenuItemPeriodicTable,
     MenuItemTerms,
     MenuItemVisibility,
@@ -29,9 +19,6 @@ from nomad.config.models.ui import (
     RowDetails,
     Rows,
     RowSelection,
-    #ScaleEnum,
-    #WidgetPeriodicTable,
-    #WidgetTerms,
 )
 
 # Workaround: read the upload_ids from plugin's raw config.
@@ -66,7 +53,6 @@ app_entry_point = AppEntryPoint(
         category='Chair for Laserphysics',
         filters=Filters(
             include=['*#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'],
-            #exclude=['*#nomad.datamodel.metainfo.eln.BasicEln'],
         ),
         filters_locked=filters_locked,
 
@@ -157,57 +143,6 @@ app_entry_point = AppEntryPoint(
             ],
         ),
 
-        #filter_menus=FilterMenus(
-        #    options={
-        #        'custom_quantities': FilterMenu(
-        #            label='Quantity filters', size=FilterMenuSizeEnum.L
-        #        ),
-        #        'author': FilterMenu(label='Metadata', size=FilterMenuSizeEnum.M),
-        #        'metadata': FilterMenu(label='Visibility / IDs'),
-        #    }
-        #),
-        #dashboard=Dashboard(
-        #    widgets=[
-        #        WidgetTerms(
-        #            type='terms',
-        #            quantity='data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
-        #            scale=ScaleEnum.POW1,
-        #            layout={
-        #                BreakpointEnum.XXL: Layout(h=6, w=6, x=0, y=0),
-        #                BreakpointEnum.XL: Layout(h=6, w=6, x=0, y=0),
-        #                BreakpointEnum.LG: Layout(h=6, w=6, x=0, y=0),
-        #                BreakpointEnum.MD: Layout(h=6, w=6, x=0, y=0),
-        #                BreakpointEnum.SM: Layout(h=6, w=6, x=0, y=0),
-        #            },
-        #        ),
-        #        WidgetPeriodicTable(
-        #            type='periodictable',
-        #            title='Material',
-        #            quantity='results.material.elements',
-        #            scale='linear',
-        #            layout={
-        #               'lg': Layout(h=9, w=15, x=0, y=0),
-        #                'md': Layout(h=8, w=11, x=0, y=0),
-        #                'sm': Layout(h=6, w=9, x=0, y=0),
-        #                'xl': Layout(h=9, w=19, x=0, y=0),
-        #                'xxl': Layout(h=10, w=25, x=0, y=0),
-        #            },
-        #        ),
-                #WidgetTerms(
-                #    type='terms',
-                #    quantity='data.systems.name#nomad_aitoolkit.schema.eln_schema.AIToolkitNotebook',
-                #    title='Systems',
-                #    scale=ScaleEnum.POW1,
-                #    layout={
-                #        BreakpointEnum.XXL: Layout(h=6, w=6, x=12, y=0),
-                #        BreakpointEnum.XL: Layout(h=6, w=6, x=12, y=0),
-                #        BreakpointEnum.LG: Layout(h=6, w=6, x=12, y=0),
-                #        BreakpointEnum.MD: Layout(h=6, w=6, x=12, y=0),
-                #        BreakpointEnum.SM: Layout(h=6, w=6, x=12, y=0),
-                #    },
-                #),
-        #    ]
-        #),
         rows=Rows(
             actions=RowActions(
                 enabled=True,

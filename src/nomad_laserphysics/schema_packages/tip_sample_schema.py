@@ -4,22 +4,21 @@ if TYPE_CHECKING:
     from nomad.datamodel.datamodel import EntryArchive
     from structlog.stdlib import BoundLogger
 
+import datetime
 import xml
 
 from ase.data import chemical_symbols
 from nomad.datamodel.data import (
-    #ArchiveSection,
     EntryDataCategory,
     Schema,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 
-#from nomad.datamodel.metainfo.basesections import ElementalComposition
 from nomad.datamodel.results import Material, Results
 from nomad.metainfo import (
     Category,
+    Datetime,
     MEnum,
-    #Msection,
     Quantity,
     SchemaPackage,
     Section,
@@ -29,7 +28,7 @@ from nomad.metainfo.elasticsearch_extension import (
     material_type,
 )
 
-m_package = SchemaPackage(name='laserphysics tip schema')
+m_package = SchemaPackage(name='laserphysics tip Sample schema')
 
 
 class ToolsCategory(EntryDataCategory):
@@ -53,6 +52,13 @@ class tipSample(Schema):
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
         label='type',
         description='Type of the tip.',
+    )
+
+    date = Quantity(
+        type=Datetime,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
+        label='date and time',
+        description='Date and time of the tip.',
     )
 
     material = Quantity(
@@ -91,6 +97,15 @@ class tipSample(Schema):
         for el in self.material:
             if el not in archive.results.material.elements:
                 archive.results.material.elements += [el]
+
+        if self.date is None:
+            self.date = datetime.datetime.now()
+        if self.date:
+            archive.metadata.upload_create_time = self.date
+
+        if self.date and self.tip_type:
+            archive.metadata.name = f"{self.date}_{self.tip_type}"
+            logger.info(f"Set entry name to {archive.metadata.name}")
 
 
 

@@ -6,7 +6,7 @@ class TipSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
     def load(self):
-        from nomad_laserphysics.schema_packages.tip_schema import m_package
+        from src.nomad_laserphysics.schema_packages.tip_sample_schema import m_package
 
         return m_package
 

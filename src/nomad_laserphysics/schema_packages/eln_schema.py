@@ -15,7 +15,6 @@ from nomad.datamodel.data import (
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 
-#from nomad.datamodel.metainfo.basesections import ElementalComposition
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -25,10 +24,7 @@ from nomad.metainfo import (
     SubSection,
 )
 
-from nomad_laserphysics.schema_packages.tip_schema import tipSample
-
-# from nomad.datamodel.metainfo.datamdel import EntryArchiveReference
-# from nomad.datamodel.results import System
+from src.nomad_laserphysics.schema_packages.tip_sample_schema import tipSample
 
 m_package = SchemaPackage(name='laserphysics ELN schema')
 
@@ -108,7 +104,7 @@ class Evaluation(ArchiveSection):
 
 class Tags(ArchiveSection):
     m_def = Section(a_display=
-    {'visible': False, 'editable': False}#, a_eln=ELNAnnotation()
+    {'visible': False, 'editable': False}
     )
 
     tag = Quantity(
@@ -291,13 +287,6 @@ class laserphysicsELN(Schema):
         description='Short name of the ELN.',
     )
 
-    # entry_reference = Quantity(
-    #    type=Reference,
-    #    a_eln=ELNAnnotation(component=ELNComponentEnum.ReferenceEditQuantity),
-    #    label='Reference to other entry',
-    #    description='Reference to other entry.',
-    # )
-
     date = Quantity(
         type=Datetime,
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
@@ -329,8 +318,6 @@ class laserphysicsELN(Schema):
 
     measurement = SubSection(section=Measurement, repeats=True)
 
-
-    # archiveReference = SubSection(section=EntryArchiveReference, repeats=True)
 
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
