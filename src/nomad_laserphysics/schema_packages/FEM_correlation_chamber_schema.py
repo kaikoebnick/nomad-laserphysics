@@ -25,7 +25,7 @@ from nomad.metainfo import (
 
 from src.nomad_laserphysics.schema_packages.tip_sample_schema import tipSample
 
-m_package = SchemaPackage(name='laserphysics ELN schema')
+m_package = SchemaPackage(name='FEM Correlation Chamber schema')
 
 
 class ToolsCategory(EntryDataCategory):
@@ -272,9 +272,9 @@ class Measurement(ArchiveSection):
                 self.tags = [tag for tag in self.tags if tag.tag != boolean_name]
 
 
-class laserphysicsELN(Schema):
+class FEMCorrelationChamber(Schema):
     m_def = Section(
-        label='laserphysics ELN',
+        label='FEM Correlation Chamber',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
     )
@@ -323,14 +323,6 @@ class laserphysicsELN(Schema):
 
         if self.name:
             archive.metadata.entry_name = self.name
-
-        """if self.description:
-            if self.description.startswith('<'):
-                comment = remove_tags(self.description)
-            else:
-                comment = self.description
-
-            archive.metadata.comment = comment"""
 
         if self.authors:
             archive.metadata.entry_coauthors = [

@@ -33,13 +33,13 @@ if upload_ids:
     filters_locked = {
         'upload_id': upload_ids,
         'section_defs.definition_qualified_name': [
-            'nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'
+            'nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber'
         ],
     }
 else:
     filters_locked = {
         'section_defs.definition_qualified_name': [
-           'nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'
+           'nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber'
         ]
     }
 
@@ -52,7 +52,7 @@ app_entry_point = AppEntryPoint(
         path='laserphysics',
         category='Chair for Laserphysics',
         filters=Filters(
-            include=['*#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'],
+            include=['*#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber'],
         ),
         filters_locked=filters_locked,
 
@@ -60,22 +60,22 @@ app_entry_point = AppEntryPoint(
             Column(search_quantity='entry_id'),
             Column(search_quantity='entry_type', align=AlignEnum.LEFT),
             Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
-            Column(search_quantity='data.name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+            Column(search_quantity='data.name#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                 label='Name', align=AlignEnum.LEFT, selected=True
             ),
-            Column(search_quantity='data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+            Column(search_quantity='data.category#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                 label='Category', selected=True
             ),
-            Column(search_quantity='data.date#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+            Column(search_quantity='data.date#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                 label='Measurement date',
                 align=AlignEnum.LEFT,
                 format=Format(mode=ModeEnum.DATE),
                 selected=True
             ),
-            Column(search_quantity='data.measurement.voltage#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
-            Column(search_quantity='data.measurement.laserpower#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
-            Column(search_quantity='data.measurement.wavelength#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
-            Column(search_quantity='data.measurement.u_p#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'),
+            Column(search_quantity='data.measurement.voltage#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber'),
+            Column(search_quantity='data.measurement.laserpower#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber'),
+            Column(search_quantity='data.measurement.wavelength#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber'),
+            Column(search_quantity='data.measurement.u_p#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber'),
         ],
 
         menu=Menu(
@@ -90,15 +90,15 @@ app_entry_point = AppEntryPoint(
                         ),
                         MenuItemTerms(
                           title='category',
-                         search_quantity='data.category#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                         search_quantity='data.category#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                         ),
                         MenuItemTerms(
                           title='author\'s first name',
-                         search_quantity='data.authors.first_name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                         search_quantity='data.authors.first_name#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                         ),
                         MenuItemTerms(
                           title='author\'s last name',
-                         search_quantity='data.authors.last_name#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                         search_quantity='data.authors.last_name#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                         ),
                     ],
                 ),
@@ -106,13 +106,13 @@ app_entry_point = AppEntryPoint(
                     title='values',
                     items=[
                         MenuItemHistogram(
-                            x='data.measurement.voltage#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                            x='data.measurement.voltage#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                         ),
                         MenuItemHistogram(
-                            x='data.measurement.laserpower#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                            x='data.measurement.laserpower#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                         ),
                         MenuItemHistogram(
-                            x='data.measurement.wavelength#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN',
+                            x='data.measurement.wavelength#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
                         ),
                     ],
                 ),
@@ -121,7 +121,7 @@ app_entry_point = AppEntryPoint(
                     items=[
                         MenuItemTerms(
                             title='tags',
-                            search_quantity='data.measurement.tags.tag#nomad_laserphysics.schema_packages.eln_schema.laserphysicsELN'
+                            search_quantity='data.measurement.tags.tag#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber'
                         ),
                     ],
                 ),

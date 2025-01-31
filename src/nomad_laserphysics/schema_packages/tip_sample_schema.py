@@ -27,7 +27,7 @@ from nomad.metainfo.elasticsearch_extension import (
     material_type,
 )
 
-m_package = SchemaPackage(name='laserphysics tip Sample schema')
+m_package = SchemaPackage(name='tip sample schema')
 
 
 class ToolsCategory(EntryDataCategory):

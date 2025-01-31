@@ -112,8 +112,8 @@ where = ["src"]
 
 [project.entry-points.'nomad.plugin']
 app_entry_point = "nomad_laserphysics.apps:app_entry_point" #app
-eln_schema_package_entry_point = "nomad_laserphysics.schema_packages:eln_schema_package_entry_point" #eln-schema
-tip_schema_package_entry_point = "nomad_laserphysics.schema_packages:tip_schema_package_entry_point" #tip-schema
+FEM_correlation_chamber_schema_package_entry_point = "nomad_laserphysics.schema_packages:FEM_correlation_chamber_schema_package_entry_point"
+tip_sample_schema_package_entry_point = "nomad_laserphysics.schema_packages:tip_sample_schema_package_entry_point"
 
 [tool.cruft]
 # Avoid updating workflow files, this leads to permissions issues
