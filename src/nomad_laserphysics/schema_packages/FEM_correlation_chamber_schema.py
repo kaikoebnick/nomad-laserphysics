@@ -224,7 +224,7 @@ class Measurement(ArchiveSection):
     )
 
     cfd = Quantity(
-        labe='CFD',
+        label='CFD',
         type=bool,
         description="""Check if the measurment uses CFD.""",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
