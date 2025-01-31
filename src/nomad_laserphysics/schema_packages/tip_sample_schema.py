@@ -13,7 +13,6 @@ from nomad.datamodel.data import (
     Schema,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-
 from nomad.datamodel.results import Material, Results
 from nomad.metainfo import (
     Category,

@@ -14,7 +14,7 @@ class ElnSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
     def load(self):
-        from nomad_laserphysics.schema_packages.eln_schema import m_package
+        from src.nomad_laserphysics.schema_packages.FEM_correlation_chamber import m_package
 
         return m_package
 
