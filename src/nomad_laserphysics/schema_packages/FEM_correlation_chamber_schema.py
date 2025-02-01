@@ -23,7 +23,7 @@ from nomad.metainfo import (
     SubSection,
 )
 
-from src.nomad_laserphysics.schema_packages.tip_sample_schema import tipSample
+from nomad_laserphysics.schema_packages.tip_sample_schema import tipSample
 
 m_package = SchemaPackage(name='FEM Correlation Chamber schema')
 
