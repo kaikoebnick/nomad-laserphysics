@@ -6,7 +6,7 @@ class TipSampleSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
     def load(self):
-        from src.nomad_laserphysics.schema_packages.tip_sample_schema import m_package
+        from nomad_laserphysics.schema_packages.tip_sample_schema import m_package
 
         return m_package
 
@@ -14,7 +14,7 @@ class FEMCorrelationChamberSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
     def load(self):
-        from src.nomad_laserphysics.schema_packages. \
+        from nomad_laserphysics.schema_packages. \
             FEM_correlation_chamber_schema import (
             m_package,
         )
