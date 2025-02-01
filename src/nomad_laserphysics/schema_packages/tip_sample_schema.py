@@ -103,8 +103,8 @@ class tipSample(Schema):
             archive.metadata.upload_create_time = self.date
 
         if self.date and self.tip_type:
-            archive.metadata.name = f"{self.date}_{self.tip_type}"
-            logger.info(f"Set entry name to {archive.metadata.name}")
+            archive.metadata.entry_name = f"{self.date}_{self.tip_type}"
+            logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 
 
