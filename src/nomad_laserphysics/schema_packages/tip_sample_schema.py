@@ -5,9 +5,9 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import datetime
-import pytz
 import xml
 
+import pytz
 from ase.data import chemical_symbols
 from nomad.datamodel.data import (
     EntryDataCategory,
