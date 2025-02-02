@@ -104,7 +104,7 @@ class tipSample(Schema):
 
         if self.date and self.tip_type: #set name as date_tip-type
             d = self.date.replace(tzinfo=pytz.utc)
-            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%m-%d-%y_%H:%M")
+            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
             archive.metadata.entry_name = f"{d}_{self.tip_type}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
