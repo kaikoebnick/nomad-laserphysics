@@ -10,7 +10,10 @@ from nomad.metainfo import (
 
 from nomad_laserphysics.schema_packages.measurement import Measurement
 
-m_package = SchemaPackage(name='FIM Test Chamber schema')
+m_package = SchemaPackage(
+    name='FIM Test Chamber schema',
+    label='FIM Test Chamber schema'
+    )
 
 class ToolsCategory(EntryDataCategory):
     m_def = Category(label='Basic ELN', categories=[EntryDataCategory])

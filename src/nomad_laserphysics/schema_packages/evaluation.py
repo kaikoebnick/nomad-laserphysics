@@ -3,6 +3,7 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.metainfo import (
+    Datetime,
     Quantity,
     SchemaPackage,
     Section,
@@ -10,8 +11,7 @@ from nomad.metainfo import (
 
 from nomad_laserphysics.schema_packages.measurement import Measurement
 
-m_package = SchemaPackage(name='FEM Correlation Chamber schema')
-
+m_package = SchemaPackage(name='Evaluation schema')
 
 class Evaluation(Schema):
     m_def = Section(
@@ -22,6 +22,13 @@ class Evaluation(Schema):
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
         description='Human readable name for the reference.',
+    )
+
+    date = Quantity(
+        type=Datetime,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
+        label='measurement date and time',
+        description='Date and time of the measurement.',
     )
 
     measurement = Quantity(
@@ -68,3 +75,16 @@ class Evaluation(Schema):
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
         description='Optional field for adding version information.',
     )
+
+
+    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
+        super().normalize(archive, logger)
+
+        if self.date and self.name: #set name as date_name
+            d = self.date.replace(tzinfo=pytz.utc)
+            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
+            archive.metadata.entry_name = f"{d}_{self.name}"
+            logger.info(f"Set entry name to {archive.metadata.entry_name}")
+
+
+m_package.__init_metainfo__()

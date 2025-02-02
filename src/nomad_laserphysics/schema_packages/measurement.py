@@ -26,7 +26,7 @@ from nomad.metainfo import (
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
 
-m_package = SchemaPackage(name='Schema')
+m_package = SchemaPackage(name='Measurement schema')
 
 
 class ToolsCategory(EntryDataCategory):
@@ -284,7 +284,12 @@ class Measurement(Schema):
                 NomadAuthor(**author.m_to_dict()) for author in self.authors
             ]
         if archive.metadata.main_author not in self.authors:
-            self.authors += [NomadAuthor(**archive.metadata.main_author.m_to_dict())]
+            main_author_dict = {
+                "first_name": archive.metadata.main_author.first_name,
+                "last_name": archive.metadata.main_author.last_name,
+                "affiliation": archive.metadata.main_author.affiliation
+            }
+            self.authors += [NomadAuthor(**main_author_dict)]
 
         if self.date is None: #make date and time searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))

@@ -2,6 +2,14 @@ from nomad.config.models.plugins import SchemaPackageEntryPoint
 from pydantic import Field
 
 
+class EvaluationSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+    parameter: int = Field(0, description='Custom configuration parameter')
+
+    def load(self):
+        from nomad_laserphysics.schema_packages.evaluation import m_package
+
+        return m_package
+
 class MeasurementSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
@@ -38,6 +46,12 @@ class TipSampleSchemaPackageEntryPoint(SchemaPackageEntryPoint):
 
         return m_package
 
+
+evaluation_schema_package_entry_point = EvaluationSchemaPackageEntryPoint(
+    name='evaluation schema',
+    description='New schema package entry point configuration.',
+    plugin_package='schema_packages',
+)
 
 measurement_schema_package_entry_point = \
         MeasurementSchemaPackageEntryPoint(

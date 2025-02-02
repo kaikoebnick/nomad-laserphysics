@@ -10,12 +10,15 @@ from nomad.metainfo import (
 
 from nomad_laserphysics.schema_packages.measurement import Measurement
 
-m_package = SchemaPackage(name='FEM Correlation Chamber schema')
+m_package = SchemaPackage(
+    name='FEM Correlation Chamber schema',
+    label='FEM Correlation Chamber schema'
+    )
 
 class ToolsCategory(EntryDataCategory):
     m_def = Category(label='Basic ELN', categories=[EntryDataCategory])
 
-class FIM_test_chamber(Measurement):
+class FEM_correlation_chamber(Measurement):
     m_def = Section(
         label='FEM Correalation chamber',
         categories=[ToolsCategory],
