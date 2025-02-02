@@ -5,6 +5,7 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import datetime
+import pytz
 import xml
 
 from ase.data import chemical_symbols
@@ -98,7 +99,7 @@ class tipSample(Schema):
                 archive.results.material.elements += [el]
 
         if self.date is None:
-            self.date = datetime.datetime.now()
+            self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
             archive.metadata.upload_create_time = self.date
 
