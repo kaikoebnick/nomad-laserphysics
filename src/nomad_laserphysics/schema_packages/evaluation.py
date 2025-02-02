@@ -1,9 +1,3 @@
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    pass
-
-
 from nomad.datamodel.data import (
     Schema,
 )
@@ -14,6 +8,9 @@ from nomad.metainfo import (
     Section,
 )
 
+from nomad_laserphysics.schema_packages.measurement import Measurement
+
+
 m_package = SchemaPackage(name='FEM Correlation Chamber schema')
 
 
@@ -21,6 +18,21 @@ class Evaluation(Schema):
     m_def = Section(
         a_eln=ELNAnnotation(overview=True),
         )
+
+    name = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        description='Human readable name for the reference.',
+    )
+
+    measurement = Quantity(
+        type=Measurement,
+        description="Evaluated measurement.",
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.ReferenceEditQuantity,
+            showSectionLabel=True,
+        ),
+    )
 
     kind = Quantity(
         type=str,
@@ -38,12 +50,6 @@ class Evaluation(Schema):
                 ]
             ),
         ),
-    )
-
-    name = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        description='Human readable name for the reference.',
     )
 
     description = Quantity(

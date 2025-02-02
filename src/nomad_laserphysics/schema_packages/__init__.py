@@ -2,11 +2,21 @@ from nomad.config.models.plugins import SchemaPackageEntryPoint
 from pydantic import Field
 
 
-class TipSampleSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+class MeasurementSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
     def load(self):
-        from nomad_laserphysics.schema_packages.tip_sample_schema import m_package
+        from nomad_laserphysics.schema_packages.measurement import m_package
+
+        return m_package
+
+class FIMTestChamberSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+    parameter: int = Field(0, description='Custom configuration parameter')
+
+    def load(self):
+        from nomad_laserphysics.schema_packages.FIM_test_chamber import (
+            m_package,
+        )
 
         return m_package
 
@@ -14,12 +24,34 @@ class FEMCorrelationChamberSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
     def load(self):
-        from nomad_laserphysics.schema_packages. \
-            FEM_correlation_chamber_schema import (
+        from nomad_laserphysics.schema_packages.FEM_correlation_chamber import (
             m_package,
         )
 
         return m_package
+
+class TipSampleSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+    parameter: int = Field(0, description='Custom configuration parameter')
+
+    def load(self):
+        from nomad_laserphysics.schema_packages.tip_sample import m_package
+
+        return m_package
+
+
+measurement_schema_package_entry_point = \
+        MeasurementSchemaPackageEntryPoint(
+    name='Measurement schema',
+    description='New schema package entry point configuration.',
+    plugin_package='schema_packages',
+)
+
+FIM_test_chamber_schema_package_entry_point = \
+        FIMTestChamberSchemaPackageEntryPoint(
+    name='FIM test chamber schema',
+    description='New schema package entry point configuration.',
+    plugin_package='schema_packages',
+)
 
 FEM_correlation_chamber_schema_package_entry_point = \
         FEMCorrelationChamberSchemaPackageEntryPoint(

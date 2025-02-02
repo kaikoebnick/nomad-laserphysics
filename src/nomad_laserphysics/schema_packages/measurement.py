@@ -24,7 +24,7 @@ from nomad.metainfo import (
     SubSection,
 )
 
-from nomad_laserphysics.schema_packages.tip_sample_schema import tipSample
+from nomad_laserphysics.schema_packages.tip_sample import TipSample
 
 m_package = SchemaPackage(name='Schema')
 
@@ -101,7 +101,7 @@ class Measurement(Schema):
     )
 
     tip = Quantity(
-        type=tipSample,
+        type=TipSample,
         description="Name of the tip.",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,
