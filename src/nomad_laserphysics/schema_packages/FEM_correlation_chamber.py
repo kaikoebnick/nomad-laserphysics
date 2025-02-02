@@ -23,7 +23,7 @@ class ToolsCategory(EntryDataCategory):
 
 class FEM_correlation_chamber(Measurement):
     m_def = Section(
-        label='FEM Correalation chamber',
+        label='FEM correalation chamber',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
     )

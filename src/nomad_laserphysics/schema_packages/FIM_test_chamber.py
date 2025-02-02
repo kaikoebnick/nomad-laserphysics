@@ -11,8 +11,8 @@ from nomad.metainfo import (
 from nomad_laserphysics.schema_packages.measurement import Measurement
 
 m_package = SchemaPackage(
-    name='FIM Test Chamber schema',
-    label='FIM Test Chamber schema'
+    name='FIM test Chamber schema',
+    label='FIM test Chamber schema'
     )
 
 class ToolsCategory(EntryDataCategory):
@@ -23,7 +23,7 @@ class ToolsCategory(EntryDataCategory):
 
 class FIM_test_chamber(Measurement):
     m_def = Section(
-        label='FIM Test chamber',
+        label='FIM test chamber',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
     )
