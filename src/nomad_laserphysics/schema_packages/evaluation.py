@@ -1,30 +1,18 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from nomad.datamodel.datamodel import EntryArchive
-    from structlog.stdlib import BoundLogger
+    pass
 
-import datetime
-import xml
 
-import pytz
 from nomad.datamodel.data import (
-    ArchiveSection,
-    EntryDataCategory,
     Schema,
 )
-from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.metainfo import (
-    Category,
-    Datetime,
     Quantity,
     SchemaPackage,
     Section,
-    SubSection,
 )
-
-from nomad_laserphysics.schema_packages.tip_sample_schema import tipSample
 
 m_package = SchemaPackage(name='FEM Correlation Chamber schema')
 

@@ -1,15 +1,10 @@
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    pass
-
-
 from nomad.datamodel.data import (
     EntryDataCategory,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.metainfo import (
     Category,
+    SchemaPackage,
     Section,
 )
 
