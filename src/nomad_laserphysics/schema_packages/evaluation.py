@@ -1,3 +1,11 @@
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from nomad.datamodel.datamodel import EntryArchive
+    from structlog.stdlib import BoundLogger
+
+
+import pytz
 from nomad.datamodel.data import (
     Schema,
 )
