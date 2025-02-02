@@ -21,7 +21,7 @@ class ToolsCategory(EntryDataCategory):
         categories=[EntryDataCategory]
     )
 
-class FIM_test_chamber(Measurement):
+class FIMTestChamber(Measurement):
     m_def = Section(
         label='FIM test chamber',
         categories=[ToolsCategory],

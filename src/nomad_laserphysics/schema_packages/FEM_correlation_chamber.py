@@ -21,7 +21,7 @@ class ToolsCategory(EntryDataCategory):
         categories=[EntryDataCategory]
     )
 
-class FEM_correlation_chamber(Measurement):
+class FEMCorrelationChamber(Measurement):
     m_def = Section(
         label='FEM correalation chamber',
         categories=[ToolsCategory],

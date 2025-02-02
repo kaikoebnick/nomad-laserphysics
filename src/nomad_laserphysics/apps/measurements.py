@@ -33,28 +33,28 @@ if upload_ids:
         'upload_id': upload_ids,
         'section_defs.definition_qualified_name': [
             'nomad_laserphysics.schema_packages.measurement.Measurement'
-            #'nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
-            #'nomad_laserphysics.schema_packages.FIM_test_chamber_schema.FIMTestChamber'
+            #'nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
+            #'nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
         ],
     }
 else:
     filters_locked = {
         'section_defs.definition_qualified_name': [
             'nomad_laserphysics.schema_packages.measurement.Measurement'
-           #'nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
-           #'nomad_laserphysics.schema_packages.FIM_test_chamber_schema.FIMTestChamber'
+           #'nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
+           #'nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
         ]
     }
 
-Measurements=App(
+Measurements = App(
     label='Measurements',
-    description='Search Laserphysics notebooks',
-    path='laserphysics',
+    description='Search Laserphysics measurements',
+    path='measurments',
     category='Chair for Laserphysics',
     filters=Filters(
         include=[
-            '*#nomad_laserphysics.schema_packages.FEM_correlation_chamber_schema.FEMCorrelationChamber',
-            '*#nomad_laserphysics.schema_packages.FIM_test_chamber_schema.FIMTestChamber'
+            '*#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
+            '*#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
             ],
     ),
     filters_locked=filters_locked,
@@ -159,4 +159,4 @@ Measurements=App(
         details=RowDetails(enabled=True),
         selection=RowSelection(enabled=True),
     ),
-),
+)
