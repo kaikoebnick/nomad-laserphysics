@@ -53,8 +53,9 @@ Measurements = App(
     category='Chair for Laserphysics',
     filters=Filters(
         include=[
-            '*#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
-            '*#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
+            '*#nomad_laserphysics.schema_packages.measurement.Measurement'
+            #'*#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
+            #'*#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
             ],
     ),
     filters_locked=filters_locked,
@@ -116,6 +117,9 @@ Measurements = App(
                     ),
                     MenuItemHistogram(
                         x='data.wavelength#nomad_laserphysics.schema_packages.measurement.Measurement',
+                    ),
+                    MenuItemHistogram(
+                        x='data.u_p#nomad_laserphysics.schema_packages.measurement.Measurement',
                     ),
                 ],
             ),
