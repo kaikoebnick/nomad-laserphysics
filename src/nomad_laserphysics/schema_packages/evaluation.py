@@ -10,7 +10,6 @@ from nomad.metainfo import (
 
 from nomad_laserphysics.schema_packages.measurement import Measurement
 
-
 m_package = SchemaPackage(name='FEM Correlation Chamber schema')
 
 
