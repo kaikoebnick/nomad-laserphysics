@@ -32,7 +32,10 @@ m_package = SchemaPackage(name='tip sample schema')
 
 
 class ToolsCategory(EntryDataCategory):
-    m_def = Category(label='Basic ELN', categories=[EntryDataCategory])
+    m_def = Category(
+        label='A collection of Laserphysics schemas',
+        categories=[EntryDataCategory]
+    )
 
 
 def remove_tags(text):

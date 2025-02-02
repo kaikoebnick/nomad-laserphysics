@@ -16,7 +16,10 @@ m_package = SchemaPackage(
     )
 
 class ToolsCategory(EntryDataCategory):
-    m_def = Category(label='Basic ELN', categories=[EntryDataCategory])
+    m_def = Category(
+        label='A collection of Laserphysics schemas',
+        categories=[EntryDataCategory]
+    )
 
 class FEM_correlation_chamber(Measurement):
     m_def = Section(

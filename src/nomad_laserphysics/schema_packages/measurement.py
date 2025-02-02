@@ -30,7 +30,10 @@ m_package = SchemaPackage(name='Measurement schema')
 
 
 class ToolsCategory(EntryDataCategory):
-    m_def = Category(label='Basic ELN', categories=[EntryDataCategory])
+    m_def = Category(
+        label='A collection of Laserphysics schemas',
+        categories=[EntryDataCategory]
+    )
 
 
 def remove_tags(text):
@@ -74,7 +77,7 @@ class Tags(ArchiveSection): #used to make tags searchable
 
 class Measurement(Schema):
     m_def = Section(
-        label='Measurement',
+        label='measurement',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
     )
@@ -287,7 +290,6 @@ class Measurement(Schema):
             main_author_dict = {
                 "first_name": archive.metadata.main_author.first_name,
                 "last_name": archive.metadata.main_author.last_name,
-                "affiliation": archive.metadata.main_author.affiliation
             }
             self.authors += [NomadAuthor(**main_author_dict)]
 

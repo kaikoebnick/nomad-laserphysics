@@ -4,13 +4,16 @@ if TYPE_CHECKING:
     from nomad.datamodel.datamodel import EntryArchive
     from structlog.stdlib import BoundLogger
 
+import xml
 
 import pytz
 from nomad.datamodel.data import (
+    EntryDataCategory,
     Schema,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.metainfo import (
+    Category,
     Datetime,
     Quantity,
     SchemaPackage,
@@ -21,8 +24,21 @@ from nomad_laserphysics.schema_packages.measurement import Measurement
 
 m_package = SchemaPackage(name='Evaluation schema')
 
+class ToolsCategory(EntryDataCategory):
+    m_def = Category(
+        label='A collection of Laserphysics schemas',
+        categories=[EntryDataCategory]
+    )
+
+
+def remove_tags(text):
+    return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
+
+
 class Evaluation(Schema):
     m_def = Section(
+        label='evaluation',
+        categories=[ToolsCategory],
         a_eln=ELNAnnotation(overview=True),
         )
 
