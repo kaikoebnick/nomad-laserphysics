@@ -58,7 +58,7 @@ class tipSample(Schema):
         type=Datetime,
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
         label='date and time',
-        description='Date and time of the tip.',
+        description='Date and time of the tip-creation.',
     )
 
     material = Quantity(
@@ -84,7 +84,7 @@ class tipSample(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if self.material:
+        if self.material: #make elements in material searchable
             if not archive.results:
                 archive.results = Results(
                     a_display={'visible': False, 'editable': False}
@@ -93,19 +93,18 @@ class tipSample(Schema):
                 archive.results.material = Material(
                     a_display={'visible': False, 'editable': False}
                     )
+            for el in self.material:
+                if el not in archive.results.material.elements:
+                    archive.results.material.elements += [el]
 
-        for el in self.material:
-            if el not in archive.results.material.elements:
-                archive.results.material.elements += [el]
-
-        if self.date is None:
+        if self.date is None: #make date and time searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.tip_type:
+        if self.date and self.tip_type: #set name as date_tip-type
             d = self.date.replace(tzinfo=pytz.utc)
-            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%m/%d/%Y_%H:%M")
+            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%m-%d-%y_%H:%M")
             archive.metadata.entry_name = f"{d}_{self.tip_type}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 

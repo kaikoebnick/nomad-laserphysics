@@ -7,6 +7,7 @@ if TYPE_CHECKING:
 import datetime
 import xml
 
+import pytz
 from nomad.datamodel.data import (
     ArchiveSection,
     EntryDataCategory,
@@ -37,71 +38,30 @@ def remove_tags(text):
 
 
 class Author(ArchiveSection):
-    m_def = Section(a_eln=ELNAnnotation(overview=True))
+    m_def = Section(
+        a_eln=ELNAnnotation(overview=True),
+        )
 
     first_name = Quantity(
         type=str,
         a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity, label='First Name'
+            component=ELNComponentEnum.StringEditQuantity,
         ),
+        label='First Name',
         description='First name of the author',
     )
 
     last_name = Quantity(
         type=str,
         a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity, label='Last Name'
+            component=ELNComponentEnum.StringEditQuantity,
         ),
+        label='Last Name',
         description='Last name of the author.',
     )
 
 
-class Evaluation(ArchiveSection):
-    m_def = Section(a_eln=ELNAnnotation(overview=True))
-
-    kind = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity,
-            props=dict(
-                suggestions=[
-                    'local file url',
-                    'article url',
-                    'dataset url',
-                    'video url',
-                    'picture url',
-                    'documentation',
-                    'other',
-                ]
-            ),
-        ),
-    )
-
-    name = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        description='Human readable name for the reference.',
-    )
-
-    description = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
-        description='Extra details about the reference.',
-    )
-
-    uri = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.URLEditQuantity, label='URI'),
-        description='External URI for the reference.',
-    )
-
-    version = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        description='Optional field for adding version information.',
-    )
-
-class Tags(ArchiveSection):
+class Tags(ArchiveSection): #used to make tags searchable
     m_def = Section(a_display=
     {'visible': False, 'editable': False}
     )
@@ -111,12 +71,38 @@ class Tags(ArchiveSection):
         a_display={'visible': False, 'editable': False},
     )
 
-class Measurement(ArchiveSection):
-    m_def = Section(a_eln=ELNAnnotation(overview=True))
+
+class FEMCorrelationChamber(Schema):
+    m_def = Section(
+        label='FEM Correlation Chamber',
+        categories=[ToolsCategory],
+        a_eln=ELNAnnotation(),
+    )
+
+    name = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        label='name/title',
+        description='Short name of the measurement.',
+    )
+
+    date = Quantity(
+        type=Datetime,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
+        label='measurement date and time',
+        description='Date and time of the measurement.',
+    )
+
+    idea_behind_measurement = Quantity(
+        type=str,
+        label='idea behind measurement',
+        a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
+        description='Short description on why the measurement was taken.',
+    )
 
     tip = Quantity(
         type=tipSample,
-        description="""Type of the tip.""",
+        description="Name of the tip.",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,
             showSectionLabel=True,
@@ -126,7 +112,7 @@ class Measurement(ArchiveSection):
     voltage = Quantity(
         type=float,
         unit='volt',
-        description="""Voltage in V.""",
+        description="Voltage in V.",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
         ),
@@ -236,63 +222,6 @@ class Measurement(ArchiveSection):
         description='Extra details about the measurement.',
     )
 
-    evaluations = SubSection(section=Evaluation, repeats=True)
-
-    tags = SubSection(section=Tags, repeats=True,
-    a_display={'visible': False, 'editable': False}
-    )
-
-    def normalize(self, archive, logger: 'BoundLogger') -> None:
-        super().normalize(archive, logger)
-
-        boolean_to_tag_map = {
-            'multiphoton_peaks': self.multiphoton_peaks,
-            'plateau': self.plateau,
-            'voltage_sweep': self.voltage_sweep,
-            'power_sweep': self.power_sweep,
-            'cep_sweep': self.cep_sweep,
-            'electrons': self.electrons,
-            'ions': self.ions,
-            'photons': self.photons,
-            'ToF_gauge_measurement': self.ToF_gauge_measurement,
-            'adc': self.adc,
-            'cfd': self.cfd,
-        }
-
-        for boolean_name, boolean_value in boolean_to_tag_map.items():
-            # Check wether tag exists
-            existing_tags = [tag.tag for tag in self.tags]
-
-            if boolean_value and boolean_name not in existing_tags:
-                # Bool True but Tag does not yet exist -> add
-                new_tag = Tags(tag=boolean_name)
-                self.tags.append(new_tag)
-            elif not boolean_value and boolean_name in existing_tags:
-                # Boll False, but Tag does exist -> delete
-                self.tags = [tag for tag in self.tags if tag.tag != boolean_name]
-
-
-class FEMCorrelationChamber(Schema):
-    m_def = Section(
-        label='FEM Correlation Chamber',
-        categories=[ToolsCategory],
-        a_eln=ELNAnnotation(),
-    )
-
-    name = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='name/title',
-        description='Short name of the ELN.',
-    )
-
-    date = Quantity(
-        type=Datetime,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
-        label='measurement date',
-        description='The date of the measurement.',
-    )
-
     description = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
@@ -315,25 +244,105 @@ class FEMCorrelationChamber(Schema):
 
     authors = SubSection(section=Author, repeats=True)
 
-    measurement = SubSection(section=Measurement, repeats=True)
-
+    tags = SubSection( #make tags searchable
+        section=Tags,
+        repeats=True,
+        a_display={'visible': False, 'editable': False}
+    )
 
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if self.name:
-            archive.metadata.entry_name = self.name
+        #make tags searchable
+        boolean_to_tag_map = {
+            'multiphoton_peaks': self.multiphoton_peaks,
+            'plateau': self.plateau,
+            'voltage_sweep': self.voltage_sweep,
+            'power_sweep': self.power_sweep,
+            'cep_sweep': self.cep_sweep,
+            'electrons': self.electrons,
+            'ions': self.ions,
+            'photons': self.photons,
+            'ToF_gauge_measurement': self.ToF_gauge_measurement,
+            'adc': self.adc,
+            'cfd': self.cfd,
+        }
+        for boolean_name, boolean_value in boolean_to_tag_map.items():
+            # Check wether tag exists
+            existing_tags = [tag.tag for tag in self.tags]
+            if boolean_value and boolean_name not in existing_tags:
+                # Bool True but Tag does not yet exist -> add
+                new_tag = Tags(tag=boolean_name)
+                self.tags.append(new_tag)
+            elif not boolean_value and boolean_name in existing_tags:
+                # Boll False, but Tag does exist -> delete
+                self.tags = [tag for tag in self.tags if tag.tag != boolean_name]
 
+        #make authors searchable
         if self.authors:
             archive.metadata.entry_coauthors = [
                 NomadAuthor(**author.m_to_dict()) for author in self.authors
             ]
-        if self.date is None:
-            self.date = datetime.datetime.now()
+
+        if self.date is None: #make date and time searchable
+            self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
             archive.metadata.upload_create_time = self.date
 
+        if self.date and self.tip_type: #set name as date_name
+            d = self.date.replace(tzinfo=pytz.utc)
+            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%m-%d-%y_%H:%M")
+            archive.metadata.entry_name = f"{d}_{self.name}"
+            logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
+
+#TODO: make new schema "evaluation"
+class Evaluation(ArchiveSection):
+    m_def = Section(
+        a_eln=ELNAnnotation(overview=True),
+        )
+
+    kind = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.EnumEditQuantity,
+            props=dict(
+                suggestions=[
+                    'local file url',
+                    'article url',
+                    'dataset url',
+                    'video url',
+                    'picture url',
+                    'documentation',
+                    'other',
+                ]
+            ),
+        ),
+    )
+
+    name = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        description='Human readable name for the reference.',
+    )
+
+    description = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
+        description='Extra details about the reference.',
+    )
+
+    uri = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.URLEditQuantity, label='URI'),
+        description='External URI for the reference.',
+    )
+
+    version = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        description='Optional field for adding version information.',
+    )
 
 
 m_package.__init_metainfo__()
