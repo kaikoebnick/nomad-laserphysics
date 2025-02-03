@@ -92,11 +92,11 @@ FEMCorrelationChambers = App(
                     ),
                     MenuItemTerms(
                     title='author\'s first name',
-                    search_quantity='data.authors.first_name#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
+                    search_quantity='data.co_authors.first_name#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
                     ),
                     MenuItemTerms(
                     title='author\'s last name',
-                    search_quantity='data.authors.last_name#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
+                    search_quantity='data.co_authors.last_name#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
                     ),
                 ],
             ),
