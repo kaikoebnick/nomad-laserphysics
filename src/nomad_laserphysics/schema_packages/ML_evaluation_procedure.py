@@ -9,7 +9,6 @@ from nomad.metainfo import (
     Section,
 )
 
-
 m_package = SchemaPackage(name='ML Evaluation Procedure schema')
 
 class ToolsCategory(EntryDataCategory):
