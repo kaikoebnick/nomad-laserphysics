@@ -124,7 +124,7 @@ class Measurement(Schema):
     laserpower = Quantity(
         type=float,
         unit='milliwatt',
-        description="""Laserpower in mW.""",
+        description="Laserpower in mW.",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
             defaultDisplayUnit='milliwatt'
@@ -134,7 +134,7 @@ class Measurement(Schema):
     wavelength = Quantity(
         type=float,
         unit='nanometer',
-        description="""Wavelength in nm.""",
+        description="Wavelength in nm.",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
             defaultDisplayUnit='nanometer'
@@ -145,7 +145,7 @@ class Measurement(Schema):
         type=float,
         label='U_p',
         unit='electron_volt',
-        description="""U_p in V.""",
+        description="U_p in V.",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
         ),
@@ -153,69 +153,78 @@ class Measurement(Schema):
 
     multiphoton_peaks = Quantity(
         type=bool,
-        description="""Check if there are multiphoton peaks.""",
+        label='multiphoton peaks',
+        description="Check if there are multiphoton peaks.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     plateau = Quantity(
         type=bool,
-        description="""Check if there is a plateau.""",
+        label='plateu',
+        description="Check if there is a plateau.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     voltage_sweep = Quantity(
         type=bool,
-        description="""Check if there is a voltage sweep.""",
+        label='voltage_sweep',
+        description="Check if there is a voltage sweep.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     power_sweep = Quantity(
         type=bool,
-        description="""Check if there is a power sweep.""",
+        label='power_sweep',
+        description="Check if there is a power sweep.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     cep_sweep = Quantity(
         type=bool,
-        description="""Check if there is a CEP sweep.""",
+        label='cep_sweep',
+        description="Check if there is a CEP sweep.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     electrons = Quantity(
         type=bool,
-        description="""Check if there are electrons.""",
+        label='electrons',
+        description="Check if there are electrons.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     ions = Quantity(
         type=bool,
-        description="""Check if there are ions.""",
+        labe='ions',
+        description="Check if there are ions.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     photons = Quantity(
         type=bool,
-        description="""Check if there are photons.""",
+        label='photons',
+        description="Check if there are photons.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     ToF_gauge_measurement = Quantity(
         type=bool,
-        description="""Check if this is a ToF gauge measurement.""",
+        label='ToF_gauge_measurement',
+        description="Check if this is a ToF gauge measurement.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     adc = Quantity(
-        label='ADC',
         type=bool,
-        description="""Check if the measurement uses an ADC""",
+        label='ADC',
+        description="Check if the measurement uses an ADC",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
     cfd = Quantity(
-        label='CFD',
         type=bool,
-        description="""Check if the measurment uses CFD.""",
+        label='CFD',
+        description="Check if the measurment uses CFD.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
 
@@ -258,17 +267,9 @@ class Measurement(Schema):
 
         #make tags searchable
         boolean_to_tag_map = {
-            'multiphoton_peaks': self.multiphoton_peaks,
-            'plateau': self.plateau,
-            'voltage_sweep': self.voltage_sweep,
-            'power_sweep': self.power_sweep,
-            'cep_sweep': self.cep_sweep,
-            'electrons': self.electrons,
-            'ions': self.ions,
-            'photons': self.photons,
-            'ToF_gauge_measurement': self.ToF_gauge_measurement,
-            'adc': self.adc,
-            'cfd': self.cfd,
+            qant.label: getattr(self, lab)
+            for lab, qant in self.m_def.quantities.items()
+            if qant.type is bool
         }
         for boolean_name, boolean_value in boolean_to_tag_map.items():
             # Check wether tag exists
