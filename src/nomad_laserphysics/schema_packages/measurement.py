@@ -268,11 +268,11 @@ class Measurement(Schema):
         #make tags searchable
         logger.info(f"Zeug {self.m_def.quantities[10].type} \
             + {self.m_def.quantities[10].name} + \
-                  {self.getattr(self, str(self.m_def.quantities[10].name))}")
+                  {getattr(self, str(self.m_def.quantities[10].name))}")
         boolean_to_tag_map = {
             quant.name: quant
             for quant in self.m_def.quantities
-            if str(quant.type) == "m_bool(bool)" and self.getattr(self, str(quant.name))
+            if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
         }
         for boolean_name, boolean_value in boolean_to_tag_map.items():
             # Check wether tag exists
