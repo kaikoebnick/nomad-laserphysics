@@ -1,8 +1,7 @@
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from nomad.datamodel.datamodel import EntryArchive
-    from structlog.stdlib import BoundLogger
+    pass
 
 
 from nomad.datamodel.data import (
@@ -33,10 +32,8 @@ class FEMCorrelationChamber(Measurement):
         label='FEM correalation chamber',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
+        quantities=[*Measurement.m_def.quantities,]
     )
-
-    def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
-        super().normalize(archive, logger)
 
 
 m_package.__init_metainfo__()

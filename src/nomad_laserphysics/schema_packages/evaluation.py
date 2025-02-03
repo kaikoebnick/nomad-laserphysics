@@ -4,6 +4,7 @@ if TYPE_CHECKING:
     from nomad.datamodel.datamodel import EntryArchive
     from structlog.stdlib import BoundLogger
 
+import datetime
 import xml
 
 import pytz
@@ -41,6 +42,12 @@ class Evaluation(Schema):
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(overview=True),
         )
+
+    entry_id = Quantity(
+        type=str,
+        label='entry id',
+        description='Automatically set id that is unique for this evaluation.',
+    )
 
     name = Quantity(
         type=str,
@@ -104,10 +111,16 @@ class Evaluation(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
+        if self.date is None: #make date and time searchable
+            self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
+        if self.date:
+            archive.metadata.upload_create_time = self.date
+
         if self.date and self.name: #set name as date_name
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
             archive.metadata.entry_name = f"{d}_{self.name}"
+            self.entry_id = f"{d}_{self.name}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 
