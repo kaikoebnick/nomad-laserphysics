@@ -55,7 +55,7 @@ FEMCorrelationChambers = App(
     filters_locked=filters_locked,
 
     columns=[
-        Column(search_quantity='entry_id'),
+        Column(search_quantity='unique_id'),
         Column(search_quantity='entry_type', align=AlignEnum.LEFT),
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='data.name#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',

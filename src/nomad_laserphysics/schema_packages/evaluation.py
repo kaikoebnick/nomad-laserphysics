@@ -43,9 +43,9 @@ class Evaluation(Schema):
         a_eln=ELNAnnotation(overview=True),
         )
 
-    entry_id = Quantity(
+    unique_id = Quantity(
         type=str,
-        label='entry id',
+        label='unique id',
         description='Automatically set id that is unique for this evaluation.',
     )
 
@@ -120,7 +120,7 @@ class Evaluation(Schema):
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
             archive.metadata.entry_name = f"{d}_{self.name}"
-            self.entry_id = f"{d}_{self.name}"
+            self.unique_id = f"{d}_{self.name}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 
