@@ -245,7 +245,7 @@ class Measurement(Schema):
         ),
     )
 
-    authors = SubSection(section=Author, repeats=True)
+    co_authors = SubSection(section=Author, repeats=True)
 
     tags = SubSection( #make tags searchable
         section=Tags,
@@ -281,17 +281,11 @@ class Measurement(Schema):
                 # Boll False, but Tag does exist -> delete
                 self.tags = [tag for tag in self.tags if tag.tag != boolean_name]
 
-        #make authors searchable
-        if self.authors:
+        #make co_authors searchable
+        if self.co_authors:
             archive.metadata.entry_coauthors = [
-                NomadAuthor(**author.m_to_dict()) for author in self.authors
+                NomadAuthor(**author.m_to_dict()) for author in self.co_authors
             ]
-        if archive.metadata.main_author not in self.authors:
-            main_author_dict = {
-                "first_name": archive.metadata.main_author.first_name,
-                "last_name": archive.metadata.main_author.last_name,
-            }
-            self.authors += [NomadAuthor(**main_author_dict)]
 
         if self.date is None: #make date and time searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
