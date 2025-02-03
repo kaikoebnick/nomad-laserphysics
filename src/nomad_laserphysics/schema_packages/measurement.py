@@ -84,6 +84,7 @@ class Measurement(Schema):
 
     unique_id = Quantity(
         type=str,
+        a_eln=ELNAnnotation(),
         label='unique id',
         description='Automatically set id that is unique for this measuremnt.',
     )
