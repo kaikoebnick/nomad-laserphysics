@@ -267,9 +267,10 @@ class Measurement(Schema):
 
         #make tags searchable
         boolean_to_tag_map = {}
-        for quant in self.m_def.quantities:
-                if quant.type is bool:
-                    boolean_to_tag_map[quant.label] = quant
+        logger.info(f"Zeug: {self.m_def.quantities}")
+        #for quant in self.m_def.quantities:
+                #if quant.type is bool:
+                    #boolean_to_tag_map[quant.label] = quant
         for boolean_name, boolean_value in boolean_to_tag_map.items():
             # Check wether tag exists
             existing_tags = [tag.tag for tag in self.tags]
