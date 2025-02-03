@@ -266,14 +266,13 @@ class Measurement(Schema):
         super().normalize(archive, logger)
 
         #make tags searchable
-        logger.info(f"Zeug {self.m_def.quantities[10].type} \
-            + {self.m_def.quantities[10].name} + \
-                  {getattr(self, str(self.m_def.quantities[10].name))}")
+        boolean_to_tag_map = {}
         boolean_to_tag_map = {
             quant.name: quant
             for quant in self.m_def.quantities
             if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
         }
+        logger.info(f"Zeug {boolean_to_tag_map}")
         for boolean_name, boolean_value in boolean_to_tag_map.items():
             # Check wether tag exists
             existing_tags = [tag.tag for tag in self.tags]
@@ -282,7 +281,7 @@ class Measurement(Schema):
                 new_tag = Tags(tag=boolean_name)
                 self.tags.append(new_tag)
             elif not boolean_value and boolean_name in existing_tags:
-                # Boll False, but Tag does exist -> delete
+                # Bool False, but Tag does exist -> delete
                 self.tags = [tag for tag in self.tags if tag.tag != boolean_name]
 
         #make co_authors searchable
