@@ -266,11 +266,12 @@ class Measurement(Schema):
         super().normalize(archive, logger)
 
         #make tags searchable
-        logger.info(f"Zeug {self.m_def.quantities[0].type}")
+        logger.info(f"Zeug {self.m_def.quantities[10].type} \
+                + {self.m_def.quantities[10].name} + {self.m_def.quantities[10].value}")
         boolean_to_tag_map = {
             quant.name: quant
             for quant in self.m_def.quantities
-            if hasattr(quant, "type") and isinstance(quant.type, bool)
+            if str(quant.type) == "m_bool(bool)"
         }
         for boolean_name, boolean_value in boolean_to_tag_map.items():
             # Check wether tag exists
