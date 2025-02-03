@@ -92,7 +92,7 @@ class Measurement(Schema):
     date = Quantity(
         type=Datetime,
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
-        label='measurement date and time',
+        label='date and time',
         description='Date and time of the measurement.',
     )
 
@@ -268,7 +268,7 @@ class Measurement(Schema):
         #make tags searchable
         boolean_to_tag_map = {
             qant.label: getattr(self, lab)
-            for lab, qant in self.m_def.quantities.items()
+            for lab, qant in self.m_def.quantities
             if qant.type is bool
         }
         for boolean_name, boolean_value in boolean_to_tag_map.items():
