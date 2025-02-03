@@ -266,14 +266,11 @@ class Measurement(Schema):
         super().normalize(archive, logger)
 
         #make tags searchable
-        boolean_to_tag_map = {}
-        boolean_to_tag_map = {
-            quant.name: quant
+        self.tags = list(
+            Tags(tag=quant.name)
             for quant in self.m_def.quantities
             if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
-        }
-        logger.info(f"Zeug {boolean_to_tag_map}")
-        self.tags = [Tags(tag=boolean_name) for boolean_name in boolean_to_tag_map]
+        )
 
         #make co_authors searchable
         if self.co_authors:
