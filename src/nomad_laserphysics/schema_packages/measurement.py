@@ -267,8 +267,8 @@ class Measurement(Schema):
 
         #make tags searchable
         boolean_to_tag_map = {}
-        logger.info(f"Zeug: {self.m_def.quantities}")
-        #for quant in self.m_def.quantities:
+        logger.info(f"Zeug: {dir(self)}")
+        #for quant in dir(self):
                 #if quant.type is bool:
                     #boolean_to_tag_map[quant.label] = quant
         for boolean_name, boolean_value in boolean_to_tag_map.items():
