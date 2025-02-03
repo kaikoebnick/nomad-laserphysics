@@ -273,16 +273,7 @@ class Measurement(Schema):
             if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
         }
         logger.info(f"Zeug {boolean_to_tag_map}")
-        for boolean_name, boolean_value in boolean_to_tag_map.items():
-            # Check wether tag exists
-            existing_tags = [tag.tag for tag in self.tags]
-            if boolean_value and boolean_name not in existing_tags:
-                # Bool True but Tag does not yet exist -> add
-                new_tag = Tags(tag=boolean_name)
-                self.tags.append(new_tag)
-            elif not boolean_value and boolean_name in existing_tags:
-                # Bool False, but Tag does exist -> delete
-                self.tags = [tag for tag in self.tags if tag.tag != boolean_name]
+        self.tags = [Tags(tag=boolean_name) for boolean_name in boolean_to_tag_map]
 
         #make co_authors searchable
         if self.co_authors:
