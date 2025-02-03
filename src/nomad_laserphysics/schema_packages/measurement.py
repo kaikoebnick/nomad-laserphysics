@@ -195,7 +195,7 @@ class Measurement(Schema):
 
     ions = Quantity(
         type=bool,
-        labe='ions',
+        label='ions',
         description="Check if there are ions.",
         a_eln=ELNAnnotation(component=ELNComponentEnum.BoolEditQuantity),
     )
@@ -267,7 +267,7 @@ class Measurement(Schema):
 
         #make tags searchable
         boolean_to_tag_map = {}
-        #logger.info(f"Zeug: {dir(self)}")
+        logger.info(f"Zeug: {dir(self)}")
         #for quant in dir(self):
                 #if quant.type is bool:
                     #boolean_to_tag_map[quant.label] = quant
