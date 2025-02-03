@@ -10,6 +10,22 @@ class EvaluationSchemaPackageEntryPoint(SchemaPackageEntryPoint):
 
         return m_package
 
+class MLEvaluationSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+    parameter: int = Field(0, description='Custom configuration parameter')
+
+    def load(self):
+        from nomad_laserphysics.schema_packages.ML_evaluation import m_package
+
+        return m_package
+
+class MLEvaluationProcedureSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+    parameter: int = Field(0, description='Custom configuration parameter')
+
+    def load(self):
+        from nomad_laserphysics.schema_packages.ML_evaluation_procedure import m_package
+
+        return m_package
+
 class MeasurementSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
@@ -49,6 +65,19 @@ class TipSampleSchemaPackageEntryPoint(SchemaPackageEntryPoint):
 
 evaluation_schema_package_entry_point = EvaluationSchemaPackageEntryPoint(
     name='evaluation schema',
+    description='New schema package entry point configuration.',
+    plugin_package='schema_packages',
+)
+
+ML_evaluation_schema_package_entry_point = MLEvaluationSchemaPackageEntryPoint(
+    name='ML evaluation schema',
+    description='New schema package entry point configuration.',
+    plugin_package='schema_packages',
+)
+
+ML_evaluation_procedure_schema_package_entry_point = \
+    MLEvaluationProcedureSchemaPackageEntryPoint(
+    name='ML evaluation procedure schema',
     description='New schema package entry point configuration.',
     plugin_package='schema_packages',
 )
