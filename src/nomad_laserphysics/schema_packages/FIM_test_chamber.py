@@ -26,6 +26,7 @@ class FIMTestChamber(Measurement):
         label='FIM test chamber',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
+        quantities=[*Measurement.m_def.quantities,]
     )
 
 
