@@ -267,7 +267,7 @@ class Measurement(Schema):
 
         #make tags searchable
         logger.info(f"Zeug {self.m_def.quantities[10].type} \
-                + {self.m_def.quantities[10].name} + {self.m_def.quantities[10].value}")
+                + {self.m_def.quantities[10].name} + {self.m_def.quantities[10].values}")
         boolean_to_tag_map = {
             quant.name: quant
             for quant in self.m_def.quantities
