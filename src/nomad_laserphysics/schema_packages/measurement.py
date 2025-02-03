@@ -11,14 +11,13 @@ import pytz
 from nomad.datamodel.data import (
     ArchiveSection,
     EntryDataCategory,
-    #Schema,
+    Schema,
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.metainfo import (
     Category,
     Datetime,
-    Msection,
     Quantity,
     SchemaPackage,
     Section,
@@ -76,7 +75,7 @@ class Tags(ArchiveSection): #used to make tags searchable
     )
 
 
-class Measurement(Msection):
+class Measurement(Schema):
     m_def = Section(
         label='measurement',
         categories=[ToolsCategory],
