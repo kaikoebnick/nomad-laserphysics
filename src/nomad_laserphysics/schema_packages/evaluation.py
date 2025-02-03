@@ -114,7 +114,7 @@ class Evaluation(Schema):
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
             archive.metadata.entry_name = f"{d}_{self.name}"
-            self.metadata.mainfile = f"{d}_{self.name}.archive.json"
+            archive.metadata.mainfile = f"{d}_{self.name}.archive.json"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 
