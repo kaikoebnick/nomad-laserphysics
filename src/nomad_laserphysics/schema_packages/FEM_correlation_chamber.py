@@ -7,10 +7,9 @@ if TYPE_CHECKING:
 from nomad.datamodel.data import (
     EntryDataCategory,
 )
-from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
+from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.metainfo import (
     Category,
-    Quantity,
     SchemaPackage,
     Section,
 )
@@ -33,13 +32,6 @@ class FEMCorrelationChamber(Measurement):
         label='FEM correalation chamber',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
-    )
-
-    extra = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='extra',
-        description='extra.',
     )
 
 
