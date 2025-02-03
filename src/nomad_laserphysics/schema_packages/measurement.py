@@ -268,8 +268,8 @@ class Measurement(Schema):
         #make tags searchable
         boolean_to_tag_map = {}
         for quant in dir(self):
-                if quant.type and quant.type is bool:
-                    boolean_to_tag_map[quant.name] = quant
+                if getattr(self, quant).type and getattr(self, quant) is bool:
+                    boolean_to_tag_map[getattr(self, quant).name] = getattr(self, quant)
         for boolean_name, boolean_value in boolean_to_tag_map.items():
             # Check wether tag exists
             existing_tags = [tag.tag for tag in self.tags]
