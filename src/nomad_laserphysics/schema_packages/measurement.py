@@ -5,6 +5,8 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import datetime
+import os
+import sys
 import xml
 
 import pytz
@@ -25,6 +27,8 @@ from nomad.metainfo import (
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
+#search for other python-modules
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from nomad_laserphysics.tools import id_generator
 
 m_package = SchemaPackage(name='Measurement schema')
