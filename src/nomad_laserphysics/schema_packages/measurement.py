@@ -5,8 +5,6 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import datetime
-import os
-import sys
 import xml
 
 import pytz
@@ -27,10 +25,7 @@ from nomad.metainfo import (
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
-
-#search for other python-modules
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from nomad_laserphysics.tools import id_generator
+from nomad_laserphysics.tools.id_generator import generate_id
 
 m_package = SchemaPackage(name='Measurement schema')
 
@@ -310,7 +305,7 @@ class Measurement(Schema):
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
         if self.name:
-            self.laserphysics_id = id_generator.generate_id(self.name)
+            self.laserphysics_id = generate_id(self.name)
 
 
 m_package.__init_metainfo__()
