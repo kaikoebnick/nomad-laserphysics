@@ -25,7 +25,6 @@ from nomad.metainfo import (
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
-
 from nomad_laserphysics.tools.id_generator import generate_id
 
 m_package = SchemaPackage(name='Measurement schema')
@@ -82,6 +81,7 @@ class Measurement(Schema):
         label='measurement',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
+        a_display={'order': ['name', 'laserphysics_id'] }
     )
 
     name = Quantity(
