@@ -27,6 +27,7 @@ from nomad.metainfo import (
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
+
 #search for other python-modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from nomad_laserphysics.tools import id_generator
