@@ -52,7 +52,7 @@ class TipSample(Schema):
 
     laserphysics_name = Quantity(
         type=str,
-        a_display={'visible': False},
+        a_display={'visible': False, 'editable': False},
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
         description='Laserphysics name.',
     )

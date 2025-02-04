@@ -82,6 +82,13 @@ class Measurement(Schema):
         a_eln=ELNAnnotation(),
     )
 
+    laserphysics_name = Quantity(
+        type=str,
+        a_display={'visible': False, 'editable': False},
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        description='Laserphysics name.',
+    )
+
     name = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
@@ -287,6 +294,7 @@ class Measurement(Schema):
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
             archive.metadata.entry_name = f"{self.name}_{d}"
+            self.laserphysics_name = f"{self.name}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 
