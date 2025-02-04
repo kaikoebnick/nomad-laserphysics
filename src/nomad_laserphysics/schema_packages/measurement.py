@@ -25,7 +25,8 @@ from nomad.metainfo import (
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
-from nomad_laserphysics.tools.id_generator import generate_id
+
+#from nomad_laserphysics.tools.id_generator import generate_id
 
 m_package = SchemaPackage(name='Measurement schema')
 
@@ -304,8 +305,8 @@ class Measurement(Schema):
             self.name = f"{self.title}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
-        if self.name:
-            self.laserphysics_id = generate_id(self.name)
+        #if self.name:
+            #self.laserphysics_id = generate_id(self.name)
 
 
 m_package.__init_metainfo__()
