@@ -50,6 +50,13 @@ class TipSample(Schema):
         a_eln=ELNAnnotation(),
     )
 
+    laserphysics_name = Quantity(
+        type=str,
+        a_display={'visible': False},
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        description='Laserphysics name.',
+    )
+
     name = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
@@ -106,11 +113,11 @@ class TipSample(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.tip_type: #set name as name_date
+        if self.date and self.name: #set name as name_date
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
-            archive.metadata.entry_name = f"{self.tip_type}_{d}"
-            archive.metadata.mainfile = f"{self.tip_type}_{d}.archive.json"
+            archive.metadata.entry_name = f"{self.name}_{d}"
+            self.laserphysics_name = f"{self.name}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 

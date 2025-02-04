@@ -68,7 +68,6 @@ class MLEvaluationProcedure(Schema):
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
             archive.metadata.entry_name = f"{self.tip_type}_{d}"
-            archive.metadata.mainfile = f"{self.tip_type}_{d}.archive.json"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 
