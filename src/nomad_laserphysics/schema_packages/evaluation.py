@@ -43,24 +43,23 @@ class Evaluation(Schema):
         a_eln=ELNAnnotation(overview=True),
         )
 
-    laserphysics_name = Quantity(
+    name = Quantity(
         type=str,
         a_display={'visible': False, 'editable': False},
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
         description='Laserphysics name.',
     )
 
-    name = Quantity(
+    title = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        description='Human readable name for the reference.',
+        description='Title of the evaluation.',
     )
 
     date = Quantity(
         type=Datetime,
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
         label='measurement date and time',
-        description='Date and time of the measurement.',
+        description='Date and time of the evaluation.',
     )
 
     measurement = Quantity(
@@ -117,11 +116,11 @@ class Evaluation(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.name: #set name as name_date
+        if self.date and self.title: #set name as title_date
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
-            archive.metadata.entry_name = f"{self.name}_{d}"
-            self.laserphysics_name = f"{self.name}_{d}"
+            archive.metadata.entry_name = f"{self.title}_{d}"
+            self.name = f"{self.title}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 

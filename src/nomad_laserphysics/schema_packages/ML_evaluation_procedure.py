@@ -36,31 +36,30 @@ class MLEvaluationProcedure(Schema):
         a_eln=ELNAnnotation(),
         )
 
-    laserphysics_name = Quantity(
+    name = Quantity(
         type=str,
-        a_display={'visible': False, 'editable': False},
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        a_display={'visible': True, 'editable': False},
         description='Laserphysics name.',
     )
 
-    name = Quantity(
+    title = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='name',
-        description='name/type of the tip.',
+        label='title',
+        description='Title of teh procedure.',
     )
 
     date = Quantity(
         type=Datetime,
         a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
         label='date and time',
-        description='Date and time of the tip-creation.',
+        description='Date and time of the procedure-creation.',
     )
 
     description = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
-        description='Short description of the ELN. You can add pictures!',
+        description='Short description. You can add pictures!',
     )
 
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
@@ -71,11 +70,11 @@ class MLEvaluationProcedure(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.tip_type: #set name as name_date
+        if self.date and self.title: #set name as title_date
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
-            archive.metadata.entry_name = f"{self.tip_type}_{d}"
-            self.laserphysics_name = f"{self.name}_{d}"
+            archive.metadata.entry_name = f"{self.title}_{d}"
+            self.name = f"{self.title}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 

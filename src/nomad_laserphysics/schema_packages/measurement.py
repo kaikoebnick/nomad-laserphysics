@@ -82,18 +82,17 @@ class Measurement(Schema):
         a_eln=ELNAnnotation(),
     )
 
-    laserphysics_name = Quantity(
+    name = Quantity(
         type=str,
-        a_display={'visible': False, 'editable': False},
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        a_display={'visible': True, 'editable': False},
         description='Laserphysics name.',
     )
 
-    name = Quantity(
+    title = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='name/title',
-        description='Short name of the measurement.',
+        label='title',
+        description='Short title of the measurement.',
     )
 
     date = Quantity(
@@ -244,7 +243,7 @@ class Measurement(Schema):
     description = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
-        description='Short description of the ELN. You can add pictures!',
+        description='Short description. You can add pictures!',
     )
 
     category = Quantity(
@@ -290,11 +289,11 @@ class Measurement(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.name: #set name as name_date
+        if self.date and self.title: #set name as title_date
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
-            archive.metadata.entry_name = f"{self.name}_{d}"
-            self.laserphysics_name = f"{self.name}_{d}"
+            archive.metadata.entry_name = f"{self.title}_{d}"
+            self.name = f"{self.title}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 
