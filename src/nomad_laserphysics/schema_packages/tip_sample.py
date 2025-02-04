@@ -50,11 +50,11 @@ class TipSample(Schema):
         a_eln=ELNAnnotation(),
     )
 
-    tip_type = Quantity(
+    name = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='type',
-        description='Type of the tip.',
+        label='name',
+        description='name/type of the tip.',
     )
 
     date = Quantity(
@@ -96,20 +96,21 @@ class TipSample(Schema):
                 archive.results.material = Material(
                     a_display={'visible': False, 'editable': False}
                     )
-            for el in self.material:
-                if el not in archive.results.material.elements:
-                    archive.results.material.elements += [el]
+            archive.results.material.elements = list(
+                el
+                for el in self.material
+            )
 
         if self.date is None: #make date and time searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.tip_type: #set name as date_tip-type
+        if self.date and self.tip_type: #set name as name_date
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
-            archive.metadata.entry_name = f"{d}_{self.tip_type}"
-            archive.metadata.mainfile = f"{d}_{self.tip_type}.archive.json"
+            archive.metadata.entry_name = f"{self.tip_type}_{d}"
+            archive.metadata.mainfile = f"{self.tip_type}_{d}.archive.json"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 

@@ -110,11 +110,11 @@ class Evaluation(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.name: #set name as date_name
+        if self.date and self.name: #set name as name_date
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
-            archive.metadata.entry_name = f"{d}_{self.name}"
-            archive.metadata.mainfile = f"{d}_{self.name}.archive.json"
+            archive.metadata.entry_name = f"{self.name}_{d}"
+            archive.metadata.mainfile = f"{self.name}_{d}.archive.json"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
 
