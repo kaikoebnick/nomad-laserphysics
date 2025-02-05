@@ -310,7 +310,7 @@ class Measurement(Schema):
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
         if self.name:
-            self.laserphysics_id = generate_id(f'm{self.name}')
+            self.laserphysics_id = f'm{generate_id(self.name)}'
 
 
 m_package.__init_metainfo__()

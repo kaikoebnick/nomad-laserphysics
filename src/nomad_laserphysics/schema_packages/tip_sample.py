@@ -134,7 +134,7 @@ class TipSample(Schema):
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
         if self.name:
-            self.laserphysics_id = generate_id(f't{self.name}')
+            self.laserphysics_id = f't{generate_id(self.name)}'
 
 
 
