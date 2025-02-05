@@ -20,6 +20,9 @@ from nomad.metainfo import (
     Section,
 )
 
+from nomad_laserphysics.tools.id_generator import generate_id
+
+
 m_package = SchemaPackage(name='ML Evaluation Procedure schema')
 
 class ToolsCategory(EntryDataCategory):
@@ -38,8 +41,22 @@ class MLEvaluationProcedure(Schema):
 
     name = Quantity(
         type=str,
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.StringEditQuantity,
+            default='Will be set automatically'
+        ),
         a_display={'visible': True, 'editable': False},
         description='Laserphysics name.',
+    )
+
+    laserphysics_id = Quantity(
+        type=str,
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.StringEditQuantity,
+            default='Will be set automatically'
+        ),
+        a_display={'visible': True, 'editable': False},
+        description='Laserphysics id.',
     )
 
     title = Quantity(
@@ -76,6 +93,9 @@ class MLEvaluationProcedure(Schema):
             archive.metadata.entry_name = f"{self.title}_{d}"
             self.name = f"{self.title}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
+
+        if self.name:
+            self.laserphysics_id = generate_id(self.name)
 
 
 m_package.__init_metainfo__()

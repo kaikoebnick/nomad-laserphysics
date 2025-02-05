@@ -81,19 +81,24 @@ class Measurement(Schema):
         label='measurement',
         categories=[ToolsCategory],
         a_eln=ELNAnnotation(),
-        a_display={'order': ['name', 'laserphysics_id'] }
     )
 
     name = Quantity(
         type=str,
-        a_eln=ELNAnnotation(),
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.StringEditQuantity,
+            default='Will be set automatically'
+        ),
         a_display={'visible': True, 'editable': False},
         description='Laserphysics name.',
     )
 
     laserphysics_id = Quantity(
         type=str,
-        a_eln=ELNAnnotation(),
+        a_eln=ELNAnnotation(
+            component=ELNComponentEnum.StringEditQuantity,
+            default='Will be set automatically'
+        ),
         a_display={'visible': True, 'editable': False},
         description='Laserphysics id.',
     )
