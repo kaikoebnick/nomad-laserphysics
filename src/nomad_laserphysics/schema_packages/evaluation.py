@@ -136,8 +136,8 @@ class Evaluation(Schema):
             self.name = f"{self.title}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
-        if self.name:
-            self.laserphysics_id = gf'e{generate_id(self.name)}'
+        if self.title:
+            self.laserphysics_id = f'e{generate_id(self.name)}'
 
 
 m_package.__init_metainfo__()

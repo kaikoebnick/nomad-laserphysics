@@ -91,7 +91,7 @@ class MLEvaluationProcedure(Schema):
             self.name = f"{self.title}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
-        if self.name:
+        if self.title:
             self.laserphysics_id = f'p{generate_id(self.name)}'
 
 
