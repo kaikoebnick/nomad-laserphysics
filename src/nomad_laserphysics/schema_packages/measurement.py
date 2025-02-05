@@ -85,22 +85,14 @@ class Measurement(Schema):
 
     name = Quantity(
         type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity,
-            default='Will be set automatically'
-        ),
-        a_display={'visible': True, 'editable': False},
-        description='Laserphysics name.',
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity,),
+     description='Laserphysics name.',
     )
 
     laserphysics_id = Quantity(
         type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity,
-            default='Will be set automatically'
-        ),
-        a_display={'visible': True, 'editable': False},
-        description='Laserphysics id.',
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+      description='Laserphysics id.',
     )
 
     title = Quantity(
@@ -286,6 +278,12 @@ class Measurement(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
+        if not self.name:
+            self.name = 'Will be set automatically'
+
+        if not self.laserphysics_id:
+            self.laserphysics_id = 'Will be set automatically'
+
         #make tags searchable
         self.tags = list(
             Tags(tag=quant.name)
@@ -312,7 +310,7 @@ class Measurement(Schema):
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
         if self.name:
-            self.laserphysics_id = generate_id(self.name)
+            self.laserphysics_id = generate_id(f'm{self.name}')
 
 
 m_package.__init_metainfo__()

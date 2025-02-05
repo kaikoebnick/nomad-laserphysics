@@ -40,22 +40,14 @@ class MLEvaluationProcedure(Schema):
 
     name = Quantity(
         type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity,
-            default='Will be set automatically'
-        ),
-        a_display={'visible': True, 'editable': False},
-        description='Laserphysics name.',
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+     description='Laserphysics name.',
     )
 
     laserphysics_id = Quantity(
         type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity,
-            default='Will be set automatically'
-        ),
-        a_display={'visible': True, 'editable': False},
-        description='Laserphysics id.',
+        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+      description='Laserphysics id.',
     )
 
     title = Quantity(
@@ -81,6 +73,12 @@ class MLEvaluationProcedure(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
+        if not self.name:
+            self.name = 'Will be set automatically'
+
+        if not self.laserphysics_id:
+            self.laserphysics_id = 'Will be set automatically'
+
         if self.date is None: #make date and time searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
@@ -94,7 +92,7 @@ class MLEvaluationProcedure(Schema):
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
         if self.name:
-            self.laserphysics_id = generate_id(self.name)
+            self.laserphysics_id = generate_id(f'p{self.name}')
 
 
 m_package.__init_metainfo__()
