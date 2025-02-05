@@ -30,7 +30,6 @@ from nomad.metainfo.elasticsearch_extension import (
 
 from nomad_laserphysics.tools.id_generator import generate_id
 
-
 m_package = SchemaPackage(name='tip sample schema')
 
 

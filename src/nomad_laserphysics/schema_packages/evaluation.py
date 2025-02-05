@@ -24,7 +24,6 @@ from nomad.metainfo import (
 from nomad_laserphysics.schema_packages.measurement import Measurement
 from nomad_laserphysics.tools.id_generator import generate_id
 
-
 m_package = SchemaPackage(name='Evaluation schema')
 
 class ToolsCategory(EntryDataCategory):

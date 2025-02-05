@@ -22,7 +22,6 @@ from nomad.metainfo import (
 
 from nomad_laserphysics.tools.id_generator import generate_id
 
-
 m_package = SchemaPackage(name='ML Evaluation Procedure schema')
 
 class ToolsCategory(EntryDataCategory):
