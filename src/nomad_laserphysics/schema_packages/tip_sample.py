@@ -34,7 +34,7 @@ def remove_tags(text):
 
 
 
-class TipSample(Schema):
+class TipSample(Object):
     m_def = Section(
         label='tip Sample',
         categories=[ToolsCategory],
