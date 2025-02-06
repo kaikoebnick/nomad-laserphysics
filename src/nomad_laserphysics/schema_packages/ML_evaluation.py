@@ -1,6 +1,5 @@
 from nomad.datamodel.data import (
     EntryDataCategory,
-    Schema,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.metainfo import (

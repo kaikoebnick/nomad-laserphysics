@@ -111,7 +111,7 @@ FEM_correlation_chamber_schema_package_entry_point = \
     plugin_package='schema_packages',
 )
 
-object_sample_schema_package_entry_point = ObjectSchemaPackageEntryPoint(
+object_schema_package_entry_point = ObjectSchemaPackageEntryPoint(
     name='object schema',
     description='New schema package entry point configuration.',
     plugin_package='schema_packages',

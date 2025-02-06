@@ -1,10 +1,3 @@
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    pass
-
-import xml
-
 from nomad.datamodel.data import (
     EntryDataCategory,
 )
@@ -28,11 +21,6 @@ class ToolsCategory(EntryDataCategory):
     )
 
 
-def remove_tags(text):
-    return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
-
-
-
 class TipSample(Object):
     m_def = Section(
         label='tip Sample',
@@ -41,7 +29,7 @@ class TipSample(Object):
         quantities=[*Object.m_def.quantities]
     )
 
-    """object_type = Quantity(
+    object_type = Quantity(
         description='Type of the tip.',
     )
 
@@ -52,7 +40,7 @@ class TipSample(Object):
 
     date = Quantity(
         description='Date of the tip-creation.',
-    )"""
+    )
 
 
 m_package.__init_metainfo__()
