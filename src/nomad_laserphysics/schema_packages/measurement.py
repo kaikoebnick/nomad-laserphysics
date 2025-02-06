@@ -296,7 +296,7 @@ class Measurement(Schema):
             archive.metadata.upload_create_time = self.date
 
         if self.date and (
-            self.self.measurement_type or
+            self.measurement_type or
             self.measurement_number_of_that_type): #set name
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y")

@@ -125,7 +125,7 @@ class Object(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and (self.self.object_type or self.number_of_that_type): #set name
+        if self.date and (self.object_type or self.number_of_that_type): #set name
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y")
             a = f"{self.object_type}_{self.number_of_that_type}_{d}"

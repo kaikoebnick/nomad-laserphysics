@@ -7,7 +7,6 @@ import xml
 
 from nomad.datamodel.data import (
     EntryDataCategory,
-    Schema,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.metainfo import (
