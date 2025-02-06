@@ -31,14 +31,14 @@ class MLEvaluation(Evaluation):
         quantities=[*Evaluation.m_def.quantities]
         )
 
-    """procedure = Quantity(
+    procedure = Quantity(
         type=MLEvaluationProcedure,
         description="Used procedure.",
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.ReferenceEditQuantity,
             showSectionLabel=True,
         ),
-    )"""
+    )
 
 
 m_package.__init_metainfo__()
