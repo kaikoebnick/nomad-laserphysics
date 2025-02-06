@@ -41,7 +41,7 @@ class TipSample(Object):
         quantities=[*Object.m_def.quantities]
     )
 
-    object_type = Quantity(
+    """object_type = Quantity(
         description='Type of the tip.',
     )
 
@@ -52,7 +52,7 @@ class TipSample(Object):
 
     date = Quantity(
         description='Date of the tip-creation.',
-    )
+    )"""
 
 
 m_package.__init_metainfo__()
