@@ -58,8 +58,7 @@ class Object(Schema):
 
     laserphysics_id = Quantity(
         type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-      description='Laserphysics id.',
+        description='Laserphysics id.',
     )
 
     object_type = Quantity(
