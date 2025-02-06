@@ -20,8 +20,6 @@ from nomad.metainfo import (
     Section,
 )
 
-from nomad_laserphysics.tools.id_generator import generate_id
-
 m_package = SchemaPackage(name='ML Evaluation Procedure schema')
 
 class ToolsCategory(EntryDataCategory):
@@ -40,14 +38,7 @@ class MLEvaluationProcedure(Schema):
 
     name = Quantity(
         type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-     description='Laserphysics name.',
-    )
-
-    laserphysics_id = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-      description='Laserphysics id.',
+        description='Laserphysics name, automatically set.',
     )
 
     title = Quantity(
@@ -59,7 +50,7 @@ class MLEvaluationProcedure(Schema):
 
     date = Quantity(
         type=Datetime,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
+        a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
         label='date and time',
         description='Date and time of the procedure-creation.',
     )
@@ -73,26 +64,17 @@ class MLEvaluationProcedure(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if not self.name:
-            self.name = 'Will be set automatically'
-
-        if not self.laserphysics_id:
-            self.laserphysics_id = 'Will be set automatically'
-
         if self.date is None: #make date and time searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.title: #set name as title_date
+        if self.date and self.title: #set name
             d = self.date.replace(tzinfo=pytz.utc)
-            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
+            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y")
             archive.metadata.entry_name = f"{self.title}_{d}"
             self.name = f"{self.title}_{d}"
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
-
-        if self.title:
-            self.laserphysics_id = f"p{generate_id(self.name)}"
 
 
 m_package.__init_metainfo__()

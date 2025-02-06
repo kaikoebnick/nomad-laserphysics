@@ -54,6 +54,14 @@ class FEMCorrelationChamberSchemaPackageEntryPoint(SchemaPackageEntryPoint):
 
         return m_package
 
+class ObjectSchemaPackageEntryPoint(SchemaPackageEntryPoint):
+    parameter: int = Field(0, description='Custom configuration parameter')
+
+    def load(self):
+        from nomad_laserphysics.schema_packages.object import m_package
+
+        return m_package
+
 class TipSampleSchemaPackageEntryPoint(SchemaPackageEntryPoint):
     parameter: int = Field(0, description='Custom configuration parameter')
 
@@ -99,6 +107,12 @@ FIM_test_chamber_schema_package_entry_point = \
 FEM_correlation_chamber_schema_package_entry_point = \
         FEMCorrelationChamberSchemaPackageEntryPoint(
     name='FEM correlation chamber schema',
+    description='New schema package entry point configuration.',
+    plugin_package='schema_packages',
+)
+
+object_sample_schema_package_entry_point = ObjectSchemaPackageEntryPoint(
+    name='object schema',
     description='New schema package entry point configuration.',
     plugin_package='schema_packages',
 )

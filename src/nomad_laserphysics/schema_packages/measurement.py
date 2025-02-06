@@ -25,7 +25,6 @@ from nomad.metainfo import (
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
-from nomad_laserphysics.tools.id_generator import generate_id
 
 m_package = SchemaPackage(name='Measurement schema')
 
@@ -85,28 +84,28 @@ class Measurement(Schema):
 
     name = Quantity(
         type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity,),
-     description='Laserphysics name.',
+        description='Laserphysics name, automatically set.',
     )
 
-    laserphysics_id = Quantity(
+    measurement_type = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-      description='Laserphysics id.',
+        label='measurement_type',
+        description='Type of the measurement.',
     )
 
-    title = Quantity(
+    measurement_number_of_that_type = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='title',
-        description='Short title of the measurement.',
+        label='measurement number of that type',
+        description='Measurement number of that type.',
     )
 
     date = Quantity(
         type=Datetime,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.DateTimeEditQuantity),
-        label='date and time',
-        description='Date and time of the measurement.',
+        a_eln=ELNAnnotation(component=ELNComponentEnum.DateEditQuantity),
+        label='date',
+        description='Date of the measurement.',
     )
 
     idea_behind_measurement = Quantity(
@@ -278,12 +277,6 @@ class Measurement(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if not self.name:
-            self.name = 'Will be set automatically'
-
-        if not self.laserphysics_id:
-            self.laserphysics_id = 'Will be set automatically'
-
         #make tags searchable
         self.tags = list(
             Tags(tag=quant.name)
@@ -297,20 +290,20 @@ class Measurement(Schema):
                 NomadAuthor(**author.m_to_dict()) for author in self.co_authors
             ]
 
-        if self.date is None: #make date and time searchable
+        if self.date is None: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and self.title: #set name as title_date
+        if self.date and (
+            self.self.measurement_type or
+            self.measurement_number_of_that_type): #set name
             d = self.date.replace(tzinfo=pytz.utc)
-            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y_%H:%M")
-            archive.metadata.entry_name = f"{self.title}_{d}"
-            self.name = f"{self.title}_{d}"
+            d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y")
+            a = f"{self.measurement_type}_{self.measurement_number_of_that_type}_{d}"
+            archive.metadata.entry_name = a
+            self.name = archive.metadata.entry_name
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
-
-        if self.title:
-            self.laserphysics_id = f"m{generate_id(self.name)}"
 
 
 m_package.__init_metainfo__()

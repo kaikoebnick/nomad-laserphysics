@@ -14,5 +14,3 @@ def generate_id(name): # use 5 characters -> 16^5 values
     hash_value = int(hashlib.sha1(name.encode()).hexdigest(), 16) #160 Bit Hash
     short_id = encode(hash_value % (62**5), 5)
     return short_id
-
-print(generate_id("04-02-24_testname"))
