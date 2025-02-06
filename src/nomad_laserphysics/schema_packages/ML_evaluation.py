@@ -30,7 +30,7 @@ class ToolsCategory(EntryDataCategory):
     )
 
 
-class MLEvaluation(Schema):
+class MLEvaluation(Evaluation):
     m_def = Section(
         label='ML evaluation',
         categories=[ToolsCategory],
