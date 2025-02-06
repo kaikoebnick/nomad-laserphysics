@@ -90,7 +90,7 @@ class Measurement(Schema):
     measurement_type = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='measurement_type',
+        label='measurement type',
         description='Type of the measurement.',
     )
 

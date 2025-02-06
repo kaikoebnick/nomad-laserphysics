@@ -42,9 +42,10 @@ class TipSample(Object):
         quantities=[*Object.m_def.quantities]
     )
 
-    type = Quantity(
+    object_type = Quantity(
         description='Type of the tip.',
     )
+
     number_of_that_type = Quantity(
         label='number of that tip',
         description='Number of that tip.',

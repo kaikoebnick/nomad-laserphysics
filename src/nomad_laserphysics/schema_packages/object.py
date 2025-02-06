@@ -44,7 +44,6 @@ def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
 
 
-
 class Object(Schema):
     m_def = Section(
         label='object',
@@ -63,7 +62,7 @@ class Object(Schema):
       description='Laserphysics id.',
     )
 
-    type = Quantity(
+    object_type = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
         label='type',
@@ -73,7 +72,7 @@ class Object(Schema):
     number_of_that_type = Quantity(
         type=str,
         a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
-        label='number of that tip',
+        label='number of that object',
         description='Number of that object.',
     )
 
@@ -126,10 +125,11 @@ class Object(Schema):
         if self.date:
             archive.metadata.upload_create_time = self.date
 
-        if self.date and (self.self.type or self.number_of_that_type): #set name
+        if self.date and (self.self.object_type or self.number_of_that_type): #set name
             d = self.date.replace(tzinfo=pytz.utc)
             d = d.astimezone(pytz.timezone('Europe/Berlin')).strftime("%d-%m-%y")
-            archive.metadata.entry_name = f"{self.type}_{self.number_of_that_type}_{d}"
+            a = f"{self.object_type}_{self.number_of_that_type}_{d}"
+            archive.metadata.entry_name = a
             self.name = archive.metadata.entry_name
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
