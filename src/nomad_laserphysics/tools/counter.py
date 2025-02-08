@@ -11,7 +11,7 @@ class NomadCounter:
         self.counter_file = os.path.join(data_dir, counter_file)
         if not os.path.exists(self.counter_file):
             with open(self.counter_file, "w") as f:
-                f.write("1")
+                json.dump({"counter": 1, "id": "a"}, f)
 
 
     def get_counter_and_update(self, entry_id):
