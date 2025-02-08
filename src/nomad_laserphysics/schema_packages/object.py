@@ -5,7 +5,6 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import datetime
-import os
 import xml
 
 import pytz
@@ -29,7 +28,7 @@ from nomad.metainfo.elasticsearch_extension import (
     material_type,
 )
 
-from nomad_laserphysics.tools.id_generator import generate_id
+from nomad_laserphysics.tools.counter import NomadCounter
 
 m_package = SchemaPackage(name='object schema')
 
@@ -133,12 +132,8 @@ class Object(Schema):
             self.name = archive.metadata.entry_name
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
-        if self.name:
-            self.laserphysics_id = generate_id(self.name)
-
-        if os.path.exists("/app/.volumes/counter"):
-            logger.info("Der Pfad zum Counter existiert!!!!!!!!!")
-
+        counter = NomadCounter()
+        self.laserphysics_id = counter.get_counter_and_update(self.entry_id)
 
 
 
