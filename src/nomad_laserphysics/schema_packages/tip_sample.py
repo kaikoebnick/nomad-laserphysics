@@ -4,7 +4,7 @@ from nomad.datamodel.data import (
 from nomad.datamodel.metainfo.annotations import ELNAnnotation
 from nomad.metainfo import (
     Category,
-    Quantity,
+    # Quantity,
     SchemaPackage,
     Section,
 )

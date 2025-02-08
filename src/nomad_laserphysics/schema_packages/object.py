@@ -5,6 +5,7 @@ if TYPE_CHECKING:
     from structlog.stdlib import BoundLogger
 
 import datetime
+import os
 import xml
 
 import pytz
@@ -134,6 +135,9 @@ class Object(Schema):
 
         if self.name:
             self.laserphysics_id = generate_id(self.name)
+
+        if os.path.exists("/app/.volumes/counter"):
+            logger.info("Der Pfad zum Counter existiert!!!!!!!!!")
 
 
 
