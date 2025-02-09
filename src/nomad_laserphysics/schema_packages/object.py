@@ -133,7 +133,9 @@ class Object(Schema):
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
         counter = NomadCounter()
-        self.laserphysics_id = counter.get_counter_and_update(archive.metadata.entry_id)
+        if not self.laserphysics_id:
+            entry_id = archive.metadata.entry_id
+            self.laserphysics_id = counter.get_counter_and_update(entry_id)
 
 
 

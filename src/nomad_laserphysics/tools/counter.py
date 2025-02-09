@@ -18,19 +18,19 @@ class NomadCounter:
         """Reads counter-value, increments it and returns the pre-increment value"""
         with LOCK:
             if not os.path.exists(self.counter_file):
-                data = {"counter": 1, "id": entry_id}
+                data = {"counter": 1, "ids": [entry_id]}
             else:
                 with open(self.counter_file) as f:
                     try:
                         data = json.load(f)
                     except json.JSONDecodeError:
-                        data = {"counter": 1, "id": entry_id}
+                        data = {"counter": 1, "ids": [entry_id]}
 
-            if data["id"] == entry_id:
+            if entry_id in data.get("ids", []):
                 return str(data["counter"]).zfill(5)
 
             data["counter"] += 1
-            data["id"] = entry_id
+            data.setdefault("ids", []).append(entry_id)
 
             with open(self.counter_file, "w") as f:
                 json.dump(data, f)
