@@ -118,10 +118,11 @@ class Object(Schema):
             archive.results.material = Material(
                 a_display={'visible': False, 'editable': False}
                 )
-        archive.results.material.elements = list(
-            el
-            for el in self.material
-        )
+        if self.material:
+            archive.results.material.elements = list(
+                el
+                for el in self.material
+            )
         logger.info(f"Set elements to {self.material}")
         if not archive.results.eln: # make laserphysics_id searchable
             archive.results.eln = ELN(
