@@ -105,24 +105,36 @@ class Object(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        if self.material: #make elements in material searchable
-            if not archive.results:
-                archive.results = Results(
-                    a_display={'visible': False, 'editable': False}
-                    )
-            if not archive.results.material:
-                archive.results.material = Material(
-                    a_display={'visible': False, 'editable': False}
-                    )
-            archive.results.material.elements = list(
-                el
-                for el in self.material
-            )
+        counter = NomadCounter() #set laserphysics_id
+        if not self.laserphysics_id:
+            entry_id = archive.metadata.entry_id
+            self.laserphysics_id = counter.get_counter_and_update(entry_id)
+
+        if not archive.results:
+            archive.results = Results(
+                a_display={'visible': False, 'editable': False}
+                )
+        if not archive.results.material: #make elements in material searchable
+            archive.results.material = Material(
+                a_display={'visible': False, 'editable': False}
+                )
+        archive.results.material.elements = list(
+            el
+            for el in self.material
+        )
+        logger.info(f"Set elements to {self.material}")
+        if not archive.results.eln: # make laserphysics_id searchable
+            archive.results.eln = ELN(
+                a_display={'visible': False, 'editable': False}
+                )
+        archive.results.eln.lab_ids = [self.laserphysics_id]
+        logger.info(f"Set lab_ids to {self.laserphysics_id}")
 
         if self.date is None: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
             archive.metadata.upload_create_time = self.date
+            logger.info(f"Set upload_create_time to {self.date}")
 
         if self.date and (self.object_type or self.number_of_that_type): #set name
             d = self.date.replace(tzinfo=pytz.utc)
@@ -132,19 +144,6 @@ class Object(Schema):
             self.name = archive.metadata.entry_name
             logger.info(f"Set entry name to {archive.metadata.entry_name}")
 
-        counter = NomadCounter()
-        if not self.laserphysics_id:
-            entry_id = archive.metadata.entry_id
-            self.laserphysics_id = counter.get_counter_and_update(entry_id)
-            if not archive.results:
-                archive.results = Results(
-                    a_display={'visible': False, 'editable': False}
-                    )
-            if not archive.results.eln:
-                archive.results.eln = ELN(
-                    a_display={'visible': False, 'editable': False}
-                    )
-            archive.results.eln.lab_ids = [self.laserphysics_id]
 
 
 
