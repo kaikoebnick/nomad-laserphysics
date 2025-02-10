@@ -14,7 +14,7 @@ from nomad.datamodel.data import (
     Schema,
 )
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-from nomad.datamodel.results import Material, Results
+from nomad.datamodel.results import ELN, Material, Results
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -136,6 +136,15 @@ class Object(Schema):
         if not self.laserphysics_id:
             entry_id = archive.metadata.entry_id
             self.laserphysics_id = counter.get_counter_and_update(entry_id)
+            if not archive.results:
+                archive.results = Results(
+                    a_display={'visible': False, 'editable': False}
+                    )
+            if not archive.results.eln:
+                archive.results.eln = ELN(
+                    a_display={'visible': False, 'editable': False}
+                    )
+            archive.results.eln.lab_ids = self.laserphysics_id
 
 
 
