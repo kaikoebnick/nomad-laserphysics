@@ -144,7 +144,7 @@ class Object(Schema):
                 archive.results.eln = ELN(
                     a_display={'visible': False, 'editable': False}
                     )
-            archive.results.eln.lab_ids = self.laserphysics_id
+            archive.results.eln.lab_ids = [self.laserphysics_id]
 
 
 
