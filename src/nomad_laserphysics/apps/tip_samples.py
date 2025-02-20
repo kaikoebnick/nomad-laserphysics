@@ -9,7 +9,6 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemHistogram,
-    MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
@@ -31,13 +30,13 @@ if upload_ids:
     filters_locked = {
         'upload_id': upload_ids,
         'section_defs.definition_qualified_name': [
-            'nomad_laserphysics.schema_packages.tip_sample.Tip_sample',
+            'nomad_laserphysics.schema_packages.tip_sample.TipSample',
         ],
     }
 else:
     filters_locked = {
         'section_defs.definition_qualified_name': [
-           'nomad_laserphysics.schema_packages.tip_sample.Tip_sample',
+           'nomad_laserphysics.schema_packages.tip_sample.TipSample',
         ]
     }
 
@@ -48,13 +47,13 @@ Tip_samples = App(
     category='Chair for Laserphysics',
     filters=Filters(
         include=[
-            '*#nomad_laserphysics.schema_packages.tip_sample.Tip_sample',
+            '*#nomad_laserphysics.schema_packages.tip_sample.TipSample',
             ],
     ),
     filters_locked=filters_locked,
 
     columns=[
-        Column(search_quantity='lab_ids', label='laserphysics id'),
+        Column(search_quantity='results.eln.lab_ids', label='laserphysics id'),
         Column(search_quantity='entry_type', align=AlignEnum.LEFT),
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='entry_name', align=AlignEnum.LEFT, selected=True

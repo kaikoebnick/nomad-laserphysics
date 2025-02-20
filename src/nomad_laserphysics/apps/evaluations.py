@@ -9,7 +9,6 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemHistogram,
-    MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,

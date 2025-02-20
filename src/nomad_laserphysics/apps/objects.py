@@ -9,7 +9,6 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemHistogram,
-    MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
@@ -54,7 +53,7 @@ Objects = App(
     filters_locked=filters_locked,
 
     columns=[
-        Column(search_quantity='lab_ids', label='laserphysics id'),
+        Column(search_quantity='results.eln.lab_ids', label='laserphysics id'),
         Column(search_quantity='entry_type', align=AlignEnum.LEFT),
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='entry_name', align=AlignEnum.LEFT, selected=True

@@ -59,7 +59,7 @@ FEMCorrelationChambers = App(
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='entry_name', align=AlignEnum.LEFT, selected=True
         ),
-        Column(search_quantity='data.category#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
+        Column(search_quantity='data.category#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
             label='Category', selected=True
         ),
         Column(search_quantity='upload_create_time',
@@ -67,10 +67,10 @@ FEMCorrelationChambers = App(
             format=Format(mode=ModeEnum.DATE),
             selected=True
         ),
-        Column(search_quantity='data.voltage#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'),
-        Column(search_quantity='data.laserpower#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'),
-        Column(search_quantity='data.wavelength#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'),
-        Column(search_quantity='data.u_p#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'),
+        Column(search_quantity='data.voltage#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber'),
+        Column(search_quantity='data.laserpower#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber'),
+        Column(search_quantity='data.wavelength#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber'),
+        Column(search_quantity='data.u_p#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber'),
     ],
 
     menu=Menu(
@@ -86,6 +86,10 @@ FEMCorrelationChambers = App(
                     MenuItemTerms(
                     title='category',
                     search_quantity='data.category#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
+                    ),
+                    MenuItemTerms(
+                    title='category',
+                    search_quantity='data.category#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
                     ),
                 ],
             ),
