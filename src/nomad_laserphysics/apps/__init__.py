@@ -32,7 +32,7 @@ objects_app_entry_point = AppEntryPoint(
     description='App defined using the new plugin mechanism.',
     app=Objects
 )
-tip_sample_app_entry_point = AppEntryPoint(
+tip_samples_app_entry_point = AppEntryPoint(
     label='Tip Samples',
     description='App defined using the new plugin mechanism.',
     app=Tip_samples
