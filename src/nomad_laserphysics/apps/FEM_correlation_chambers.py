@@ -87,10 +87,6 @@ FEMCorrelationChambers = App(
                     title='category',
                     search_quantity='data.category#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
                     ),
-                    MenuItemTerms(
-                    title='category',
-                    search_quantity='data.category#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
-                    ),
                 ],
             ),
             Menu(
