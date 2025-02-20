@@ -9,7 +9,6 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemHistogram,
-    MenuItemPeriodicTable,
     MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
@@ -22,7 +21,7 @@ from nomad.config.models.ui import (
 
 # Workaround: read the upload_ids from plugin's raw config.
 try:
-    upload_ids = _plugins['entry_points']['options']['nomad_laserphysics.apps:measurements_app_entry_point'][
+    upload_ids = _plugins['entry_points']['options']['nomad_laserphysics.apps:objects_app_entry_point'][
         'upload_ids'
     ]
 except KeyError:
@@ -32,29 +31,30 @@ if upload_ids:
     filters_locked = {
         'upload_id': upload_ids,
         'section_defs.definition_qualified_name': [
-            'nomad_laserphysics.schema_packages.measurement.Measurement',
+            'nomad_laserphysics.schema_packages.object.Object',
         ],
     }
 else:
     filters_locked = {
         'section_defs.definition_qualified_name': [
-           'nomad_laserphysics.schema_packages.measurement.Measurement',
+           'nomad_laserphysics.schema_packages.object.Object',
         ]
     }
 
-Measurements = App(
-    label='Measurments app',
-    description='Search Laserphysics measurements',
-    path='measurements',
+Objects = App(
+    label='Object app',
+    description='Search Laserphysics objects',
+    path='objects',
     category='Chair for Laserphysics',
     filters=Filters(
         include=[
-            '*#nomad_laserphysics.schema_packages.measurement.Measurement',
+            '*#nomad_laserphysics.schema_packages.object.Object',
             ],
     ),
     filters_locked=filters_locked,
 
     columns=[
+        Column(search_quantity='lab_ids', label='laserphysics id'),
         Column(search_quantity='entry_type', align=AlignEnum.LEFT),
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='entry_name', align=AlignEnum.LEFT, selected=True
@@ -78,15 +78,6 @@ Measurements = App(
                     ),
                     MenuItemTerms(
                         search_quantity='authors',
-                    ),
-                ],
-            ),
-            Menu(
-                title='elemental table',
-                items=[
-                    MenuItemPeriodicTable(
-                    title='periodic table menu',
-                    search_quantity='results.material.elements',
                     ),
                 ],
             ),

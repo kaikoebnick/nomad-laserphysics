@@ -55,7 +55,6 @@ FIMTestChambers = App(
     filters_locked=filters_locked,
 
     columns=[
-        Column(search_quantity='unique_id'),
         Column(search_quantity='entry_type', align=AlignEnum.LEFT),
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='entry_name', align=AlignEnum.LEFT, selected=True
@@ -86,15 +85,10 @@ FIMTestChambers = App(
                     ),
                     MenuItemTerms(
                     title='category',
-                    search_quantity='data.category#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
+                    search_quantity='data.category#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
                     ),
                     MenuItemTerms(
-                    title='author\'s first name',
-                    search_quantity='data.co_authors.first_name#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
-                    ),
-                    MenuItemTerms(
-                    title='author\'s last name',
-                    search_quantity='data.co_authors.last_name#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
+                        search_quantity='authors',
                     ),
                 ],
             ),

@@ -285,23 +285,10 @@ class Measurement(Schema):
         )
 
         #make co_authors searchable
-        existing_authors = {
-            (author.first_name,
-             author.last_name) for author in archive.metadata.entry_coauthors
-        }
-        main_author_data = NomadAuthor(**archive.metadata.main_author.m_to_dict())
-        main_author_key = (main_author_data.first_name, main_author_data.last_name)
-        if main_author_key not in existing_authors:
-            archive.metadata.entry_coauthors.insert(0, main_author_data)
-            existing_authors.add(main_author_key)
-
-        for author in self.co_authors:
-            author_data = NomadAuthor(**author.m_to_dict())
-            author_key = (author_data.first_name, author_data.last_name)
-
-            if author_key not in existing_authors:
-                archive.metadata.entry_coauthors.append(author_data)
-                existing_authors.add(author_key)
+        if self.co_authors:
+            archive.metadata.entry_coauthors = [
+                NomadAuthor(**author.m_to_dict()) for author in self.co_authors
+            ]
 
         if self.date is None: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
