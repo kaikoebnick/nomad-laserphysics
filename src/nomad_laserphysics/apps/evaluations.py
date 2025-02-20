@@ -75,9 +75,6 @@ Evaluations = App(
                         title='date of the last update',
                         x='upload_create_time',
                     ),
-                    MenuItemTerms(
-                        search_quantity='authors',
-                    ),
                 ],
             ),
             MenuItemVisibility(
