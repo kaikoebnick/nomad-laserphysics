@@ -9,6 +9,7 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemHistogram,
+    MenuItemPeriodicTable,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
@@ -74,6 +75,15 @@ Objects = App(
                     MenuItemHistogram(
                         title='date of the last update',
                         x='upload_create_time',
+                    ),
+                ],
+            ),
+            Menu(
+                title='elemental table',
+                items=[
+                    MenuItemPeriodicTable(
+                    title='periodic table menu',
+                    search_quantity='results.material.elements',
                     ),
                 ],
             ),
