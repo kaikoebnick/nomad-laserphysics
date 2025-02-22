@@ -233,7 +233,7 @@ class Measurement(Schema):
         )
         logger.info(f"Set tags to {archive.results.eln.tags}")
         archive.results.eln.methods = list( #make values searchable
-            quant.value
+            quant.name
             for quant in self.m_def.quantities
             if str(quant.type) == "m_float(falot)" and getattr(self, str(quant.name))
         )
