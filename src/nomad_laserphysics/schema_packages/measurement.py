@@ -9,11 +9,9 @@ import xml
 
 import pytz
 from nomad.datamodel.data import (
-    ArchiveSection,
     EntryDataCategory,
     Schema,
 )
-from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
 from nomad.datamodel.results import ELN, Results
 from nomad.metainfo import (
@@ -22,7 +20,6 @@ from nomad.metainfo import (
     Quantity,
     SchemaPackage,
     Section,
-    SubSection,
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
@@ -221,21 +218,26 @@ class Measurement(Schema):
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
-        #make tags searchable
         if not archive.results:
             archive.results = Results(
                 a_display={'visible': False, 'editable': False}
-                )
-        if not archive.results.eln: #make elements in material searchable
+            )
+        if not archive.results.eln:
             archive.results.eln = ELN(
                 a_display={'visible': False, 'editable': False}
-                )
-        archive.results.eln.tags = list(
+            )
+        archive.results.eln.tags = list( #make tags searchable
             quant.name
             for quant in self.m_def.quantities
             if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
         )
         logger.info(f"Set tags to {archive.results.eln.tags}")
+        archive.results.eln.methods = list( #make values searchable
+            f"{quant.value}"
+            for quant in self.m_def.quantities
+            if str(quant.type) == "m_float(falot)" and getattr(self, str(quant.name))
+        )
+        logger.info(f"Set methods to {archive.results.eln.methods}")
 
         if self.date is None: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
