@@ -83,10 +83,6 @@ FIMTestChambers = App(
                         title='date of the last update',
                         x='upload_create_time',
                     ),
-                    MenuItemTerms(
-                    title='category',
-                    search_quantity='data.category#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
-                    ),
                 ],
             ),
             Menu(
@@ -111,7 +107,7 @@ FIMTestChambers = App(
                 items=[
                     MenuItemTerms(
                         title='tags',
-                        search_quantity='data.tags.tag#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
+                        search_quantity='results.eln.tags'
                     ),
                 ],
             ),

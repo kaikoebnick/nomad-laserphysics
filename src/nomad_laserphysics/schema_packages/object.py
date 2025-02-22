@@ -126,6 +126,7 @@ class Object(Schema):
         else:
             archive.results.material.elements = []
         logger.info(f"Set elements to {self.material}")
+
         if not archive.results.eln: # make laserphysics_id searchable
             archive.results.eln = ELN(
                 a_display={'visible': False, 'editable': False}

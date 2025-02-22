@@ -15,6 +15,7 @@ from nomad.datamodel.data import (
 )
 from nomad.datamodel.data import Author as NomadAuthor
 from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
+from nomad.datamodel.results import ELN, Results
 from nomad.metainfo import (
     Category,
     Datetime,
@@ -38,41 +39,6 @@ class ToolsCategory(EntryDataCategory):
 
 def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
-
-
-class Author(ArchiveSection):
-    m_def = Section(
-        a_eln=ELNAnnotation(overview=True),
-        )
-
-    first_name = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity,
-        ),
-        label='First Name',
-        description='First name of the author',
-    )
-
-    last_name = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.StringEditQuantity,
-        ),
-        label='Last Name',
-        description='Last name of the author.',
-    )
-
-
-class Tags(ArchiveSection): #used to make tags searchable
-    m_def = Section(a_display=
-    {'visible': False, 'editable': False}
-    )
-
-    tag = Quantity(
-        type=str,
-        a_display={'visible': False, 'editable': False},
-    )
 
 
 class Measurement(Schema):
@@ -252,43 +218,24 @@ class Measurement(Schema):
         description='Short description. You can add pictures!',
     )
 
-    category = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(
-            component=ELNComponentEnum.EnumEditQuantity,
-            props=dict(
-                suggestions=[
-                    'measurement',
-                    'calibration',
-                    'other',
-                ]
-            ),
-        ),
-    )
-
-    co_authors = SubSection(section=Author, repeats=True)
-
-    tags = SubSection( #make tags searchable
-        section=Tags,
-        repeats=True,
-        a_display={'visible': False, 'editable': False}
-    )
-
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
         #make tags searchable
-        self.tags = list(
-            Tags(tag=quant.name)
+        if not archive.results:
+            archive.results = Results(
+                a_display={'visible': False, 'editable': False}
+                )
+        if not archive.results.eln: #make elements in material searchable
+            archive.results.eln = ELN(
+                a_display={'visible': False, 'editable': False}
+                )
+        archive.results.eln.tags = list(
+            quant.name
             for quant in self.m_def.quantities
             if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
         )
-
-        #make co_authors searchable
-        if self.co_authors:
-            archive.metadata.entry_coauthors = [
-                NomadAuthor(**author.m_to_dict()) for author in self.co_authors
-            ]
+        logger.info(f"Set tags to {archive.results.eln.tags}")
 
         if self.date is None: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))

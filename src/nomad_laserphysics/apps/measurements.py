@@ -10,6 +10,7 @@ from nomad.config.models.ui import (
     MenuItemCustomQuantities,
     MenuItemHistogram,
     MenuItemPeriodicTable,
+    MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
@@ -74,6 +75,15 @@ Measurements = App(
                     MenuItemHistogram(
                         title='date of the last update',
                         x='upload_create_time',
+                    ),
+                ],
+            ),
+            Menu(
+                title='tags',
+                items=[
+                    MenuItemTerms(
+                        title='tags',
+                        search_quantity='results.eln.tags'
                     ),
                 ],
             ),

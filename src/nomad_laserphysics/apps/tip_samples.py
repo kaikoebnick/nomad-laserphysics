@@ -10,6 +10,7 @@ from nomad.config.models.ui import (
     MenuItemCustomQuantities,
     MenuItemHistogram,
     MenuItemPeriodicTable,
+    MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
@@ -54,7 +55,8 @@ Tip_samples = App(
     filters_locked=filters_locked,
 
     columns=[
-        Column(search_quantity='results.eln.lab_ids', label='laserphysics id'),
+        Column(search_quantity='results.eln.lab_ids',
+               label='laserphysics id', selected=True),
         Column(search_quantity='entry_type', align=AlignEnum.LEFT),
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='entry_name', align=AlignEnum.LEFT, selected=True
@@ -75,6 +77,10 @@ Tip_samples = App(
                     MenuItemHistogram(
                         title='date of the last update',
                         x='upload_create_time',
+                    ),
+                    MenuItemTerms(
+                        title='laserphysics id',
+                        search_quantity='results.eln.lab_ids'
                     ),
                 ],
             ),
