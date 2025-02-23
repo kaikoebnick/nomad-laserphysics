@@ -237,7 +237,7 @@ class Measurement(Schema):
             for quant in self.m_def.quantities
             if str(quant.type) == "m_float(float)" and getattr(self, str(quant.name))
         )
-        logger.info(f"Set methods to {archive.results.eln.methods} and {self.m_def.quantities}")
+        logger.info(f"Set methods to {archive.results.eln.methods} and {self.m_def.quantities[6].type}")
 
         if self.date is None: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
