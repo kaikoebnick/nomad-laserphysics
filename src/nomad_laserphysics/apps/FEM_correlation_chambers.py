@@ -103,6 +103,14 @@ FEMCorrelationChambers = App(
                 ],
             ),
             Menu(
+                title='values',
+                items=[
+                    MenuItemHistogram(
+                        x='results.eln.methods',
+                    )
+                ],
+            ),
+            Menu(
                 title='tags',
                 items=[
                     MenuItemTerms(

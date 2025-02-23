@@ -88,6 +88,14 @@ Measurements = App(
                 ],
             ),
             Menu(
+                title='values',
+                items=[
+                    MenuItemHistogram(
+                        x='results.eln.methods[0]',
+                    )
+                ],
+            ),
+            Menu(
                 title='elemental table',
                 items=[
                     MenuItemPeriodicTable(
