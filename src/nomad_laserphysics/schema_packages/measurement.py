@@ -21,10 +21,6 @@ from nomad.metainfo import (
     SchemaPackage,
     Section,
 )
-from nomad.metainfo.elasticsearch_extension import (
-    Elasticsearch,
-    material_type,
-)
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
 
@@ -40,6 +36,15 @@ class ToolsCategory(EntryDataCategory):
 
 def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
+
+
+class MyELN(ELN):
+    m_def = Section(extends_base_section=True)
+    voltage = Quantity(
+        type=float,
+        unit='volt',
+        description="Voltage in V.",
+    )
 
 
 class Measurement(Schema):
@@ -98,10 +103,6 @@ class Measurement(Schema):
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
         ),
-        a_elasticsearch=[
-            Elasticsearch(material_type, many_all=True),
-            Elasticsearch(suggestion='simple'),
-        ],
     )
 
     laserpower = Quantity(
@@ -236,6 +237,9 @@ class Measurement(Schema):
             if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
         )
         logger.info(f"Set tags to {archive.results.eln.tags}")
+
+        myELN = MyELN()
+        myELN.volatge = self.voltage
         #archive.results.eln.methods = list( #make values searchable
         #    getattr(self, quant.name)
         #    for quant in self.m_def.quantities
