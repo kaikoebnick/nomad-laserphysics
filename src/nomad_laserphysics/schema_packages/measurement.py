@@ -47,9 +47,9 @@ class MyELN(ELN): #for making values searchable
         type=float,
         unit='volt',
         description="Voltage in V.",
-        a_elasticsearch=[
-            Elasticsearch(index=True)
-        ]
+        #a_elasticsearch=[
+        #    Elasticsearch(index=True)
+        #]
     )
     laserpower = Quantity(
         type=float,
@@ -262,6 +262,7 @@ class Measurement(Schema):
             archive.results.eln.wavelength = self.wavelength
         if self.u_p:
             archive.results.eln.u_p = self.u_p
+        self.update_results(archive)
 
         if not self.date: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
