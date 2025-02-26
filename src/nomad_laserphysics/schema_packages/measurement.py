@@ -38,12 +38,27 @@ def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
 
 
-class MyELN(ELN):
+class MyELN(ELN): #for making values searchable
     m_def = Section(extends_base_section=True)
     voltage = Quantity(
         type=float,
         unit='volt',
         description="Voltage in V.",
+    )
+    laserpower = Quantity(
+        type=float,
+        unit='milliwatt',
+        description="Laserpower in mW.",
+    )
+    wavelength = Quantity(
+        type=float,
+        unit='nanometer',
+        description="Wavelength in nm.",
+    )
+    u_p = Quantity(
+        type=float,
+        unit='electron_volt',
+        description="U_p in V.",
     )
 
 
@@ -238,16 +253,15 @@ class Measurement(Schema):
         )
         logger.info(f"Set tags to {archive.results.eln.tags}")
 
-        if self.wavelength:
-            MyELN.volatge = self.voltage
-        if self.u_p:
+        #make values searchable
+        if self.voltage:
             archive.results.eln.voltage = self.voltage
-        #archive.results.eln.methods = list( #make values searchable
-        #    getattr(self, quant.name)
-        #    for quant in self.m_def.quantities
-        #    if str(quant.type) == "m_float64(float)" and getattr(self, str(quant.name))
-        #)
-        #logger.info(f"Set methods to {archive.results.eln.methods}")
+        if self.laserpower:
+            archive.results.eln.laserpower = self.laserpower
+        if self.wavelength:
+            archive.results.eln.wavelength = self.wavelength
+        if self.u_p:
+            archive.results.eln.u_p = self.u_p
 
         if self.date is None: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))

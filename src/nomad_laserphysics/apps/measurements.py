@@ -76,20 +76,28 @@ Measurements = App(
                 x='upload_create_time',
             ),
             Menu(
-                title='kind',
-                items=[
-                    MenuItemTerms(
-                        title='',
-                        search_quantity='section_defs.definition_qualified_name'
-                    ),
-                ],
-            ),
-            Menu(
                 title='tags',
                 items=[
                     MenuItemTerms(
                         title='tags',
                         search_quantity='results.eln.tags'
+                    ),
+                ],
+            ),
+            Menu(
+                title='values',
+                items=[
+                    MenuItemHistogram(
+                        x='results.eln.voltage',
+                    ),
+                    MenuItemHistogram(
+                        x='results.eln.laserpower',
+                    ),
+                    MenuItemHistogram(
+                        x='results.eln.wavelength',
+                    ),
+                    MenuItemHistogram(
+                        x='results.eln.u_p',
                     ),
                 ],
             ),

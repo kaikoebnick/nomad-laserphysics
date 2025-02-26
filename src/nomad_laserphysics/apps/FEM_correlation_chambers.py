@@ -86,36 +86,28 @@ FEMCorrelationChambers = App(
                 ],
             ),
             Menu(
-                title='values',
-                items=[
-                    MenuItemHistogram(
-                        x='data.voltage#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
-                    ),
-                    MenuItemHistogram(
-                        x='data.laserpower#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
-                    ),
-                    MenuItemHistogram(
-                        x='data.wavelength#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
-                    ),
-                    MenuItemHistogram(
-                        x='data.u_p#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
-                    ),
-                ],
-            ),
-            Menu(
-                title='values',
-                items=[
-                    MenuItemHistogram(
-                        x='results.eln.methods',
-                    )
-                ],
-            ),
-            Menu(
                 title='tags',
                 items=[
                     MenuItemTerms(
                         title='tags',
                         search_quantity='results.eln.tags'
+                    ),
+                ],
+            ),
+            Menu(
+                title='values',
+                items=[
+                    MenuItemHistogram(
+                        x='results.eln.voltage',
+                    ),
+                    MenuItemHistogram(
+                        x='results.eln.laserpower',
+                    ),
+                    MenuItemHistogram(
+                        x='results.eln.wavelength',
+                    ),
+                    MenuItemHistogram(
+                        x='results.eln.u_p',
                     ),
                 ],
             ),
