@@ -23,7 +23,6 @@ from nomad.metainfo import (
 )
 from nomad.metainfo.elasticsearch_extension import (
     Elasticsearch,
-    material_type,
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
@@ -49,7 +48,7 @@ class MyELN(ELN): #for making values searchable
         unit='volt',
         description="Voltage in V.",
         a_elasticsearch=[
-            a_elasticsearch=Elasticsearch(index=True)
+            Elasticsearch(index=True)
         ]
     )
     laserpower = Quantity(
