@@ -88,7 +88,7 @@ Measurements = App(
                 title='values',
                 items=[
                     MenuItemHistogram(
-                        x='results.eln.voltage',
+                        x='results.VolumeDynamic.value',
                     ),
                 ],
             ),
