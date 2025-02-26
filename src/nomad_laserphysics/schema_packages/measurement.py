@@ -22,6 +22,7 @@ from nomad.metainfo import (
     SchemaPackage,
     Section,
 )
+from nomad.metainfo.data_type import m_float64
 from nomad.metainfo.elasticsearch_extension import Elasticsearch, material_type
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
@@ -43,7 +44,7 @@ def remove_tags(text):
 class MyELN(ELN): #for making values searchable
     m_def = Section(extends_base_section=True)
     voltage = Quantity(
-        type=np.dtype(np.float64),
+        type=m_float64(dtype=np.float64),
         unit='volt',
         description="Voltage in V.",
         a_elasticsearch=[
