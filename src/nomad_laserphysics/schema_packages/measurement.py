@@ -48,7 +48,8 @@ class MyELN(ELN): #for making values searchable
         unit='volt',
         description="Voltage in V.",
         a_elasticsearch=[
-            Elasticsearch(type='float')
+            Elasticsearch(material_type, many_all=True),
+            Elasticsearch(suggestion="simple")
         ]
     )
     laserpower = Quantity(
