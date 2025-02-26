@@ -90,23 +90,6 @@ Measurements = App(
                     MenuItemHistogram(
                         x='results.eln.voltage',
                     ),
-                    MenuItemHistogram(
-                        x='results.eln.laserpower',
-                    ),
-                    MenuItemHistogram(
-                        x='results.eln.wavelength',
-                    ),
-                    MenuItemHistogram(
-                        x='results.eln.u_p',
-                    ),
-                ],
-            ),
-            Menu(
-                title='values',
-                items=[
-                    MenuItemHistogram(
-                        x='data.voltage',
-                    )
                 ],
             ),
             Menu(
