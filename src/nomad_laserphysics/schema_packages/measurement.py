@@ -7,6 +7,7 @@ if TYPE_CHECKING:
 import datetime
 import xml
 
+import numpy as np  # noqa: F401
 import pytz
 from nomad.datamodel.data import (
     EntryDataCategory,
@@ -42,7 +43,7 @@ def remove_tags(text):
 class MyELN(ELN): #for making values searchable
     m_def = Section(extends_base_section=True)
     voltage = Quantity(
-        type=float,
+        type=np.dtype(np.float64),
         unit='volt',
         description="Voltage in V.",
         a_elasticsearch=[
