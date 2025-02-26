@@ -21,6 +21,10 @@ from nomad.metainfo import (
     SchemaPackage,
     Section,
 )
+from nomad.metainfo.elasticsearch_extension import (
+    Elasticsearch,
+    material_type,
+)
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
 
@@ -44,6 +48,10 @@ class MyELN(ELN): #for making values searchable
         type=float,
         unit='volt',
         description="Voltage in V.",
+        a_elasticsearch=[
+            Elasticsearch(material_type, many_all=True),
+            Elasticsearch(suggestion="simple")
+        ]
     )
     laserpower = Quantity(
         type=float,
@@ -256,7 +264,6 @@ class Measurement(Schema):
         #make values searchable
         if self.voltage:
             archive.results.eln.voltage = self.voltage
-            logger.info(f"Voltage in normalize: {archive.results.eln.voltage}")
         if self.laserpower:
             archive.results.eln.laserpower = self.laserpower
         if self.wavelength:

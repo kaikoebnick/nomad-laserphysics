@@ -88,7 +88,7 @@ Measurements = App(
                 title='values',
                 items=[
                     MenuItemHistogram(
-                        x='data.results.eln.voltage',
+                        x='results.eln.voltage',
                     ),
                 ],
             ),
