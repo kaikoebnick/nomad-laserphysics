@@ -21,6 +21,10 @@ from nomad.metainfo import (
     SchemaPackage,
     Section,
 )
+from nomad.metainfo.elasticsearch_extension import (
+    Elasticsearch,
+    material_type,
+)
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
 
@@ -94,6 +98,10 @@ class Measurement(Schema):
         a_eln=ELNAnnotation(
             component=ELNComponentEnum.NumberEditQuantity,
         ),
+        a_elasticsearch=[
+            Elasticsearch(material_type, many_all=True),
+            Elasticsearch(suggestion='simple'),
+        ],
     )
 
     laserpower = Quantity(
@@ -219,25 +227,21 @@ class Measurement(Schema):
         super().normalize(archive, logger)
 
         if not archive.results:
-            archive.results = Results(
-                a_display={'visible': False, 'editable': False}
-            )
+            archive.results = Results(eln = ELN())
         if not archive.results.eln:
-            archive.results.eln = ELN(
-                a_display={'visible': False, 'editable': False}
-            )
+            archive.results.eln = ELN()
         archive.results.eln.tags = list( #make tags searchable
             quant.name
             for quant in self.m_def.quantities
             if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
         )
         logger.info(f"Set tags to {archive.results.eln.tags}")
-        archive.results.eln.methods = list( #make values searchable
-            getattr(self, quant.name)
-            for quant in self.m_def.quantities
-            if str(quant.type) == "m_float64(float)" and getattr(self, str(quant.name))
-        )
-        logger.info(f"Set methods to {archive.results.eln.methods}")
+        #archive.results.eln.methods = list( #make values searchable
+        #    getattr(self, quant.name)
+        #    for quant in self.m_def.quantities
+        #    if str(quant.type) == "m_float64(float)" and getattr(self, str(quant.name))
+        #)
+        #logger.info(f"Set methods to {archive.results.eln.methods}")
 
         if self.date is None: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))

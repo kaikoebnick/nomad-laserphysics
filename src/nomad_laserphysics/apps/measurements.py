@@ -50,6 +50,8 @@ Measurements = App(
     filters=Filters(
         include=[
             '*#nomad_laserphysics.schema_packages.measurement.Measurement',
+            '*#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
+            '*#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
             ],
     ),
     filters_locked=filters_locked,
@@ -69,12 +71,16 @@ Measurements = App(
     menu=Menu(
         title='filter-menu',
         items=[
+            MenuItemHistogram(
+                title='date of the last update',
+                x='upload_create_time',
+            ),
             Menu(
-                title='basic data',
+                title='kind',
                 items=[
-                    MenuItemHistogram(
-                        title='date of the last update',
-                        x='upload_create_time',
+                    MenuItemTerms(
+                        title='',
+                        search_quantity='section_defs.definition_qualified_name'
                     ),
                 ],
             ),
@@ -91,7 +97,7 @@ Measurements = App(
                 title='values',
                 items=[
                     MenuItemHistogram(
-                        x='results.eln.methods[0]',
+                        x='data.voltage',
                     )
                 ],
             ),
