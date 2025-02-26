@@ -84,14 +84,14 @@ Measurements = App(
                     ),
                 ],
             ),
-            Menu(
-                title='values',
-                items=[
-                    MenuItemHistogram(
-                        x='results.eln.voltage',
-                    ),
-                ],
-            ),
+            #Menu(
+            #    title='values',
+            #    items=[
+            #        MenuItemHistogram(
+            #            x='results.eln.voltage',
+            #        ),
+            #    ],
+            #),
             Menu(
                 title='elemental table',
                 items=[
