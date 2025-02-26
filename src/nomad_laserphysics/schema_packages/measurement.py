@@ -256,6 +256,7 @@ class Measurement(Schema):
         #make values searchable
         if self.voltage:
             archive.results.eln.voltage = self.voltage
+            logger.info(f"Voltage in normalize: {archive.results.eln.voltage}")
         if self.laserpower:
             archive.results.eln.laserpower = self.laserpower
         if self.wavelength:
