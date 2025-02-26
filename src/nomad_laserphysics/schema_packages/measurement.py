@@ -21,9 +21,7 @@ from nomad.metainfo import (
     SchemaPackage,
     Section,
 )
-from nomad.metainfo.elasticsearch_extension import (
-    Elasticsearch,
-)
+from nomad.metainfo.elasticsearch_extension import Elasticsearch, material_type
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
 
