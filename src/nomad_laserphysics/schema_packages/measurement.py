@@ -238,8 +238,10 @@ class Measurement(Schema):
         )
         logger.info(f"Set tags to {archive.results.eln.tags}")
 
-        myELN = MyELN()
-        myELN.volatge = self.voltage
+        if self.wavelength:
+            MyELN.volatge = self.voltage
+        if self.u_p:
+            archive.results.eln.voltage = self.voltage
         #archive.results.eln.methods = list( #make values searchable
         #    getattr(self, quant.name)
         #    for quant in self.m_def.quantities
