@@ -49,8 +49,7 @@ class MyELN(ELN): #for making values searchable
         unit='volt',
         description="Voltage in V.",
         a_elasticsearch=[
-            Elasticsearch(material_type, many_all=True),
-            Elasticsearch(suggestion="simple")
+            a_elasticsearch=Elasticsearch(index=True)
         ]
     )
     laserpower = Quantity(
@@ -241,12 +240,6 @@ class Measurement(Schema):
         description='Extra details about the measurement.',
     )
 
-    description = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.RichTextEditQuantity),
-        description='Short description. You can add pictures!',
-    )
-
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
@@ -271,7 +264,7 @@ class Measurement(Schema):
         if self.u_p:
             archive.results.eln.u_p = self.u_p
 
-        if self.date is None: #make date searchable
+        if not self.date: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))
         if self.date:
             archive.metadata.upload_create_time = self.date
