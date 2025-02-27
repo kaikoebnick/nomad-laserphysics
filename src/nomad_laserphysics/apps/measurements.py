@@ -85,10 +85,11 @@ Measurements = App(
                 ],
             ),
             Menu(
-                title='values',
+                title='x',
                 items=[
-                    MenuItemHistogram(
-                        x='results.eln.voltage',
+                    MenuItemTerms(
+                        title='x',
+                        search_quantity='results.eln.x'
                     ),
                 ],
             ),
