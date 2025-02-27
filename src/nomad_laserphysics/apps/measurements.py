@@ -89,7 +89,7 @@ Measurements = App(
                 items=[
                     MenuItemTerms(
                         title='x',
-                        search_quantity='results.eln.x'
+                        search_quantity='nomad_laserphysics.schema_packages.measurement.MyELN.voltage'
                     ),
                 ],
             ),
