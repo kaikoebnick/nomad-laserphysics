@@ -59,9 +59,6 @@ FEMCorrelationChambers = App(
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='entry_name', align=AlignEnum.LEFT, selected=True
         ),
-        Column(search_quantity='data.category#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
-            label='Category', selected=True
-        ),
         Column(search_quantity='upload_create_time',
             align=AlignEnum.LEFT,
             format=Format(mode=ModeEnum.DATE),
@@ -95,19 +92,11 @@ FEMCorrelationChambers = App(
                 ],
             ),
             Menu(
-                title='values',
+                title='x',
                 items=[
-                    MenuItemHistogram(
-                        x='results.eln.voltage',
-                    ),
-                    MenuItemHistogram(
-                        x='results.eln.laserpower',
-                    ),
-                    MenuItemHistogram(
-                        x='results.eln.wavelength',
-                    ),
-                    MenuItemHistogram(
-                        x='results.eln.u_p',
+                    MenuItemTerms(
+                        title='y',
+                        search_quantity='EntryArchiveReference.target_name'
                     ),
                 ],
             ),

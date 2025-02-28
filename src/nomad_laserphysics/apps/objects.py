@@ -9,6 +9,7 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemHistogram,
+    MenuItemOption,
     MenuItemPeriodicTable,
     MenuItemTerms,
     MenuItemVisibility,
@@ -91,6 +92,18 @@ Objects = App(
                     title='periodic table menu',
                     search_quantity='results.material.elements',
                     ),
+                ],
+            ),
+            Menu(
+                title='elemental table',
+                items=[
+                    MenuItemTerms(
+                        search_quantity='entry_type',
+                        options={'TipSample': MenuItemOption(
+                                label='Uses this schema'
+                            )
+                        }
+            ),
                 ],
             ),
             MenuItemVisibility(

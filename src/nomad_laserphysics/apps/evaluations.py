@@ -9,6 +9,8 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemHistogram,
+    MenuItemOption,
+    MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
     RowActions,
@@ -67,14 +69,23 @@ Evaluations = App(
     menu=Menu(
         title='filter-menu',
         items=[
-            Menu(
-                title='basic data',
-                items=[
-                    MenuItemHistogram(
-                        title='date of the last update',
-                        x='upload_create_time',
-                    ),
-                ],
+            MenuItemHistogram(
+                title='date of the last update',
+                x='upload_create_time',
+            ),
+            MenuItemTerms(
+                search_quantity='entry_type',
+                options={'MLEvaluation': MenuItemOption(
+                        label='Uses this schema'
+                    )
+                }
+            ),
+            MenuItemTerms(
+                search_quantity='entry_type',
+                options={'MLEvaluationProcedure': MenuItemOption(
+                        label='Uses this schema'
+                    )
+                }
             ),
             MenuItemVisibility(
                 title='visibility',

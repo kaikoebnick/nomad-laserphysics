@@ -10,6 +10,7 @@ import xml
 import numpy as np  # noqa: F401
 import pytz
 from nomad.datamodel.data import (
+    ArchiveSection,
     EntryDataCategory,
     Schema,
 )
@@ -21,6 +22,7 @@ from nomad.metainfo import (
     Quantity,
     SchemaPackage,
     Section,
+    SubSection,
 )
 
 from nomad_laserphysics.schema_packages.tip_sample import TipSample
@@ -39,27 +41,14 @@ def remove_tags(text):
     return ''.join(xml.etree.ElementTree.fromstring(text).itertext())
 
 
-class MyELN(ELN): #for making values searchable
-    m_def = Section(extends_base_section=True)
-    voltage = Quantity(
-        type=float,
-        unit='volt',
-        description="Voltage in V.",
+class Tags(ArchiveSection): #used to make tags searchable
+    m_def = Section(a_display=
+    {'visible': False, 'editable': False}
     )
-    laserpower = Quantity(
-        type=float,
-        unit='milliwatt',
-        description="Laserpower in mW.",
-    )
-    wavelength = Quantity(
-        type=float,
-        unit='nanometer',
-        description="Wavelength in nm.",
-    )
-    u_p = Quantity(
-        type=float,
-        unit='electron_volt',
-        description="U_p in V.",
+
+    tag = Quantity(
+        type=str,
+        a_display={'visible': False, 'editable': False},
     )
 
 
@@ -83,8 +72,8 @@ class Measurement(Schema):
     )
 
     measurement_number_of_that_type = Quantity(
-        type=str,
-        a_eln=ELNAnnotation(component=ELNComponentEnum.StringEditQuantity),
+        type=int,
+        a_eln=ELNAnnotation(component=ELNComponentEnum.NumberEditQuantity),
         label='measurement number of that type',
         description='Measurement number of that type.',
     )
@@ -234,6 +223,13 @@ class Measurement(Schema):
         description='Extra details about the measurement.',
     )
 
+    tags = SubSection( #make tags searchable
+        section=Tags,
+        repeats=True,
+        a_display={'visible': False, 'editable': False}
+    )
+
+
     def normalize(self, archive: 'EntryArchive', logger: 'BoundLogger') -> None:
         super().normalize(archive, logger)
 
@@ -246,17 +242,12 @@ class Measurement(Schema):
             for quant in self.m_def.quantities
             if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
         )
+        self.tags = list(
+            Tags(tag=quant.name)
+            for quant in self.m_def.quantities
+            if str(quant.type) == "m_bool(bool)" and getattr(self, str(quant.name))
+        )
         logger.info(f"Set tags to {archive.results.eln.tags}")
-
-        #make values searchable
-        if self.voltage:
-            archive.results.eln.voltage = self.voltage
-        if self.laserpower:
-            archive.results.eln.laserpower = self.laserpower
-        if self.wavelength:
-            archive.results.eln.wavelength = self.wavelength
-        if self.u_p:
-            archive.results.eln.u_p = self.u_p
 
         if not self.date: #make date searchable
             self.date = datetime.datetime.now(pytz.timezone('Europe/Berlin'))

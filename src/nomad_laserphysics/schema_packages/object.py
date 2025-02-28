@@ -111,13 +111,9 @@ class Object(Schema):
             self.laserphysics_id = counter.get_counter_and_update(entry_id)
 
         if not archive.results:
-            archive.results = Results(
-                a_display={'visible': False, 'editable': False}
-                )
+            archive.results = Results()
         if not archive.results.material: #make elements in material searchable
-            archive.results.material = Material(
-                a_display={'visible': False, 'editable': False}
-                )
+            archive.results.material = Material()
         if self.material:
             archive.results.material.elements = list(
                 el

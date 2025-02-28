@@ -9,7 +9,7 @@ from nomad.config.models.ui import (
     Menu,
     MenuItemCustomQuantities,
     MenuItemHistogram,
-    MenuItemPeriodicTable,
+    MenuItemOption,
     MenuItemTerms,
     MenuItemVisibility,
     ModeEnum,
@@ -76,30 +76,100 @@ Measurements = App(
                 x='upload_create_time',
             ),
             Menu(
-                title='tags',
+                title='FEM Correlation Chamber',
                 items=[
                     MenuItemTerms(
+                        search_quantity='entry_type',
+                        options={'FEMCorrelationChamber': MenuItemOption(
+                                label='Uses this schema'
+                            )
+                        }
+                    ),
+                    MenuItemTerms(
+                        title='measurement type',
+                        search_quantity='data.measurement_type#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber'
+                    ),
+                    MenuItemHistogram(
+                        title='measurement number of that type',
+                        x='data.measurement_number_of_that_type#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber'
+                    ),
+                    Menu(
                         title='tags',
-                        search_quantity='results.eln.tags'
+                        items=[
+                            MenuItemTerms(
+                                title='tags',
+                                search_quantity='results.eln.tags'
+                            ),
+                        ],
+                    ),
+                    Menu(
+                        title='values',
+                        items=[
+                            MenuItemHistogram(
+                                x='data.voltage#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
+                            ),
+                            MenuItemHistogram(
+                                x='data.laserpower#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
+                            ),
+                            MenuItemHistogram(
+                                x='data.wavelength#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
+                            ),
+                            MenuItemHistogram(
+                                x='data.u_p#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
+                            ),
+                        ],
                     ),
                 ],
             ),
             Menu(
-                title='x',
+                title='FIM Test Chamber',
                 items=[
                     MenuItemTerms(
-                        title='x',
-                        search_quantity='eln.SolarCellJVCurve.voltage'
+                        search_quantity='entry_type',
+                        options={'FIMTestChamber': MenuItemOption(
+                                label='Uses this schema'
+                            )
+                        }
+                    ),
+                    MenuItemTerms(
+                        title='measurement type',
+                        search_quantity='data.measurement_type#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
+                    ),
+                    MenuItemHistogram(
+                        title='measurement number of that type',
+                        x='data.measurement_number_of_that_type#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
+                    ),
+                    Menu(
+                        title='tags',
+                        items=[
+                            MenuItemTerms(
+                                title='tags',
+                                search_quantity='results.eln.tags'
+                            ),
+                        ],
+                    ),
+                    Menu(
+                        title='values',
+                        items=[
+                            MenuItemHistogram(
+                                x='data.voltage#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
+                            ),
+                            MenuItemHistogram(
+                                x='data.laserpower#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
+                            ),
+                            MenuItemHistogram(
+                                x='data.wavelength#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
+                            ),
+                            MenuItemHistogram(
+                                x='data.u_p#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
+                            ),
+                        ],
                     ),
                 ],
             ),
             Menu(
-                title='elemental table',
+                title='objects',
                 items=[
-                    MenuItemPeriodicTable(
-                    title='periodic table menu',
-                    search_quantity='results.material.elements',
-                    ),
                 ],
             ),
             MenuItemVisibility(

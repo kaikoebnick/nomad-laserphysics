@@ -59,9 +59,6 @@ FIMTestChambers = App(
         Column(search_quantity='authors', align=AlignEnum.LEFT, selected=True),
         Column(search_quantity='entry_name', align=AlignEnum.LEFT, selected=True
         ),
-        Column(search_quantity='data.category#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber',
-            label='Category', selected=True
-        ),
         Column(search_quantity='upload_create_time',
             align=AlignEnum.LEFT,
             format=Format(mode=ModeEnum.DATE),
