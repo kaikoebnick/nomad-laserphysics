@@ -75,6 +75,10 @@ Measurements = App(
                 title='date of the last update',
                 x='upload_create_time',
             ),
+            MenuItemTerms(
+                title='Object',
+                search_quantity='entry_references.target_name',
+            ),
             Menu(
                 title='FEM Correlation Chamber',
                 items=[
@@ -93,7 +97,7 @@ Measurements = App(
                     ),
                     MenuItemHistogram(
                         title='measurement number of that type',
-                        x='data.measurement_number_of_that_type#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber'
+                        x='data.measurement_number_of_that_type#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber'
                     ),
                     Menu(
                         title='tags',
@@ -108,13 +112,13 @@ Measurements = App(
                         title='values',
                         items=[
                             MenuItemHistogram(
-                                x='data.voltage#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
+                                x='data.voltage#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
                             ),
                             MenuItemHistogram(
-                                x='data.laserpower#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
+                                x='data.laserpower#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
                             ),
                             MenuItemHistogram(
-                                x='data.wavelength#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
+                                x='data.wavelength#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
                             ),
                             MenuItemHistogram(
                                 x='data.u_p#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
@@ -171,11 +175,6 @@ Measurements = App(
                     ),
                 ],
             ),
-            #Menu(
-            #    title='objects',
-            #    items=[
-            #    ],
-            #),
             MenuItemVisibility(
                 title='visibility',
             ),

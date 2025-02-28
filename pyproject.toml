@@ -112,11 +112,8 @@ where = ["src"]
 
 [project.entry-points.'nomad.plugin']
 measurements_app_entry_point = "nomad_laserphysics.apps:measurements_app_entry_point"
-FEM_correlation_chambers_app_entry_point = "nomad_laserphysics.apps:FEM_correlation_chambers_app_entry_point"
-FIM_test_chambers_app_entry_point = "nomad_laserphysics.apps:FIM_test_chambers_app_entry_point"
 evaluations_app_entry_point = "nomad_laserphysics.apps:evaluations_app_entry_point"
 objects_app_entry_point = "nomad_laserphysics.apps:objects_app_entry_point"
-tip_samples_app_entry_point = "nomad_laserphysics.apps:tip_samples_app_entry_point"
 evaluation_schema_package_entry_point = "nomad_laserphysics.schema_packages:evaluation_schema_package_entry_point"
 ML_evaluation_schema_package_entry_point = "nomad_laserphysics.schema_packages:ML_evaluation_schema_package_entry_point"
 ML_evaluation_procedure_schema_package_entry_point = "nomad_laserphysics.schema_packages:ML_evaluation_procedure_schema_package_entry_point"
