@@ -94,19 +94,14 @@ Objects = App(
                     ),
                 ],
             ),
-            Menu(
-                title='elemental table',
-                items=[
-                    MenuItemTerms(
-                        title='kind',
-                        search_quantity='entry_type',
-                        options={'TipSample': MenuItemOption(
-                                label='Tip Sample'
-                            )
-                        },
-                        show_input=False
-                    ),
-                ],
+            MenuItemTerms(
+                title='kind',
+                search_quantity='entry_type',
+                options={'TipSample': MenuItemOption(
+                        label='Tip Sample'
+                    )
+                },
+                show_input=False
             ),
             MenuItemVisibility(
                 title='visibility',
