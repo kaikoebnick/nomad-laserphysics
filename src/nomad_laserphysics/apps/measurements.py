@@ -77,7 +77,7 @@ Measurements = App(
             ),
             MenuItemTerms(
                 title='Object',
-                search_quantity='entry_references.target_name',
+                search_quantity='entry_references',
             ),
             Menu(
                 title='FEM Correlation Chamber',
