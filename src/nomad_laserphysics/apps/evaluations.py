@@ -81,11 +81,17 @@ Evaluations = App(
                 }
             ),
             MenuItemTerms(
+                title='kind',
                 search_quantity='entry_type',
-                options={'MLEvaluationProcedure': MenuItemOption(
-                        label='Uses this schema'
+                options={
+                    'MLEvaluation': MenuItemOption(
+                        label='ML Evaluation'
+                    ),
+                    'MLEvaluationProcedure': MenuItemOption(
+                        label='ML Evaluation Procedure'
                     )
-                }
+                },
+                show_input=False
             ),
             MenuItemVisibility(
                 title='visibility',

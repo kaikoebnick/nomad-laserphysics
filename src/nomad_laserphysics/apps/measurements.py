@@ -79,15 +79,17 @@ Measurements = App(
                 title='FEM Correlation Chamber',
                 items=[
                     MenuItemTerms(
+                        title='kind',
                         search_quantity='entry_type',
                         options={'FEMCorrelationChamber': MenuItemOption(
-                                label='Uses this schema'
+                                label='FEM Correlation Chamber'
                             )
-                        }
+                        },
+                        show_input=False
                     ),
                     MenuItemTerms(
                         title='measurement type',
-                        search_quantity='data.measurement_type#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber'
+                        search_quantity='data.measurement_type#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber'
                     ),
                     MenuItemHistogram(
                         title='measurement number of that type',
@@ -98,7 +100,7 @@ Measurements = App(
                         items=[
                             MenuItemTerms(
                                 title='tags',
-                                search_quantity='results.eln.tags'
+                                search_quantity='data.tags.tag#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber'
                             ),
                         ],
                     ),
@@ -115,7 +117,7 @@ Measurements = App(
                                 x='data.wavelength#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
                             ),
                             MenuItemHistogram(
-                                x='data.u_p#nomad_laserphysics.schema_packages.FEM_Correlation_chamber.FEMCorrelationChamber',
+                                x='data.u_p#nomad_laserphysics.schema_packages.FEM_correlation_chamber.FEMCorrelationChamber',
                             ),
                         ],
                     ),
@@ -125,11 +127,13 @@ Measurements = App(
                 title='FIM Test Chamber',
                 items=[
                     MenuItemTerms(
+                        title='kind',
                         search_quantity='entry_type',
                         options={'FIMTestChamber': MenuItemOption(
-                                label='Uses this schema'
+                                label='FIM Test Chamber'
                             )
-                        }
+                        },
+                        show_input=False
                     ),
                     MenuItemTerms(
                         title='measurement type',
@@ -144,7 +148,7 @@ Measurements = App(
                         items=[
                             MenuItemTerms(
                                 title='tags',
-                                search_quantity='results.eln.tags'
+                                search_quantity='data.tags.tag#nomad_laserphysics.schema_packages.FIM_test_chamber.FIMTestChamber'
                             ),
                         ],
                     ),
@@ -167,11 +171,11 @@ Measurements = App(
                     ),
                 ],
             ),
-            Menu(
-                title='objects',
-                items=[
-                ],
-            ),
+            #Menu(
+            #    title='objects',
+            #    items=[
+            #    ],
+            #),
             MenuItemVisibility(
                 title='visibility',
             ),

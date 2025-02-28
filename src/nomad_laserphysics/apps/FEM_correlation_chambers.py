@@ -96,7 +96,7 @@ FEMCorrelationChambers = App(
                 items=[
                     MenuItemTerms(
                         title='y',
-                        search_quantity='EntryArchiveReference.target_name'
+                        search_quantity='entry_references.target_name'
                     ),
                 ],
             ),
